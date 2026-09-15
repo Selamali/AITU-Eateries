@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AITU Eateries — Dining Spots</title>
+    <meta name="description"
+        content="What each AITU campus dining spot serves, where to find it, and its opening hours.">
+
+    <!-- Author: Anarbekov Ramazan, group SE-2504, Project, AITU Eateries, Assignment 1 -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@500;700&family=Mulish:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header id="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="AITU Eateries logo" width="520"
+                    height="232"></a>
+            <nav class="main-nav" id="main-nav" aria-label="Primary">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="eateries.html" class="active" aria-current="page">Dining Spots</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="page-intro container">
+            <h1>Dining Spots</h1>
+            <p class="lead">What's on offer, where to find each place, and when it's open - everything you need
+                before you leave for a break.</p>
+        </section>
+
+        <section class="locations container" id="locations">
+            <h2>The spots</h2>
+            <div class="card-grid">
+
+                <article class="card card-green" id="stolovaya">
+                    <img src="images/stolovaya.jpg" alt="Students getting hot meals at the busy AITU Cafeteria counter">
+                    <h3>Cafeteria</h3>
+                    <p>Hot dishes, soups, and fresh pastries at the lowest prices on campus — the biggest and
+                        busiest spot, so expect a line around lunchtime.</p>
+                    <ul class="tag-list">
+                        <li>Hot dishes</li>
+                        <li>Soups</li>
+                        <li>Pastries</li>
+                        <li>Salads</li>
+                    </ul>
+                    <p class="card-meta">C1.3</p>
+                </article>
+
+                <article class="card card-terracotta" id="coffee-lake">
+                    <img src="images/coffee-lake.jpg" alt="Coffee Lake indoor seating area next to the coffee counter">
+                    <h3>Coffee Lake</h3>
+                    <p>Coffee, tea, and sandwiches in a cozy indoor corner — good if you want to sit with a laptop
+                        and get some work done.</p>
+                    <ul class="tag-list">
+                        <li>Coffee &amp; tea</li>
+                        <li>Sandwiches</li>
+                        <li>Light snacks</li>
+                    </ul>
+                    <p class="card-meta">C1.2(atrium)</p>
+                </article>
+
+                <article class="card card-turquoise" id="sheker">
+                    <img src="images/sheker.jpg" alt="Sheker open kiosk with small tables and string lights">
+                    <h3>Sheker</h3>
+                    <p>Coffee, salads, sandwiches, croissants, and desserts from an open kiosk with small tables —
+                        easy for a quick chat between classes.</p>
+                    <ul class="tag-list">
+                        <li>Coffee &amp; drinks</li>
+                        <li>Salads</li>
+                        <li>Sandwiches</li>
+                        <li>Desserts</li>
+                    </ul>
+                    <p class="card-meta">Between C1.1 and C1.2</p>
+                </article>
+
+                <article class="card card-yellow" id="mokko">
+                    <img src="images/mokko-coffee.jpg" alt="Mokko open kiosk with small tables in the atrium">
+                    <h3>Mokko</h3>
+                    <p>Coffee and something sweet from a small open kiosk — a quick stop between classes.</p>
+                    <ul class="tag-list">
+                        <li>Coffee</li>
+                        <li>Snacks</li>
+                        <li>Sweets</li>
+                    </ul>
+                    <p class="card-meta">Between C1.2 and C1.3</p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="hours container" id="hours">
+            <h2>Hours at a glance</h2>
+            <table>
+                <caption>Opening days and hours for every dining spot</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Dining spot</th>
+                        <th scope="col">Where</th>
+                        <th scope="col">Days</th>
+                        <th scope="col">Hours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cafeteria</td>
+                        <td>C1.3</td>
+                        <td>Mon–Fri</td>
+                        <td>9:00–20:00</td>
+                    </tr>
+                    <tr>
+                        <td>Coffee Lake</td>
+                        <td>C1.2(atrium)</td>
+                        <td>Mon–Sat</td>
+                        <td>9:00–20:00</td>
+                    </tr>
+                    <tr>
+                        <td>Sheker</td>
+                        <td>Between C1.1 and C1.2</td>
+                        <td>Mon–Sat</td>
+                        <td>10:00–19:30</td>
+                    </tr>
+                    <tr>
+                        <td>Mokko</td>
+                        <td>Between C1.2 and C1.3</td>
+                        <td>Mon–Fri</td>
+                        <td>10:00–19:00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="team-bio container" id="about-ramazan">
+            <h2>About this page's author</h2>
+            <div class="bio-card">
+                <img src="images/team-ramazan.jpeg" alt="Portrait of Ramazan Anarbekov" class="profile-photo">
+                <div>
+                    <h3>Ramazan Anarbekov</h3>
+                    <p class="bio-role">Group SE-2504 Team-lead</p>
+                    <p> Researched font combinations and found a great pairing, <b>Arima Madurai + Mulish</b>, on Figma’s Font Pairings resource.</p>
+                    <p>Developed the color palette based on the actual locations: green from the cafeteria, birch tones from Shaker, yellow/gold from Mocco, and orange from Coffee Lake. I used Coolors to create a cohesive palette that matched the overall style.</p>
+                    <p>For the logo, I kept the process simple and used Gemini to adapt the original logo to fit our concept.</p>
+                    <p>Finally, I started building the website. For the Eateries section, I used photos from Aitumap and, when needed, asked my teammate to take photos of the locations.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 AITU Eateries — educational project, Astana IT University.</p>
+            <p class="team">Team: Anarbekov Ramazan, Makhymetov Amir</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
