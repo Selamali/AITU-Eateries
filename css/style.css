@@ -501,6 +501,44 @@ table thead th {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* ---------- Menu sections (menu.html) ---------- */
+.menu-section {
+  padding: 2.5rem 1.5rem;
+}
+
+.menu-section+.menu-section {
+  border-top: 1px solid var(--color-border);
+}
+
+.menu-section h2 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.3em;
+}
+
+.menu-note {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  margin-top: 0;
+}
+
+/* category header rows inside the Cafeteria table */
+table tr.group-row th {
+  background: var(--color-bg);
+  color: var(--color-text-soft);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+}
+
+table tr.group-row:hover th {
+  background: var(--color-bg);
+}
+
 /* ---------- Forms (contact.html) ---------- */
 #contact-form {
   max-width: 480px;
@@ -539,3 +577,38 @@ table thead th {
 #contact-form textarea:focus {
   border-color: var(--color-primary);
 }
+
+/* ---------- Contact team cards ---------- */
+
+.team-contact-grid {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.team-contact-grid .bio-card {
+    flex: 1;
+    margin-top: 0;
+    max-width: none;
+}
+
+.contact-card {
+    min-width: 0;
+}
+
+.contact-card a {
+    word-break: break-word;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .team-contact-grid {
+        flex-direction: column;
+    }
+
+  }
+
+/*updated*/

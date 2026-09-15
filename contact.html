@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AITU Eateries — Contact</title>
+    <meta name="description"
+        content="Get in touch with the AITU Eateries team, or send us a message about any campus dining spot.">
+
+    <!-- Author: Anarbekov Ramazan, group SE-2504, Project, AITU Eateries, Assignment 1 -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@500;700&family=Mulish:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <header id="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="AITU Eateries logo" width="520"
+                    height="232"></a>
+            <nav class="main-nav" id="main-nav" aria-label="Primary">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="eateries.html">Dining Spots</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="page-intro container">
+            <h1>Contact</h1>
+            <p class="lead">Reach out to the team behind AITU Eateries directly, or send us a message using the form
+                below.</p>
+        </section>
+
+        <section class="team-bio container" id="team-contacts">
+
+    <h2>The team</h2>
+
+    <div class="team-contact-grid">
+
+        <div class="bio-card contact-card">
+
+            <img src="images/team-ramazan.jpeg"
+                 alt="Portrait of Ramazan Anarbekov"
+                 class="profile-photo">
+
+            <div>
+                <h3>Ramazan Anarbekov</h3>
+
+                <p class="bio-role">
+                    Group SE-2504 · Team-lead
+                </p>
+
+                <p>
+                    Telegram:
+                    <a href="https://t.me/sezimali">@sezimali</a>
+                    <br>
+
+                    Email:
+                    <a href="mailto:anarbekovramazan@outlook.com">
+                        anarbekovramazan@outlook.com
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="bio-card contact-card">
+
+            <img src="images/team-amir.jpg"
+                 alt="Portrait of Amir Makhymetov"
+                 class="profile-photo">
+
+            <div>
+                <h3>Amir Makhymetov</h3>
+
+                <p class="bio-role">
+                    Group SE-2504 · Frontend Engineer
+                </p>
+
+                <p>
+                    Telegram:
+                    <a href="https://t.me/curstmind">@curstmind</a>
+                    <br>
+
+                    Email:
+                    <a href="mailto:lolo243@inbox.ru">
+                        lolo243@inbox.ru
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <section class="menu-section container" id="contact-form-section">
+            <h2>Send us a message</h2>
+            <p class="menu-note">Have a question, suggestion, or found an error in the menu? Let us know.</p>
+
+            <form id="contact-form" action="#" method="get">
+                <div>
+                    <label for="cf-name">Name</label>
+                    <input type="text" id="cf-name" name="name" placeholder="Your full name" required>
+                </div>
+
+                <div>
+                    <label for="cf-email">Email</label>
+                    <input type="email" id="cf-email" name="email" placeholder="you@example.com" required>
+                </div>
+
+                <div>
+                    <label for="cf-topic">Which spot is this about?</label>
+                    <select id="cf-topic" name="topic">
+                        <option value="general">General question</option>
+                        <option value="cafeteria">Cafeteria</option>
+                        <option value="coffee-lake">Coffee Lake</option>
+                        <option value="sheker">Sheker</option>
+                        <option value="mokko">Mokko</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="cf-message">Message</label>
+                    <textarea id="cf-message" name="message" placeholder="Write your message here..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer id="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 AITU Eateries — educational project, Astana IT University.</p>
+            <p class="team">Team: Anarbekov Ramazan, Makhymetov Amir</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
