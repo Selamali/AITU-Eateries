@@ -725,45 +725,43 @@ table tr.group-row:hover th {
 
 }
 
-/* Task 4 — Bento Gallery */
+/* Task 4 — Bento Gallery — Amir */
 
 .food-gallery {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 180px;
+    grid-auto-rows: 200px;
+    grid-template-areas:
+        "a a b c"
+        "a a d d"
+        "h i e f"
+        "g g k l"
+        "g g j j";
     gap: 16px;
     margin-top: 24px;
 }
 
-/* Image cards */
+
+/* Each location has one wide photo and two smaller photos */
 .gallery-item {
     position: relative;
     min-width: 0;
     margin: 0;
     overflow: hidden;
     border-radius: 20px;
-    background-color: #e9eee5;
+    background: #e9eee5;
 }
 
-/* First photo: large square */
-.gallery-item:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-/* Fourth and ninth photos: wide rectangles */
-.gallery-item:nth-child(4),
-.gallery-item:nth-child(9) {
+.gallery-wide {
     grid-column: span 2;
 }
 
-/* Images fill their cards */
 .gallery-item img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform 0.3s ease;
 }
 
 /* Caption overlay */
@@ -772,14 +770,14 @@ table tr.group-row:hover th {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 36px 18px 18px;
+    padding: 40px 16px 16px;
     color: #ffffff;
     background: linear-gradient(
         transparent,
-        rgba(0, 0, 0, 0.85)
+        rgba(0, 0, 0, 0.9)
     );
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -789,7 +787,8 @@ table tr.group-row:hover th {
 }
 
 .gallery-item figcaption strong {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    line-height: 1.3;
 }
 
 .gallery-item figcaption span {
@@ -797,10 +796,10 @@ table tr.group-row:hover th {
     font-size: 0.85rem;
 }
 
-/* Mouse and keyboard interaction */
+/* Mouse and keyboard */
 .gallery-item:hover img,
 .gallery-item:focus img {
-    transform: scale(1.06);
+    transform: scale(1.04);
 }
 
 .gallery-item:hover figcaption,
@@ -814,41 +813,36 @@ table tr.group-row:hover th {
     outline-offset: 3px;
 }
 
-/* Tablet: two columns */
+/* Tablet: wide photo above two smaller photos */
 @media (max-width: 1000px) {
     .food-gallery {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        grid-auto-rows: 200px;
-    }
-
-    .gallery-item:nth-child(1) {
-        grid-row: span 1;
+        grid-auto-rows: 220px;
     }
 }
 
-/* Phone: one column */
+/* Phone: all photos in one column */
 @media (max-width: 600px) {
     .food-gallery {
         grid-template-columns: minmax(0, 1fr);
-        grid-auto-rows: 230px;
+        grid-auto-rows: 260px;
         gap: 14px;
     }
 
-    .food-gallery > .gallery-item {
+    .gallery-wide {
         grid-column: auto;
-        grid-row: auto;
     }
 }
 
-/* Show captions on touchscreens */
+/* Touchscreens */
 @media (hover: none) {
     .gallery-item figcaption {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
 }
 
-/* Respect reduced-motion settings */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .gallery-item img,
     .gallery-item figcaption {
@@ -856,19 +850,6 @@ table tr.group-row:hover th {
         transform: none;
     }
 }
-
-.food-gallery > .gallery-item:nth-child(10) {
-    grid-column: span 2;
-}
-
-/* Tablet: ten photos in two columns, without empty spaces */
-@media (max-width: 1000px) {
-    .food-gallery > .gallery-item:nth-child(n) {
-        grid-column: auto;
-        grid-row: auto;
-    }
-}
-
 /* Task 3 — Page Layout with Grid Areas — Amir */
 
 .menu-layout {
@@ -970,5 +951,80 @@ table tr.group-row:hover th {
     .menu-sidebar ul {
         flex-direction: row;
         flex-wrap: wrap;
+    }
+}
+/* Positions of the twelve gallery photos */
+.food-gallery > .gallery-item:nth-child(1) {
+    grid-area: a;
+}
+
+.food-gallery > .gallery-item:nth-child(2) {
+    grid-area: b;
+}
+
+.food-gallery > .gallery-item:nth-child(3) {
+    grid-area: c;
+}
+
+.food-gallery > .gallery-item:nth-child(4) {
+    grid-area: d;
+}
+
+.food-gallery > .gallery-item:nth-child(5) {
+    grid-area: e;
+}
+
+.food-gallery > .gallery-item:nth-child(6) {
+    grid-area: f;
+}
+
+.food-gallery > .gallery-item:nth-child(7) {
+    grid-area: g;
+}
+
+.food-gallery > .gallery-item:nth-child(8) {
+    grid-area: h;
+}
+
+.food-gallery > .gallery-item:nth-child(9) {
+    grid-area: i;
+}
+
+.food-gallery > .gallery-item:nth-child(10) {
+    grid-area: j;
+}
+
+.food-gallery > .gallery-item:nth-child(11) {
+    grid-area: k;
+}
+
+.food-gallery > .gallery-item:nth-child(12) {
+    grid-area: l;
+}
+
+/* Tablet: return to the HTML order */
+@media (max-width: 1000px) {
+    .food-gallery {
+        grid-template-areas: none;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .food-gallery > .gallery-item:nth-child(n) {
+        grid-area: auto;
+    }
+
+    .food-gallery > .gallery-item.gallery-wide {
+        grid-column: span 2;
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .food-gallery {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .food-gallery > .gallery-item.gallery-wide {
+        grid-column: auto;
     }
 }
