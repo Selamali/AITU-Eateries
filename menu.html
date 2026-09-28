@@ -1,476 +1,737 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AITU Eateries — Menu</title>
-    <meta name="description"
-        content="Dishes and drinks with prices at every AITU campus dining spot: Cafeteria, Coffee Lake, Sheker, and Mokko.">
+    <meta
+      name="description"
+      content="Dishes and drinks with prices at every AITU campus dining spot: Cafeteria, Coffee Lake, Sheker, and Mokko."
+    />
+    <link rel="stylesheet" href="vendor/fonts/fonts.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-    <!-- Author: Makhymetov Amir, group SE-2504, Project, AITU Eateries, Assignment 1 -->
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@500;700&family=Mulish:wght@400;500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body class="menu-layout">
-
-    <header id="site-header">
-        <div class="container header-inner">
-            <a href="index.html" class="logo"><img src="images/logo.jpg" alt="AITU Eateries logo" width="520"
-                    height="232"></a>
-            <nav class="main-nav" id="main-nav" aria-label="Primary">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="eateries.html">Dining Spots</a></li>
-                    <li><a href="menu.html" class="active" aria-current="page">Menu</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+  <body class="d-flex flex-column min-vh-100">
+    <header id="site-header" class="border-bottom">
+      <!-- Task 5: Bootstrap navbar; expands at 992px, collapses below it. -->
+      <nav class="navbar navbar-expand-lg bg-white py-3" aria-label="Primary">
+        <div class="container">
+          <a class="navbar-brand p-0 me-3" href="index.html"
+            ><img
+              class="logo-image"
+              src="images/logo.jpg"
+              alt="AITU Eateries home"
+              width="520"
+              height="232"
+          /></a>
+          <button
+            class="navbar-toggler px-3 py-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#main-nav"
+            aria-controls="main-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-1">
+              <li class="nav-item">
+                <a class="nav-link px-3 py-2 link-success" href="index.html"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-3 py-2 link-success" href="eateries.html"
+                  >Dining Spots</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 py-2 active text-success fw-bold"
+                  href="menu.html"
+                  aria-current="page"
+                  >Menu</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-3 py-2 link-success" href="contact.html"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+      </nav>
     </header>
+    <div class="container flex-grow-1">
+      <div class="row g-4 g-lg-5">
+        <aside class="menu-sidebar col-12 col-lg-3 pt-4 pt-lg-5">
+          <nav
+            aria-label="Menu sections"
+            class="border rounded-3 bg-white p-3 p-lg-4"
+          >
+            <h2 class="h5 mb-3">On this page</h2>
 
-    <!-- Task 3: Sidebar — Amir -->
-<aside class="menu-sidebar">
-    <nav aria-label="Menu sections">
-        <h2>On this page</h2>
+            <ul
+              class="list-unstyled d-flex flex-wrap flex-lg-column gap-2 p-0 mb-0"
+            >
+              <li>
+                <a
+                  href="#cafeteria"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >Cafeteria</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#coffee-lake"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >Coffee Lake</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#sheker"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >Sheker</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#mokko"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >Mokko</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#gallery"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#about-amir"
+                  class="d-block rounded-2 px-2 py-2 link-success"
+                  >About the Author</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </aside>
 
-        <ul>
-            <li><a href="#cafeteria">Cafeteria</a></li>
-            <li><a href="#coffee-lake">Coffee Lake</a></li>
-            <li><a href="#sheker">Sheker</a></li>
-            <li><a href="#mokko">Mokko</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#about-amir">About the Author</a></li>
-        </ul>
-    </nav>
-</aside>
+        <main class="col-12 col-lg-9">
+          <section class="page-intro pt-4 pt-lg-5 pb-3">
+            <h1 class="mb-3">Menu</h1>
+            <p class="lead mb-3">
+              Dishes and drinks with prices at every spot, so you can decide
+              where to go before you leave for a break.
+            </p>
+          </section>
 
-    <main>
-
-        <section class="page-intro container">
-            <h1>Menu</h1>
-            <p class="lead">Dishes and drinks with prices at every spot, so you can decide where to go before you
-                leave for a break.</p>
-        </section>
-
-        <section class="menu-section container" id="cafeteria">
-            <h2><span class="dot dot-green"></span>Cafeteria</h2>
-            <p class="menu-note">Hot dishes, soups, and salads — short version of the daily menu.</p>
-            <table>
-                <caption>Cafeteria — dishes and prices (short version)</caption>
+          <section class="menu-section py-4 py-lg-5" id="cafeteria">
+            <h2 class="mb-3">
+              <span
+                class="dot dot-green me-2 flex-shrink-0"
+                aria-hidden="true"
+              ></span
+              >Cafeteria
+            </h2>
+            <p class="menu-note mb-3">
+              Hot dishes, soups, and salads — short version of the daily menu.
+            </p>
+            <div
+              class="table-responsive border rounded-3 bg-white mt-3 mt-lg-4"
+              tabindex="0"
+              role="region"
+              aria-label="Cafeteria — dishes and prices (short version)"
+            >
+              <table class="table table-hover align-middle mb-0">
+                <caption class="px-3 py-2">
+                  Cafeteria — dishes and prices (short version)
+                </caption>
                 <thead>
-                    <tr>
-                        <th scope="col">Dish</th>
-                        <th scope="col">Portion</th>
-                        <th scope="col">Price</th>
-                    </tr>
+                  <tr>
+                    <th scope="col" class="p-2 p-sm-3">Dish</th>
+                    <th scope="col" class="p-2 p-sm-3">Portion</th>
+                    <th scope="col" class="p-2 p-sm-3">Price</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr class="group-row">
-                        <th colspan="3" scope="colgroup">Salads</th>
-                    </tr>
-                    <tr>
-                        <td>Vinaigrette salad with herring</td>
-                        <td>150 g</td>
-                        <td>600 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Carrot salad with vegetables</td>
-                        <td>130 g</td>
-                        <td>500 ₸</td>
-                    </tr>
+                  <tr class="group-row table-light">
+                    <th colspan="3" scope="colgroup" class="p-2 p-sm-3">
+                      Salads
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Vinaigrette salad with herring</td>
+                    <td class="p-2 p-sm-3">150 g</td>
+                    <td class="p-2 p-sm-3">600 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Carrot salad with vegetables</td>
+                    <td class="p-2 p-sm-3">130 g</td>
+                    <td class="p-2 p-sm-3">500 ₸</td>
+                  </tr>
 
-                    <tr class="group-row">
-                        <th colspan="3" scope="colgroup">Soups</th>
-                    </tr>
-                    <tr>
-                        <td>Homestyle noodle soup</td>
-                        <td>250 / 400 g</td>
-                        <td>400 / 600 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Borscht with fresh cabbage</td>
-                        <td>250 / 400 g</td>
-                        <td>400 / 600 ₸</td>
-                    </tr>
+                  <tr class="group-row table-light">
+                    <th colspan="3" scope="colgroup" class="p-2 p-sm-3">
+                      Soups
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Homestyle noodle soup</td>
+                    <td class="p-2 p-sm-3">250 / 400 g</td>
+                    <td class="p-2 p-sm-3">400 / 600 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Borscht with fresh cabbage</td>
+                    <td class="p-2 p-sm-3">250 / 400 g</td>
+                    <td class="p-2 p-sm-3">400 / 600 ₸</td>
+                  </tr>
 
-                    <tr class="group-row">
-                        <th colspan="3" scope="colgroup">Hot dishes</th>
-                    </tr>
-                    <tr>
-                        <td>Braised beef</td>
-                        <td>300 g</td>
-                        <td>1 350 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Beef manty</td>
-                        <td>1 pc</td>
-                        <td>350 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Chicken cutlet</td>
-                        <td>1 pc</td>
-                        <td>700 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Chicken with vegetables</td>
-                        <td>120 g</td>
-                        <td>900 ₸</td>
-                    </tr>
+                  <tr class="group-row table-light">
+                    <th colspan="3" scope="colgroup" class="p-2 p-sm-3">
+                      Hot dishes
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Braised beef</td>
+                    <td class="p-2 p-sm-3">300 g</td>
+                    <td class="p-2 p-sm-3">1 350 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Beef manty</td>
+                    <td class="p-2 p-sm-3">1 pc</td>
+                    <td class="p-2 p-sm-3">350 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Chicken cutlet</td>
+                    <td class="p-2 p-sm-3">1 pc</td>
+                    <td class="p-2 p-sm-3">700 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Chicken with vegetables</td>
+                    <td class="p-2 p-sm-3">120 g</td>
+                    <td class="p-2 p-sm-3">900 ₸</td>
+                  </tr>
 
-                    <tr class="group-row">
-                        <th colspan="3" scope="colgroup">Sides</th>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>200 g</td>
-                        <td>400 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Grilled vegetables</td>
-                        <td>200 g</td>
-                        <td>500 ₸</td>
-                    </tr>
+                  <tr class="group-row table-light">
+                    <th colspan="3" scope="colgroup" class="p-2 p-sm-3">
+                      Sides
+                    </th>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Rice</td>
+                    <td class="p-2 p-sm-3">200 g</td>
+                    <td class="p-2 p-sm-3">400 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Grilled vegetables</td>
+                    <td class="p-2 p-sm-3">200 g</td>
+                    <td class="p-2 p-sm-3">500 ₸</td>
+                  </tr>
                 </tbody>
-            </table>
-        </section>
-
-        <section class="menu-section container" id="coffee-lake">
-            <h2><span class="dot dot-terracotta"></span>Coffee Lake</h2>
-            <p class="menu-note">Iced coffee — every drink comes in one size, 500 ml.</p>
-            <table>
-                <caption>Coffee Lake — iced coffee menu</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Drink</th>
-                        <th scope="col">Volume</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ice Americano</td>
-                        <td>500 ml</td>
-                        <td>900 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Ice Latte</td>
-                        <td>500 ml</td>
-                        <td>1 000 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Tropical Ice Coffee</td>
-                        <td>500 ml</td>
-                        <td>1 200 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Raspberry Ice Latte</td>
-                        <td>500 ml</td>
-                        <td>1 000 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Frappuccino</td>
-                        <td>500 ml</td>
-                        <td>1 200 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Cheese Frappuccino</td>
-                        <td>500 ml</td>
-                        <td>1 300 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Espresso Tonic</td>
-                        <td>500 ml</td>
-                        <td>1 100 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Raspberry Espresso Tonic</td>
-                        <td>500 ml</td>
-                        <td>1 100 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Pomegranate Espresso Tonic</td>
-                        <td>500 ml</td>
-                        <td>1 100 ₸</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="menu-section container" id="sheker">
-            <h2><span class="dot dot-turquoise"></span>Sheker</h2>
-            <p class="menu-note">Hot coffee and chocolate drinks, in two sizes.</p>
-            <table>
-                <caption>Sheker — hot drinks menu</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Drink</th>
-                        <th scope="col">350 ml</th>
-                        <th scope="col">450 ml</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Americano</td>
-                        <td>750 ₸</td>
-                        <td>850 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Cappuccino</td>
-                        <td>850 ₸</td>
-                        <td>950 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Latte</td>
-                        <td>850 ₸</td>
-                        <td>950 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Flat White</td>
-                        <td>850 ₸</td>
-                        <td>1 050 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Mocha</td>
-                        <td>950 ₸</td>
-                        <td>1 050 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Raf coffee</td>
-                        <td>1 050 ₸</td>
-                        <td>—</td>
-                    </tr>
-                    <tr>
-                        <td>Hot chocolate</td>
-                        <td>890 ₸</td>
-                        <td>1 290 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Cocoa</td>
-                        <td>890 ₸</td>
-                        <td>1 290 ₸</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="menu-section container" id="mokko">
-            <h2><span class="dot dot-yellow"></span>Mokko</h2>
-            <p class="menu-note">Classic coffee, in two sizes.</p>
-            <table>
-                <caption>Mokko — classic coffee menu</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Drink</th>
-                        <th scope="col">300 ml</th>
-                        <th scope="col">400 ml</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Espresso</td>
-                        <td>990 ₸</td>
-                        <td>—</td>
-                    </tr>
-                    <tr>
-                        <td>Americano</td>
-                        <td>990 ₸</td>
-                        <td>1 190 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Latte</td>
-                        <td>990 ₸</td>
-                        <td>1 190 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Cappuccino</td>
-                        <td>990 ₸</td>
-                        <td>1 190 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Raf coffee</td>
-                        <td>990 ₸</td>
-                        <td>1 190 ₸</td>
-                    </tr>
-                    <tr>
-                        <td>Mochaccino</td>
-                        <td>990 ₸</td>
-                        <td>1 190 ₸</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        <!-- Assignment 2 — Task 4: Image Gallery — Amir -->
-
-<section class="menu-section container" id="gallery">
-    <h2>Gallery</h2>
-
-    <p class="menu-note">
-        Explore our campus dining spots, food displays and sweet treats.
-        Hover over a photograph to see its description.
-    </p>
-
-    <div class="food-gallery">
-
-        <!-- Cafeteria -->
-        <figure class="gallery-item gallery-wide" tabindex="0">
-            <img src="gallery/cafeteria-view.jpg"
-                 alt="General view of the campus cafeteria"
-                 loading="lazy">
-            <figcaption>
-                <strong>Our Cafeteria</strong>
-                <span>Cafeteria</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/cafeteria-bakery.jpg"
-                 alt="Selection of baked goods at the cafeteria"
-                 loading="lazy">
-            <figcaption>
-                <strong>Bakery Selection</strong>
-                <span>Cafeteria</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/cafeteria-dairy.png"
-                 alt="Dairy products displayed at the cafeteria"
-                 loading="lazy">
-            <figcaption>
-                <strong>Dairy Products</strong>
-                <span>Cafeteria</span>
-            </figcaption>
-        </figure>
-
-        <!-- Mokko -->
-        <figure class="gallery-item gallery-wide" tabindex="0">
-            <img src="gallery/mokko-view.jpg"
-                 alt="General view of the Mokko coffee shop"
-                 loading="lazy">
-            <figcaption>
-                <strong>Welcome to Mokko</strong>
-                <span>Mokko</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/mokko-food.jpg"
-                 alt="Sandwiches and salads displayed at Mokko"
-                 loading="lazy">
-            <figcaption>
-                <strong>Sandwiches &amp; Salads</strong>
-                <span>Mokko</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/mokko-snacks.jpg"
-                 alt="Selection of packaged chocolate bars at Mokko"
-                 loading="lazy">
-            <figcaption>
-                <strong>Chocolate &amp; Snacks</strong>
-                <span>Mokko</span>
-            </figcaption>
-        </figure>
-
-        <!-- Sheker -->
-        <figure class="gallery-item gallery-wide" tabindex="0">
-            <img src="gallery/sheker-sign.jpg"
-                 alt="Sheker coffee shop sign"
-                 loading="lazy">
-            <figcaption>
-                <strong>Welcome to Sheker</strong>
-                <span>Sheker</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/sheker-food.jpg"
-                 alt="Sandwiches, pancakes and cheesecake at Sheker"
-                 loading="lazy">
-            <figcaption>
-                <strong>Snacks &amp; Sweet Treats</strong>
-                <span>Sheker</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/sheker-desserts.jpg"
-                 alt="Selection of cakes and pastries at Sheker"
-                 loading="lazy">
-            <figcaption>
-                <strong>Cakes &amp; Pastries</strong>
-                <span>Sheker</span>
-            </figcaption>
-        </figure>
-
-        <!-- Coffee Lake -->
-        <figure class="gallery-item gallery-wide" tabindex="0">
-            <img src="gallery/coffee-lake-view.jpg"
-                 alt="General view of the Coffee Lake coffee shop"
-                 loading="lazy">
-            <figcaption>
-                <strong>Welcome to Coffee Lake</strong>
-                <span>Coffee Lake</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/coffee-lake-food.png"
-                 alt="Sandwiches, mochi and other products at Coffee Lake"
-                 loading="lazy">
-            <figcaption>
-                <strong>Sandwiches &amp; Mochi</strong>
-                <span>Coffee Lake</span>
-            </figcaption>
-        </figure>
-
-        <figure class="gallery-item" tabindex="0">
-            <img src="gallery/coffee-lake-boxes.jpg"
-                 alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
-                 loading="lazy">
-            <figcaption>
-                <strong>Ready-to-Go Meals</strong>
-                <span>Coffee Lake</span>
-            </figcaption>
-        </figure>
-
-    </div>
-</section>
-       
-    
-        <section class="team-bio container" id="about-amir">
-            <h2>About this page's author</h2>
-            <div class="bio-card">
-                <img src="images/team-amir.jpg" alt="Portrait of Amir Makhymetov" class="profile-photo">
-                <div>
-                    <h3>Amir Makhymetov</h3>
-                    <p class="bio-role">Group SE-2504 · Frontend Engineer</p>
-                    <p>Visited Cafeteria, Coffee Lake, Sheker, and Mokko in person and photographed their printed
-                        menus and price lists, then transcribed every dish and drink into the tables above so the
-                        prices stay accurate.</p>
-                    <p>Built the Menu page itself — structure, tables, and section layout — following the shared
-                        color palette and typography set on the Home and Dining Spots pages to keep the site
-                        consistent from page to page.</p>
-                </div>
+              </table>
             </div>
-        </section>
+          </section>
 
-    </main>
+          <section class="menu-section py-4 py-lg-5" id="coffee-lake">
+            <h2 class="mb-3">
+              <span
+                class="dot dot-terracotta me-2 flex-shrink-0"
+                aria-hidden="true"
+              ></span
+              >Coffee Lake
+            </h2>
+            <p class="menu-note mb-3">
+              Iced coffee — every drink comes in one size, 500 ml.
+            </p>
+            <div
+              class="table-responsive border rounded-3 bg-white mt-3 mt-lg-4"
+              tabindex="0"
+              role="region"
+              aria-label="Coffee Lake — iced coffee menu"
+            >
+              <table class="table table-hover align-middle mb-0">
+                <caption class="px-3 py-2">
+                  Coffee Lake — iced coffee menu
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="p-2 p-sm-3">Drink</th>
+                    <th scope="col" class="p-2 p-sm-3">Volume</th>
+                    <th scope="col" class="p-2 p-sm-3">Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="p-2 p-sm-3">Ice Americano</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">900 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Ice Latte</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 000 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Tropical Ice Coffee</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 200 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Raspberry Ice Latte</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 000 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Frappuccino</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 200 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Cheese Frappuccino</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 300 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Espresso Tonic</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 100 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Raspberry Espresso Tonic</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 100 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Pomegranate Espresso Tonic</td>
+                    <td class="p-2 p-sm-3">500 ml</td>
+                    <td class="p-2 p-sm-3">1 100 ₸</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-    <footer id="site-footer">
-        <div class="container footer-inner">
-            <p>© 2026 AITU Eateries — educational project, Astana IT University.</p>
-            <p class="team">Team: Anarbekov Ramazan, Makhymetov Amir</p>
-        </div>
+          <section class="menu-section py-4 py-lg-5" id="sheker">
+            <h2 class="mb-3">
+              <span
+                class="dot dot-turquoise me-2 flex-shrink-0"
+                aria-hidden="true"
+              ></span
+              >Sheker
+            </h2>
+            <p class="menu-note mb-3">
+              Hot coffee and chocolate drinks, in two sizes.
+            </p>
+            <div
+              class="table-responsive border rounded-3 bg-white mt-3 mt-lg-4"
+              tabindex="0"
+              role="region"
+              aria-label="Sheker — hot drinks menu"
+            >
+              <table class="table table-hover align-middle mb-0">
+                <caption class="px-3 py-2">
+                  Sheker — hot drinks menu
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="p-2 p-sm-3">Drink</th>
+                    <th scope="col" class="p-2 p-sm-3">350 ml</th>
+                    <th scope="col" class="p-2 p-sm-3">450 ml</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="p-2 p-sm-3">Americano</td>
+                    <td class="p-2 p-sm-3">750 ₸</td>
+                    <td class="p-2 p-sm-3">850 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Cappuccino</td>
+                    <td class="p-2 p-sm-3">850 ₸</td>
+                    <td class="p-2 p-sm-3">950 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Latte</td>
+                    <td class="p-2 p-sm-3">850 ₸</td>
+                    <td class="p-2 p-sm-3">950 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Flat White</td>
+                    <td class="p-2 p-sm-3">850 ₸</td>
+                    <td class="p-2 p-sm-3">1 050 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Mocha</td>
+                    <td class="p-2 p-sm-3">950 ₸</td>
+                    <td class="p-2 p-sm-3">1 050 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Raf coffee</td>
+                    <td class="p-2 p-sm-3">1 050 ₸</td>
+                    <td class="p-2 p-sm-3">—</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Hot chocolate</td>
+                    <td class="p-2 p-sm-3">890 ₸</td>
+                    <td class="p-2 p-sm-3">1 290 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Cocoa</td>
+                    <td class="p-2 p-sm-3">890 ₸</td>
+                    <td class="p-2 p-sm-3">1 290 ₸</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="menu-section py-4 py-lg-5" id="mokko">
+            <h2 class="mb-3">
+              <span
+                class="dot dot-yellow me-2 flex-shrink-0"
+                aria-hidden="true"
+              ></span
+              >Mokko
+            </h2>
+            <p class="menu-note mb-3">Classic coffee, in two sizes.</p>
+            <div
+              class="table-responsive border rounded-3 bg-white mt-3 mt-lg-4"
+              tabindex="0"
+              role="region"
+              aria-label="Mokko — classic coffee menu"
+            >
+              <table class="table table-hover align-middle mb-0">
+                <caption class="px-3 py-2">
+                  Mokko — classic coffee menu
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col" class="p-2 p-sm-3">Drink</th>
+                    <th scope="col" class="p-2 p-sm-3">300 ml</th>
+                    <th scope="col" class="p-2 p-sm-3">400 ml</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="p-2 p-sm-3">Espresso</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">—</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Americano</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">1 190 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Latte</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">1 190 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Cappuccino</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">1 190 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Raf coffee</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">1 190 ₸</td>
+                  </tr>
+                  <tr>
+                    <td class="p-2 p-sm-3">Mochaccino</td>
+                    <td class="p-2 p-sm-3">990 ₸</td>
+                    <td class="p-2 p-sm-3">1 190 ₸</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+          <section class="menu-section py-4 py-lg-5" id="gallery">
+            <h2 class="mb-3">Gallery</h2>
+
+            <p class="menu-note mb-3">
+              Explore our campus dining spots, food displays and sweet treats.
+            </p>
+
+            <div class="row g-3 mt-0">
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/cafeteria-view.jpg"
+                    alt="General view of the campus cafeteria"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Our Cafeteria</strong>
+                    <span class="d-block small mt-1">Cafeteria</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/cafeteria-bakery.jpg"
+                    alt="Selection of baked goods at the cafeteria"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Bakery Selection</strong>
+                    <span class="d-block small mt-1">Cafeteria</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/cafeteria-dairy.png"
+                    alt="Dairy products displayed at the cafeteria"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Dairy Products</strong>
+                    <span class="d-block small mt-1">Cafeteria</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/mokko-view.jpg"
+                    alt="General view of the Mokko coffee shop"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Welcome to Mokko</strong>
+                    <span class="d-block small mt-1">Mokko</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/mokko-food.jpg"
+                    alt="Sandwiches and salads displayed at Mokko"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Sandwiches &amp; Salads</strong>
+                    <span class="d-block small mt-1">Mokko</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/mokko-snacks.jpg"
+                    alt="Selection of packaged chocolate bars at Mokko"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Chocolate &amp; Snacks</strong>
+                    <span class="d-block small mt-1">Mokko</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/sheker-sign.jpg"
+                    alt="Sheker coffee shop sign"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Welcome to Sheker</strong>
+                    <span class="d-block small mt-1">Sheker</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/sheker-food.jpg"
+                    alt="Sandwiches, pancakes and cheesecake at Sheker"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Snacks &amp; Sweet Treats</strong>
+                    <span class="d-block small mt-1">Sheker</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/sheker-desserts.jpg"
+                    alt="Selection of cakes and pastries at Sheker"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Cakes &amp; Pastries</strong>
+                    <span class="d-block small mt-1">Sheker</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/coffee-lake-view.jpg"
+                    alt="General view of the Coffee Lake coffee shop"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Welcome to Coffee Lake</strong>
+                    <span class="d-block small mt-1">Coffee Lake</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/coffee-lake-food.png"
+                    alt="Sandwiches, mochi and other products at Coffee Lake"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Sandwiches &amp; Mochi</strong>
+                    <span class="d-block small mt-1">Coffee Lake</span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="col-12 col-sm-6 col-lg-4">
+                <figure
+                  class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                >
+                  <img
+                    src="gallery/coffee-lake-boxes.jpg"
+                    alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
+                    loading="lazy"
+                    class="img-fluid"
+                  />
+                  <figcaption
+                    class="position-absolute bottom-0 start-0 end-0 p-3"
+                  >
+                    <strong class="d-block">Ready-to-Go Meals</strong>
+                    <span class="d-block small mt-1">Coffee Lake</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <section class="team-bio py-4 py-lg-5" id="about-amir">
+            <h2 class="mb-3">About this page's author</h2>
+            <div class="bio-card h-100 bg-white border rounded-3 p-3 p-sm-4">
+              <div class="row g-3 align-items-start">
+                <div class="col-12 col-sm-auto">
+                  <img
+                    src="images/team-amir.jpg"
+                    alt="Portrait of Amir Makhymetov"
+                    class="profile-photo img-fluid d-block"
+                  />
+                </div>
+                <div class="col-12 col-sm">
+                  <h3 class="mb-3">Amir Makhymetov</h3>
+                  <p class="bio-role mb-3">Group SE-2504 · Frontend Engineer</p>
+                  <p class="mb-3">
+                    Visited Cafeteria, Coffee Lake, Sheker, and Mokko in person
+                    and photographed their printed menus and price lists, then
+                    transcribed every dish and drink into the tables above so
+                    the prices stay accurate.
+                  </p>
+                  <p class="mb-0">
+                    Built the Menu page itself — structure, tables, and section
+                    layout — following the shared color palette and typography
+                    set on the Home and Dining Spots pages to keep the site
+                    consistent from page to page.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <footer id="site-footer" class="border-top bg-white py-4 mt-4">
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-between gap-2"
+      >
+        <p class="small text-body-secondary mb-0">
+          © 2026 AITU Eateries — educational project, Astana IT University.
+        </p>
+        <p class="small text-body-secondary mb-0">
+          Team: Anarbekov Ramazan, Makhymetov Amir
+        </p>
+        <a class="small link-success" href="media-queries.html"
+          >CSS media queries demo</a
+        >
+      </div>
     </footer>
 
-</body>
-
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

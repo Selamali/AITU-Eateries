@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A responsive campus dining guide using CSS media queries for typography and a three-card layout."
+    />
+    <title>AITU Eateries — Media Queries</title>
+    <!-- Tasks 1-2: custom CSS only. No Bootstrap CSS or JavaScript. -->
+    <link rel="stylesheet" href="vendor/fonts/fonts.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/media-queries.css" />
+  </head>
+  <body>
+    <header class="demo-header">
+      <div class="demo-container header-content">
+        <a href="index.html"
+          ><img
+            class="demo-logo"
+            src="images/logo.jpg"
+            alt="AITU Eateries home"
+            width="520"
+            height="232"
+        /></a>
+        <a class="back-link" href="index.html"
+          >Back to home <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </header>
+    <main class="demo-container">
+      <!-- Task 1: headings and paragraphs have three explicit font-size ranges. -->
+      <section class="demo-intro" aria-labelledby="intro-title">
+        <p class="eyebrow">AITU CAMPUS GUIDE</p>
+        <h1 id="intro-title">A better break starts here.</h1>
+        <p class="lead">
+          From a full lunch to a quick coffee, find a spot that fits your next
+          break.
+        </p>
+        <div class="breakpoint-note">
+          <span class="status-dot" aria-hidden="true"></span>
+          <p>
+            Resize this page: the text grows and the cards rearrange for your
+            screen.
+          </p>
+        </div>
+      </section>
+      <!-- Task 2: exactly three cards. CSS sets 1, 2 and 3 equal columns. -->
+      <section class="demo-section" aria-labelledby="spots-title">
+        <h2 id="spots-title">Three ways to take a break</h2>
+        <p class="section-description">
+          Something filling, somewhere quiet, or a treat between classes.
+        </p>
+        <div class="mq-card-group">
+          <article class="mq-card cafeteria">
+            <img
+              src="images/stolovaya.jpg"
+              alt="Students choosing hot meals at the AITU Cafeteria counter"
+              width="600"
+              height="400"
+            />
+            <div class="mq-card-content">
+              <span class="card-label">FOR A FULL LUNCH</span>
+              <h3>Cafeteria</h3>
+              <p>
+                Hot dishes, soups, salads, and fresh pastries in the busiest
+                dining spot on campus.
+              </p>
+              <a href="eateries.html#stolovaya"
+                >Explore the Cafeteria <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="mq-card coffee-lake">
+            <img
+              src="images/coffee-lake.jpg"
+              alt="Seating beside the Coffee Lake coffee counter"
+              width="600"
+              height="400"
+            />
+            <div class="mq-card-content">
+              <span class="card-label">FOR A COFFEE BREAK</span>
+              <h3>Coffee Lake</h3>
+              <p>
+                Coffee, tea, and sandwiches in a cozy corner where you can catch
+                up on your work.
+              </p>
+              <a href="eateries.html#coffee-lake"
+                >Explore Coffee Lake <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+          <article class="mq-card sheker">
+            <img
+              src="images/sheker.jpg"
+              alt="Sheker kiosk with small tables and string lights"
+              width="600"
+              height="400"
+            />
+            <div class="mq-card-content">
+              <span class="card-label">FOR SOMETHING SWEET</span>
+              <h3>Sheker</h3>
+              <p>
+                Croissants, desserts, drinks, and a small table for a quick chat
+                between classes.
+              </p>
+              <a href="eateries.html#sheker"
+                >Explore Sheker <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="demo-footer">
+      <div class="demo-container">
+        <p>
+          © 2026 AITU Eateries — educational project, Astana IT University.
+        </p>
+        <p>Team: Anarbekov Ramazan, Makhymetov Amir · SE-2504</p>
+      </div>
+    </footer>
+  </body>
+</html>
