@@ -139,6 +139,83 @@
           </div>
         </div>
       </section>
+      
+      <!-- Assignment 3: Task 8 — Bootstrap Cards -->
+<section class="menu-section container py-4 py-lg-5"
+         id="coffee-spots">
+  <h2 class="mb-3">Explore our coffee spots</h2>
+
+  <p class="menu-note mb-4">
+    Check the menus before sending us your question.
+  </p>
+
+  <div class="card-group d-flex flex-column flex-lg-row gap-4">
+
+    <article class="card border rounded-3 overflow-hidden mb-0">
+      <img src="gallery/mokko-view.jpg"
+           class="card-img-top"
+           alt="Mokko coffee shop on campus"
+           loading="lazy">
+
+      <div class="card-body d-flex flex-column p-4">
+        <h3 class="card-title h4">Mokko</h3>
+
+        <p class="card-text">
+          Discover coffee, sandwiches, salads and chocolate snacks
+          for a break between classes.
+        </p>
+
+        <a href="menu.html#mokko"
+           class="btn btn-outline-success mt-auto align-self-start">
+          View Mokko menu
+        </a>
+      </div>
+    </article>
+
+    <article class="card border rounded-3 overflow-hidden mb-0">
+      <img src="gallery/sheker-sign.jpg"
+           class="card-img-top"
+           alt="Sheker coffee shop sign"
+           loading="lazy">
+
+      <div class="card-body d-flex flex-column p-4">
+        <h3 class="card-title h4">Sheker</h3>
+
+        <p class="card-text">
+          Explore hot drinks, pastries and sweet treats
+          to enjoy during your study break.
+        </p>
+
+        <a href="menu.html#sheker"
+           class="btn btn-outline-success mt-auto align-self-start">
+          View Sheker menu
+        </a>
+      </div>
+    </article>
+
+    <article class="card border rounded-3 overflow-hidden mb-0">
+      <img src="gallery/coffee-lake-view.jpg"
+           class="card-img-top"
+           alt="Coffee Lake dining spot on campus"
+           loading="lazy">
+
+      <div class="card-body d-flex flex-column p-4">
+        <h3 class="card-title h4">Coffee Lake</h3>
+
+        <p class="card-text">
+          Find iced coffee, sandwiches, mochi and ready-to-go
+          meals for your campus day.
+        </p>
+
+        <a href="menu.html#coffee-lake"
+           class="btn btn-outline-success mt-auto align-self-start">
+          View Coffee Lake menu
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
 
       <section
         class="menu-section container py-4 py-lg-5"
@@ -151,76 +228,98 @@
         </p>
 
         <div class="row">
-          <form
-            id="contact-form"
-            action="#"
-            method="get"
-            class="col-12 col-lg-6"
-          >
-            <div class="mb-3">
-              <label for="cf-name" class="d-block mb-2 fw-semibold">Name</label>
-              <input
-                type="text"
-                id="cf-name"
-                name="name"
-                placeholder="Your full name"
-                required
-                class="w-100 rounded-2 px-3 py-2"
-              />
-            </div>
+          <form id="contact-form"
+      action="#contact-form-section"
+      method="get"
+      class="col-12 col-lg-8">
 
-            <div class="mb-3">
-              <label for="cf-email" class="d-block mb-2 fw-semibold"
-                >Email</label
-              >
-              <input
-                type="email"
-                id="cf-email"
-                name="email"
-                placeholder="you@example.com"
-                required
-                class="w-100 rounded-2 px-3 py-2"
-              />
-            </div>
+  <div class="bg-white border rounded-3 p-3 p-md-4">
+    <p class="small text-body-secondary mb-4">
+      All fields are required.
+    </p>
 
-            <div class="mb-3">
-              <label for="cf-topic" class="d-block mb-2 fw-semibold"
-                >Which spot is this about?</label
-              >
-              <select
+    <div class="row g-3">
+
+      <!-- Name -->
+      <div class="col-12 col-md-6">
+        <label for="cf-name" class="form-label fw-semibold">
+          Name
+        </label>
+
+        <input type="text"
+               class="form-control"
+               id="cf-name"
+               name="name"
+               placeholder="Your full name"
+               autocomplete="name"
+               required>
+      </div>
+
+      <!-- Email with an input group -->
+      <div class="col-12 col-md-6">
+        <label for="cf-email" class="form-label fw-semibold">
+          Email
+        </label>
+
+        <div class="input-group">
+          <span class="input-group-text" aria-hidden="true">@</span>
+
+          <input type="email"
+                 class="form-control"
+                 id="cf-email"
+                 name="email"
+                 placeholder="you@example.com"
+                 autocomplete="email"
+                 required>
+        </div>
+      </div>
+
+      <!-- Topic -->
+      <div class="col-12">
+        <label for="cf-topic" class="form-label fw-semibold">
+          Dining spot
+        </label>
+
+        <select class="form-select"
                 id="cf-topic"
                 name="topic"
-                class="w-100 rounded-2 px-3 py-2"
-              >
-                <option value="general">General question</option>
-                <option value="cafeteria">Cafeteria</option>
-                <option value="coffee-lake">Coffee Lake</option>
-                <option value="sheker">Sheker</option>
-                <option value="mokko">Mokko</option>
-              </select>
-            </div>
+                required>
+          <option value="" selected disabled>Choose a dining spot</option>
+          <option value="general">General question</option>
+          <option value="cafeteria">Cafeteria</option>
+          <option value="coffee-lake">Coffee Lake</option>
+          <option value="sheker">Sheker</option>
+          <option value="mokko">Mokko</option>
+        </select>
+      </div>
 
-            <div class="mb-3">
-              <label for="cf-message" class="d-block mb-2 fw-semibold"
-                >Message</label
-              >
-              <textarea
-                id="cf-message"
-                name="message"
-                placeholder="Write your message here..."
-                required
-                class="w-100 rounded-2 px-3 py-2"
-                rows="5"
-              ></textarea>
-            </div>
+      <!-- Message -->
+      <div class="col-12">
+        <label for="cf-message" class="form-label fw-semibold">
+          Message
+        </label>
 
-            <button
-              type="submit"
-              class="btn btn-success px-4 py-3 rounded-pill"
-            >
-              Send message
-            </button>
-          </form>
+        <textarea class="form-control"
+                  id="cf-message"
+                  name="message"
+                  rows="5"
+                  placeholder="Write your question or suggestion"
+                  required></textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-12">
+        <div class="d-grid d-sm-flex">
+          <button type="submit"
+                  class="btn btn-success btn-lg rounded-pill px-4">
+            Send message
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
         </div>
       </section>
     </main>

@@ -152,14 +152,127 @@ textarea:focus-visible,
   color: white;
   background: linear-gradient(transparent, #000e);
 }
-#contact-form input,
-#contact-form select,
-#contact-form textarea {
-  font: inherit;
-  background: white;
-  color: var(--color-text);
-  border: 1px solid #a9aea4;
-}
+
 #contact-form textarea {
   resize: vertical;
+}
+
+/* Плавное изменение фотографии и подписи */
+.gallery-item img {
+    transition: transform 0.3s ease;
+}
+
+.gallery-item figcaption {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* На устройствах с мышью прячем подписи до наведения */
+@media (hover: hover) and (pointer: fine) {
+    .gallery-item figcaption {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    .gallery-item:hover figcaption,
+    .gallery-item:focus figcaption,
+    .gallery-item:focus-within figcaption {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:focus img,
+    .gallery-item:focus-within img {
+        transform: scale(1.04);
+    }
+}
+
+/* Учитываем настройку уменьшения анимации */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-item img,
+    .gallery-item figcaption {
+        transition: none;
+        transform: none;
+    }
+}
+
+/* Keep sidebar navigation visible on desktop */
+@media (min-width: 992px) {
+  .menu-sidebar > nav {
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+}
+
+/* Task 7: Bootstrap carousel */
+#diningCarousel .carousel-inner {
+  border-radius: 20px !important;
+}
+
+#diningCarousel .carousel-item {
+  height: 500px;
+}
+
+#diningCarousel .carousel-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Arrows */
+#diningCarousel .carousel-control-prev,
+#diningCarousel .carousel-control-next {
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  opacity: 1;
+}
+
+#diningCarousel .carousel-control-prev-icon,
+#diningCarousel .carousel-control-next-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.55);
+  background-size: 50%;
+}
+
+/* Indicators */
+#diningCarousel .carousel-indicators {
+  background: transparent;
+}
+
+#diningCarousel .carousel-indicators button {
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  margin-left: 4px;
+  border: 0;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  #diningCarousel .carousel-item {
+    height: 300px;
+  }
+}
+
+/* Task 8: consistent card image sizes */
+#coffee-spots .card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Task 10: readable gallery captions */
+#gallery .gallery-item figcaption {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.85);
 }

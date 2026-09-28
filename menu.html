@@ -125,16 +125,33 @@
             </ul>
           </nav>
         </aside>
+      <main class="col-12 col-lg-9">
 
-        <main class="col-12 col-lg-9">
-          <section class="page-intro pt-4 pt-lg-5 pb-3">
-            <h1 class="mb-3">Menu</h1>
-            <p class="lead mb-3">
-              Dishes and drinks with prices at every spot, so you can decide
-              where to go before you leave for a break.
-            </p>
-          </section>
+        <section class="page-intro pt-4 pt-lg-5 pb-3">
+  <h1 class="mb-3">Menu</h1>
 
+  <p class="lead mb-3">
+    Dishes and drinks with prices at every spot, so you can decide
+    where to go before you leave for a break.
+  </p>
+
+  <div class="d-flex flex-column flex-sm-row align-items-start gap-3">
+    <div class="btn-group"
+         role="group"
+         aria-label="Explore this page">
+      <a href="#gallery" class="btn btn-outline-success">
+        Gallery
+      </a>
+      <a href="#about-amir" class="btn btn-outline-success">
+        About the author
+      </a>
+    </div>
+
+    <a href="contact.html" class="btn btn-success btn-sm">
+      Contact us
+    </a>
+  </div>
+</section>
           <section class="menu-section py-4 py-lg-5" id="cafeteria">
             <h2 class="mb-3">
               <span
@@ -152,7 +169,7 @@
               role="region"
               aria-label="Cafeteria — dishes and prices (short version)"
             >
-              <table class="table table-hover align-middle mb-0">
+              <table class="table align-middle mb-0">
                 <caption class="px-3 py-2">
                   Cafeteria — dishes and prices (short version)
                 </caption>
@@ -259,7 +276,7 @@
               role="region"
               aria-label="Coffee Lake — iced coffee menu"
             >
-              <table class="table table-hover align-middle mb-0">
+              <table class="table align-middle mb-0">
                 <caption class="px-3 py-2">
                   Coffee Lake — iced coffee menu
                 </caption>
@@ -338,7 +355,7 @@
               role="region"
               aria-label="Sheker — hot drinks menu"
             >
-              <table class="table table-hover align-middle mb-0">
+              <table class="table align-middle mb-0">
                 <caption class="px-3 py-2">
                   Sheker — hot drinks menu
                 </caption>
@@ -410,7 +427,7 @@
               role="region"
               aria-label="Mokko — classic coffee menu"
             >
-              <table class="table table-hover align-middle mb-0">
+              <table class="table align-middle mb-0">
                 <caption class="px-3 py-2">
                   Mokko — classic coffee menu
                 </caption>
@@ -456,6 +473,150 @@
               </table>
             </div>
           </section>
+
+          <!-- Assignment 3: Task 7 — Bootstrap Carousel -->
+<section class="menu-section py-4 py-lg-5" id="campus-tour">
+  <h2 class="mb-3">Campus dining tour</h2>
+
+  <p class="menu-note mb-3">
+    Explore our dining spots. Use the arrows to browse all twelve photographs.
+  </p>
+
+  <div class="row">
+    <div class="col-12">
+      <div id="diningCarousel"
+           class="carousel slide"
+           role="region"
+           aria-roledescription="carousel"
+           aria-label="Campus dining photographs"
+           data-bs-interval="false">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Photo 1"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="1" aria-label="Photo 2"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="2" aria-label="Photo 3"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="3" aria-label="Photo 4"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="4" aria-label="Photo 5"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="5" aria-label="Photo 6"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="6" aria-label="Photo 7"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="7" aria-label="Photo 8"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="8" aria-label="Photo 9"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="9" aria-label="Photo 10"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="10" aria-label="Photo 11"></button>
+          <button type="button" data-bs-target="#diningCarousel"
+                  data-bs-slide-to="11" aria-label="Photo 12"></button>
+        </div>
+
+        <div class="carousel-inner rounded-3">
+          <div class="carousel-item active">
+            <img src="gallery/cafeteria-view.jpg"
+                 class="d-block w-100"
+                 alt="Overview of the campus cafeteria">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/cafeteria-bakery.jpg"
+                 class="d-block w-100"
+                 alt="Bakery selection at the cafeteria">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/cafeteria-dairy.png"
+                 class="d-block w-100"
+                 alt="Dairy products at the cafeteria">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/mokko-view.jpg"
+                 class="d-block w-100"
+                 alt="Overview of Mokko coffee shop">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/mokko-food.jpg"
+                 class="d-block w-100"
+                 alt="Sandwiches and salads at Mokko">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/mokko-snacks.jpg"
+                 class="d-block w-100"
+                 alt="Chocolate bars and snacks at Mokko">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/sheker-sign.jpg"
+                 class="d-block w-100"
+                 alt="Sheker coffee shop sign">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/sheker-food.jpg"
+                 class="d-block w-100"
+                 alt="Food and sweet treats at Sheker">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/sheker-desserts.jpg"
+                 class="d-block w-100"
+                 alt="Cakes and pastries at Sheker">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/coffee-lake-view.jpg"
+                 class="d-block w-100"
+                 alt="Overview of Coffee Lake">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/coffee-lake-food.png"
+                 class="d-block w-100"
+                 alt="Sandwiches and mochi at Coffee Lake">
+          </div>
+
+          <div class="carousel-item">
+            <img src="gallery/coffee-lake-boxes.jpg"
+                 class="d-block w-100"
+                 alt="Packaged meals and onigiri at Coffee Lake">
+          </div>
+        </div>
+
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#diningCarousel"
+                data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"
+                aria-hidden="true"></span>
+          <span class="visually-hidden">Previous photo</span>
+        </button>
+
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#diningCarousel"
+                data-bs-slide="next">
+          <span class="carousel-control-next-icon"
+                aria-hidden="true"></span>
+          <span class="visually-hidden">Next photo</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
           <section class="menu-section py-4 py-lg-5" id="gallery">
             <h2 class="mb-3">Gallery</h2>
 
@@ -467,7 +628,8 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-                >
+                  tabindex ="0"
+                  >
                   <img
                     src="gallery/cafeteria-view.jpg"
                     alt="General view of the campus cafeteria"
@@ -485,6 +647,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                tabindex="0"
                 >
                   <img
                     src="gallery/cafeteria-bakery.jpg"
@@ -503,6 +666,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/cafeteria-dairy.png"
@@ -521,6 +685,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/mokko-view.jpg"
@@ -539,6 +704,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/mokko-food.jpg"
@@ -557,6 +723,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/mokko-snacks.jpg"
@@ -575,6 +742,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/sheker-sign.jpg"
@@ -593,7 +761,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-                >
+                  tabindex="0">
                   <img
                     src="gallery/sheker-food.jpg"
                     alt="Sandwiches, pancakes and cheesecake at Sheker"
@@ -611,6 +779,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/sheker-desserts.jpg"
@@ -629,6 +798,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/coffee-lake-view.jpg"
@@ -647,6 +817,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/coffee-lake-food.png"
@@ -665,6 +836,7 @@
               <div class="col-12 col-sm-6 col-lg-4">
                 <figure
                   class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+                  tabindex="0"
                 >
                   <img
                     src="gallery/coffee-lake-boxes.jpg"
