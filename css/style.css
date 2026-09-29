@@ -187,13 +187,17 @@ textarea:focus-visible,
     }
 }
 
-/* Учитываем настройку уменьшения анимации */
 @media (prefers-reduced-motion: reduce) {
-    .gallery-item img,
-    .gallery-item figcaption {
-        transition: none;
-        transform: none;
-    }
+  .gallery-item img,
+  .gallery-item figcaption {
+    transition: none;
+  }
+
+  .gallery-item:hover img,
+  .gallery-item:focus img,
+  .gallery-item:focus-within img {
+    transform: none;
+  }
 }
 
 /* Keep sidebar navigation visible on desktop */
