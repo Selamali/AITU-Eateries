@@ -16,14 +16,12 @@
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
-    <script src="js/contact.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header border-bottom">
-      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
-        <div class="container">
+      <nav class="navbar py-3" aria-label="Primary">
+        <div class="container flex-wrap gap-2">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -33,33 +31,22 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main-nav"
-            aria-controls="main-nav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
+          <div class="primary-links" id="main-nav">
+            <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="index.html">Home</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="eateries.html"
+                <a class="nav-link px-2 px-sm-3 py-2" href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="menu.html">Menu</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active"
+                  class="nav-link px-2 px-sm-3 py-2 active"
                   aria-current="page"
                   href="contact.html"
                   >Contact</a
@@ -177,33 +164,25 @@
         id="contact-form-section"
         aria-labelledby="form-title"
       >
-        <h2 id="form-title" class="mb-3">Try the contact form</h2>
+        <h2 id="form-title" class="mb-3">Contact form</h2>
         <div class="row row-cols-1 g-4">
           <div class="col">
             <div class="card h-100">
               <div class="card-body p-3 p-sm-4">
                 <p class="content-note p-3 mb-4" id="demo-notice">
-                  <strong>Demo form: messages are not sent.</strong> Your
-                  entries stay in this browser and are not saved. Use the team’s
-                  email or Telegram links for a real message.
+                  <strong>Demo form: messages are not sent.</strong> This form
+                  is an inactive layout example. Use the contact links above to
+                  reach the team.
                 </p>
-                <noscript
-                  ><p>
-                    This demo needs JavaScript. Please use the contact links
-                    above.
-                  </p></noscript
-                >
                 <form
                   id="contact-form"
-                  action="contact.html#contact-form-section"
                   method="post"
                   aria-describedby="demo-notice"
                 >
-                  <fieldset id="contact-fields" disabled>
+                  <fieldset disabled>
                     <legend class="visually-hidden">
                       Demo message details
                     </legend>
-                    <p class="small mb-4">All fields are required.</p>
                     <div class="row row-cols-1 g-4">
                       <div class="col col-md-6">
                         <label for="cf-name" class="form-label">Name</label
@@ -262,20 +241,13 @@
                         ></textarea>
                       </div>
                       <div class="col">
-                        <button type="submit" class="btn btn-success">
-                          Submit demo message
+                        <button type="button" class="btn btn-success" disabled>
+                          Demo only — sending unavailable
                         </button>
                       </div>
                     </div>
                   </fieldset>
                 </form>
-                <p
-                  id="form-status"
-                  class="form-status mb-0"
-                  role="status"
-                  aria-live="polite"
-                  aria-atomic="true"
-                ></p>
               </div>
             </div>
           </div>

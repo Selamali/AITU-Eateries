@@ -16,13 +16,12 @@
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header border-bottom">
-      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
-        <div class="container">
+      <nav class="navbar py-3" aria-label="Primary">
+        <div class="container flex-wrap gap-2">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -32,35 +31,26 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main-nav"
-            aria-controls="main-nav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
+          <div class="primary-links" id="main-nav">
+            <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="index.html">Home</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active"
+                  class="nav-link px-2 px-sm-3 py-2 active"
                   aria-current="page"
                   href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="menu.html">Menu</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="contact.html">Contact</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="contact.html"
+                  >Contact</a
+                >
               </li>
             </ul>
           </div>

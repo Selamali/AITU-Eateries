@@ -18,7 +18,7 @@ Open `index.html` in a browser, or start a local server from this folder:
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Then visit http://127.0.0.1:8000. No installation or build step is required. Bootstrap 5.3.8, fonts, images and the demo form script are included locally. Telegram and email links use the user's external apps.
+Then visit http://127.0.0.1:8000. No installation or build step is required. Only HTML and CSS are used. Bootstrap 5.3.8 CSS, fonts and images are included locally. There are no JavaScript files, inline scripts or Bootstrap JavaScript bundle. Telegram and email links use the user's external apps.
 
 ## Pages and authors
 
@@ -26,26 +26,24 @@ Each page has one author, recorded in its metadata and footer as well as the tea
 
 | Page | Author | Contents |
 | --- | --- | --- |
-| `index.html` — Home | Ramazan Anarbekov | Hero with four color-coded names, three benefits with action buttons, campus map, original twelve-photo Campus dining tour |
+| `index.html` — Home | Ramazan Anarbekov | Hero with four color-coded names, three benefits with action buttons, campus map, twelve-photo Campus dining tour using HTML links and CSS scrolling |
 | `eateries.html` — Dining Spots | Ramazan Anarbekov | Four spot cards in one horizontal strip, linked menu categories, hours table, original twelve-photo gallery |
-| `menu.html` — Menu | Amir Makhymetov | In-place menu tabs, four menus, coffee comparison |
-| `contact.html` — Contact | Amir Makhymetov | Two complete team biographies and a local-only demo form |
+| `menu.html` — Menu | Amir Makhymetov | HTML anchor navigation, four menus, coffee comparison |
+| `contact.html` — Contact | Amir Makhymetov | Two complete team biographies and an inactive demo form layout |
 
 The separate media-query demonstration and its stylesheet have been removed. Responsive typography remains in `css/typography.css`. Decorative subtitles above page titles and spot names have been removed.
 
 ## Files and shared design
 
-- `vendor/bootstrap/`: Bootstrap 5.3.8 CSS, JavaScript bundle and MIT license.
+- `vendor/bootstrap/`: Bootstrap 5.3.8 CSS and MIT license.
 - `vendor/fonts/`: local Arima Madurai and Mulish fonts, CSS and SIL Open Font Licenses.
 - `css/typography.css`: shared mobile-first heading, paragraph, list and table text scale; `small` text is 14 px.
 - `css/style.css`: Bootstrap theme overrides, component appearance and responsive exceptions. No custom `!important` rules.
-- `js/menu.js`: accessible menu tabs that switch content without scrolling; direct category links and the full no-JavaScript menu remain available.
-- `js/contact.js`: demo form validation and confirmation; no server requests or persistent storage.
 - `images/`: optimized site photographs, portraits, logo and updated campus map. The Cafeteria and Mokko main photographs use canonical filenames.
 - `gallery/`: optimized campus photographs; Dining Spots restores all twelve gallery photographs from the supplied original archive.
 - `favicon.ico`, `favicon-32.png`, `favicon-180.png`: icons prepared from the supplied favicon artwork.
 
-The theme uses #187f42 for actions, #105b30 for hover, #f7f8f3 for the page background, #1b1d19 for text and #5b5e55 for secondary text. Four decorative spot colors are limited to markers and accent borders. Cards, photographs, tables, the carousel and form surfaces use a 12 px radius. Primary buttons are pill-shaped with a minimum 44 px height. Compact tag links are 32 px high; carousel indicators retain small visual dots inside 24 px targets. Sections use the original `py-4 py-lg-5` spacing, headings `mb-3`, and card grids use `row-cols-*` and `g-4`. Dining cards have a colored left border, the photo above the title, a prominent location, and quieter opening hours. All four share one horizontal row. On narrower screens the strip scrolls within its own region using touch, a trackpad or the keyboard; the document itself does not overflow. Introductory text has bounded line lengths, Menu content is at most 960 px wide, and the Contact form is at most 800 px wide. Gallery captions appear over photographs on hover or keyboard focus and remain visible on touch devices.
+The theme uses #187f42 for actions, #105b30 for hover, #f7f8f3 for the page background, #1b1d19 for text and #5b5e55 for secondary text. Four decorative spot colors are limited to markers and accent borders. Cards, photographs, tables, the photo tour and form surfaces use a 12 px radius. Primary buttons are pill-shaped with a minimum 44 px height. Compact tag links are 32 px high; photo arrow links are 48 px square. Sections use the original `py-4 py-lg-5` spacing, headings `mb-3`, and card grids use `row-cols-*` and `g-4`. Dining cards have a colored left border, the photo above the title, a prominent location, and quieter opening hours. All four share one horizontal row. On narrower screens the strip scrolls within its own region using touch, a trackpad or the keyboard; the document itself does not overflow. Introductory text has bounded line lengths, Menu content is at most 960 px wide, and the Contact form is at most 800 px wide. Gallery captions appear over photographs on hover or keyboard focus and remain visible on touch devices.
 
 Each page has a skip link, semantic landmarks, one h1 and a current-page navigation marker. Header and footer markup is repeated in these static files; update all four copies together.
 
@@ -79,9 +77,7 @@ Once readable source price lists are available, update the relevant portions/pri
 
 ## Demo contact form
 
-The form explicitly says **Demo form: messages are not sent**. Required fields, email validation and rejection of whitespace-only names/messages work in the browser. A successful submission displays an accessible status message and clears the form without reloading or adding entries to the URL. No fetch, email, localStorage, sessionStorage or cookies are used by the form.
-
-The fieldset starts disabled and is enabled only after the submit-prevention handler is installed. Without JavaScript, the form stays inactive and a notice directs the visitor to the actual contact links.
+The form explicitly says **Demo form: messages are not sent**. It is an inactive Bootstrap form layout: the fieldset and its button are disabled with HTML attributes. There is no submission, validation script or simulated success message. Actual email and Telegram links are available in the team cards above it.
 
 ## Images and map
 
@@ -89,11 +85,11 @@ Photographs were resized and compressed, reducing the image folders from about 2
 
 The Home map is a byte-for-byte copy of the supplied `aitu_eateriesmap2.jpg` (1920 × 1080). No label edits, regeneration, recoloring or recompression were applied in this revision. It is stored as `images/campus-map.jpg`.
 
-The carousel is the original twelve-photo carousel from `AITU-Eateries 2.zip`, moved from Menu to Home with its photographs in the same order, overlaid arrow controls and small dot indicators. The original twelve-photo gallery is restored on Dining Spots, including the hover/focus captions. Existing optimized photo files are reused.
+The Home photo tour keeps all twelve photographs from the original carousel in the same order. A CSS scroll-snap strip and ordinary previous/next anchor links replace the JavaScript carousel. Touch, trackpad and keyboard scrolling also work. The original twelve-photo gallery remains on Dining Spots, including hover/focus captions. Existing optimized photo files are reused.
 
-## Menu navigation
+## Navigation without JavaScript
 
-The five selectors switch the visible menu in place without jumping down the page. Arrow keys, Home and End move between tabs. The selected tab has an accessible state and its panel is labelled by that tab. The URL fragment reflects the selection without triggering a scroll. Existing links such as `menu.html#sheker-sweets` reveal Sheker and take the reader to that group. Without JavaScript all five sections remain visible and the selectors work as ordinary anchor links.
+All four header links are always visible, including on phones. The Menu page displays all five sections. Its five navigation links and Dining Spots category links use ordinary HTML fragments such as `menu.html#sheker-sweets`. There are no tabs, hidden panels or JavaScript-dependent controls.
 
 ## Assignment requirements
 
@@ -105,20 +101,16 @@ The five selectors switch the visible menu in place without jumping down the pag
 | Team ownership | Ramazan: Home and Dining Spots; Amir: Menu and Contact — two HTML pages each, stated in metadata, biographies and footers |
 | Feature cohesion | Location guide, opening hours, food menus, coffee comparison, campus photos and team contacts; the unrelated responsive-design demo was removed |
 
-## Verification — ergonomic layout, 6 October 2026
+## Verification — HTML and CSS edition, 6 October 2026
 
-- W3C Nu HTML Checker: four pages pass without errors, warnings or informational messages.
-- axe-core: four pages at 320 and 1280 px, plus Compare at 320 px: no automatic violations. Some contrast checks for table spans, the decorative arrow and select background require manual review; these results are not a complete accessibility certification.
-- Four pages at actual CSS widths **320, 375, 576, 768, 820, 991, 992, 1024, 1280, 1920**, plus **844 × 390**: 44 cases without document-level horizontal overflow.
-- All four Dining Spots cards stay in one row. Their scroll region works with the keyboard; the final card's menu link opens Mokko correctly.
-- Home contains larger venue names without addresses, restored action buttons, the benefits section above the map and no How to use section.
-- The opening-hours table has no redundant visible caption; it is labelled by its section heading for assistive technology.
-- Local files, anchors, IDs, image dimensions and the unchanged menu data were checked: 47 original priced variants and 29 demo additions.
-- The original twelve-photo carousel, twelve-photo gallery, supplied map and demo form behavior remain in place.
+- No JavaScript files, script elements, event-handler attributes, `javascript:` links or Bootstrap JavaScript attributes remain. Normal pages load zero scripts.
+- W3C Nu HTML Checker: all four pages passed with no errors, warnings or informational messages.
+- axe-core: all four pages at 320 and 1280 px produced zero automatic violations. Some contrast cases on Home and Menu require manual review; this is not a complete accessibility certification.
+- All four pages were checked at actual CSS widths 320, 375, 576, 768, 820, 991, 992, 1024, 1280 and 1920 px, plus 844 × 390 landscape: 44 cases without page-level horizontal overflow. All four header links remain visible.
+- Photo links were checked forward, backward and across the first/last photograph. All five menu sections remain visible, and comparison/category links use standard HTML anchors. The contact fieldset is disabled.
+- Local links, fragment targets, image dimensions, 47 original priced variants, 29 demo additions and the exact supplied map passed integrity checks.
 
-W3C checker: https://validator.w3.org/nu/
-
-axe-core: https://github.com/dequelabs/axe-core
+Tools used for verification run outside the site folder and are not included in the project.
 
 ## Maintenance
 

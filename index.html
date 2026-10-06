@@ -16,13 +16,12 @@
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header border-bottom">
-      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
-        <div class="container">
+      <nav class="navbar py-3" aria-label="Primary">
+        <div class="container flex-wrap gap-2">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -32,37 +31,28 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main-nav"
-            aria-controls="main-nav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
+          <div class="primary-links" id="main-nav">
+            <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active"
+                  class="nav-link px-2 px-sm-3 py-2 active"
                   aria-current="page"
                   href="index.html"
                   >Home</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="eateries.html"
+                <a class="nav-link px-2 px-sm-3 py-2" href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="menu.html">Menu</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="contact.html">Contact</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="contact.html"
+                  >Contact</a
+                >
               </li>
             </ul>
           </div>
@@ -206,317 +196,333 @@
       >
         <h2 class="mb-3" id="tour-title">Campus dining tour</h2>
 
-        <p class="menu-note mb-3">
-          Explore our dining spots. Use the arrows to browse all twelve
-          photographs.
+        <p class="menu-note mb-3" id="tour-help">
+          Explore all twelve photographs using the arrows or horizontal
+          scrolling.
         </p>
 
         <div class="row">
           <div class="col-12">
             <div
-              id="diningCarousel"
-              class="carousel slide"
+              id="campus-photos"
+              class="photo-tour"
               role="region"
-              aria-roledescription="carousel"
+              tabindex="0"
               aria-label="Campus dining photographs"
-              data-bs-interval="false"
+              aria-describedby="tour-help"
             >
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Photo 1: Overview of the campus Cafeteria"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="1"
-                  aria-label="Photo 2: Bakery selection at the Cafeteria"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="2"
-                  aria-label="Photo 3: Dairy products at the Cafeteria"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="3"
-                  aria-label="Photo 4: Overview of Mokko coffee shop"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="4"
-                  aria-label="Photo 5: Sandwiches and salads at Mokko"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="5"
-                  aria-label="Photo 6: Chocolate bars and snacks at Mokko"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="6"
-                  aria-label="Photo 7: Sheker coffee shop sign"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="7"
-                  aria-label="Photo 8: Food and sweet treats at Sheker"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="8"
-                  aria-label="Photo 9: Cakes and pastries at Sheker"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="9"
-                  aria-label="Photo 10: Overview of Coffee Lake"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="10"
-                  aria-label="Photo 11: Sandwiches and mochi at Coffee Lake"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#diningCarousel"
-                  data-bs-slide-to="11"
-                  aria-label="Photo 12: Packaged meals and onigiri at Coffee Lake"
-                ></button>
-              </div>
-
-              <div class="carousel-inner rounded-3">
-                <div
-                  class="carousel-item active"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="1 of 12"
-                >
-                  <img
-                    src="gallery/cafeteria-view.jpg"
-                    class="d-block w-100"
-                    alt="Overview of the campus Cafeteria"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="2 of 12"
-                >
-                  <img
-                    src="gallery/cafeteria-bakery.jpg"
-                    class="d-block w-100"
-                    alt="Bakery selection at the Cafeteria"
-                    width="1200"
-                    height="898"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="3 of 12"
-                >
-                  <img
-                    src="gallery/cafeteria-dairy.jpg"
-                    class="d-block w-100"
-                    alt="Dairy products at the Cafeteria"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="4 of 12"
-                >
-                  <img
-                    src="gallery/mokko-view.jpg"
-                    class="d-block w-100"
-                    alt="Overview of Mokko coffee shop"
-                    width="1200"
-                    height="675"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="5 of 12"
-                >
-                  <img
-                    src="gallery/mokko-food.jpg"
-                    class="d-block w-100"
-                    alt="Sandwiches and salads at Mokko"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="6 of 12"
-                >
-                  <img
-                    src="gallery/mokko-snacks.jpg"
-                    class="d-block w-100"
-                    alt="Chocolate bars and snacks at Mokko"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="7 of 12"
-                >
-                  <img
-                    src="gallery/sheker-sign.jpg"
-                    class="d-block w-100"
-                    alt="Sheker coffee shop sign"
-                    width="900"
-                    height="1200"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="8 of 12"
-                >
-                  <img
-                    src="gallery/sheker-food.jpg"
-                    class="d-block w-100"
-                    alt="Food and sweet treats at Sheker"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="9 of 12"
-                >
-                  <img
-                    src="gallery/sheker-desserts.jpg"
-                    class="d-block w-100"
-                    alt="Cakes and pastries at Sheker"
-                    width="1200"
-                    height="745"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="10 of 12"
-                >
-                  <img
-                    src="gallery/coffee-lake-view.jpg"
-                    class="d-block w-100"
-                    alt="Overview of Coffee Lake"
-                    width="1200"
-                    height="675"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="11 of 12"
-                >
-                  <img
-                    src="gallery/coffee-lake-food.jpg"
-                    class="d-block w-100"
-                    alt="Sandwiches and mochi at Coffee Lake"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-
-                <div
-                  class="carousel-item"
-                  role="group"
-                  aria-roledescription="slide"
-                  aria-label="12 of 12"
-                >
-                  <img
-                    src="gallery/coffee-lake-boxes.jpg"
-                    class="d-block w-100"
-                    alt="Packaged meals and onigiri at Coffee Lake"
-                    width="1200"
-                    height="900"
-                    loading="lazy"
-                    decoding="async">
-                </div>
-              </div>
-
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#diningCarousel"
-                data-bs-slide="prev"
+              <div
+                class="tour-photo"
+                id="photo-1"
+                role="group"
+                aria-label="Photo 1 of 12"
               >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous photo</span>
-              </button>
-
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#diningCarousel"
-                data-bs-slide="next"
+                <img
+                  src="gallery/cafeteria-view.jpg"
+                  class="d-block w-100"
+                  alt="Overview of the campus Cafeteria"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-12"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 12 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-2"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 2 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-2"
+                role="group"
+                aria-label="Photo 2 of 12"
               >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next photo</span>
-              </button>
+                <img
+                  src="gallery/cafeteria-bakery.jpg"
+                  class="d-block w-100"
+                  alt="Bakery selection at the Cafeteria"
+                  width="1200"
+                  height="898"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-1"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 1 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-3"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 3 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-3"
+                role="group"
+                aria-label="Photo 3 of 12"
+              >
+                <img
+                  src="gallery/cafeteria-dairy.jpg"
+                  class="d-block w-100"
+                  alt="Dairy products at the Cafeteria"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-2"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 2 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-4"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 4 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-4"
+                role="group"
+                aria-label="Photo 4 of 12"
+              >
+                <img
+                  src="gallery/mokko-view.jpg"
+                  class="d-block w-100"
+                  alt="Overview of Mokko coffee shop"
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-3"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 3 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-5"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 5 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-5"
+                role="group"
+                aria-label="Photo 5 of 12"
+              >
+                <img
+                  src="gallery/mokko-food.jpg"
+                  class="d-block w-100"
+                  alt="Sandwiches and salads at Mokko"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-4"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 4 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-6"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 6 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-6"
+                role="group"
+                aria-label="Photo 6 of 12"
+              >
+                <img
+                  src="gallery/mokko-snacks.jpg"
+                  class="d-block w-100"
+                  alt="Chocolate bars and snacks at Mokko"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-5"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 5 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-7"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 7 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-7"
+                role="group"
+                aria-label="Photo 7 of 12"
+              >
+                <img
+                  src="gallery/sheker-sign.jpg"
+                  class="d-block w-100"
+                  alt="Sheker coffee shop sign"
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-6"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 6 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-8"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 8 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-8"
+                role="group"
+                aria-label="Photo 8 of 12"
+              >
+                <img
+                  src="gallery/sheker-food.jpg"
+                  class="d-block w-100"
+                  alt="Food and sweet treats at Sheker"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-7"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 7 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-9"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 9 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-9"
+                role="group"
+                aria-label="Photo 9 of 12"
+              >
+                <img
+                  src="gallery/sheker-desserts.jpg"
+                  class="d-block w-100"
+                  alt="Cakes and pastries at Sheker"
+                  width="1200"
+                  height="745"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-8"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 8 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-10"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 10 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-10"
+                role="group"
+                aria-label="Photo 10 of 12"
+              >
+                <img
+                  src="gallery/coffee-lake-view.jpg"
+                  class="d-block w-100"
+                  alt="Overview of Coffee Lake"
+                  width="1200"
+                  height="675"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-9"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 9 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-11"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 11 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-11"
+                role="group"
+                aria-label="Photo 11 of 12"
+              >
+                <img
+                  src="gallery/coffee-lake-food.jpg"
+                  class="d-block w-100"
+                  alt="Sandwiches and mochi at Coffee Lake"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-10"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 10 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-12"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 12 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
+              <div
+                class="tour-photo"
+                id="photo-12"
+                role="group"
+                aria-label="Photo 12 of 12"
+              >
+                <img
+                  src="gallery/coffee-lake-boxes.jpg"
+                  class="d-block w-100"
+                  alt="Packaged meals and onigiri at Coffee Lake"
+                  width="1200"
+                  height="900"
+                  loading="lazy"
+                  decoding="async">
+                <a
+                  href="#photo-11"
+                  class="photo-arrow photo-previous"
+                  aria-label="Previous photo: 11 of 12"
+                  ><span aria-hidden="true">‹</span></a
+                ><a
+                  href="#photo-1"
+                  class="photo-arrow photo-next"
+                  aria-label="Next photo: 1 of 12"
+                  ><span aria-hidden="true">›</span></a
+                >
+              </div>
             </div>
           </div>
         </div>

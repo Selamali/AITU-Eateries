@@ -16,14 +16,12 @@
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
-    <script src="js/menu.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header border-bottom">
-      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
-        <div class="container">
+      <nav class="navbar py-3" aria-label="Primary">
+        <div class="container flex-wrap gap-2">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -33,37 +31,28 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#main-nav"
-            aria-controls="main-nav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon" aria-hidden="true"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
+          <div class="primary-links" id="main-nav">
+            <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="index.html">Home</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="eateries.html"
+                <a class="nav-link px-2 px-sm-3 py-2" href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active"
+                  class="nav-link px-2 px-sm-3 py-2 active"
                   aria-current="page"
                   href="menu.html"
                   >Menu</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2" href="contact.html">Contact</a>
+                <a class="nav-link px-2 px-sm-3 py-2" href="contact.html"
+                  >Contact</a
+                >
               </li>
             </ul>
           </div>
@@ -85,15 +74,13 @@
       <nav class="menu-nav" aria-label="Choose a menu">
         <div class="container">
           <div class="menu-nav-links d-flex flex-wrap gap-1">
-            <a href="#cafeteria" id="tab-cafeteria">Cafeteria</a
-            ><a href="#coffee-lake" id="tab-coffee-lake">Coffee Lake</a
-            ><a href="#sheker" id="tab-sheker">Sheker</a
-            ><a href="#mokko" id="tab-mokko">Mokko</a
-            ><a href="#compare" id="tab-compare">Compare</a>
+            <a href="#cafeteria">Cafeteria</a
+            ><a href="#coffee-lake">Coffee Lake</a><a href="#sheker">Sheker</a
+            ><a href="#mokko">Mokko</a><a href="#compare">Compare</a>
           </div>
         </div>
       </nav>
-      <div id="menu-panels">
+      <div id="menus">
         <section
           class="container py-4 menu-section"
           id="cafeteria"
