@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="en">
+  <!--
+    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
+    follow the device width. Title, description and author identify this page.
+  -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,19 +13,53 @@
       content="A student guide to Cafeteria, Coffee Lake, Sheker and Mokko on the AITU campus.">
     <meta name="author" content="Ramazan Anarbekov">
     <meta name="theme-color" content="#187f42">
+    <!--
+      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
+      home screen.
+    -->
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <!--
+      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
+      utilities. The original library file is kept intact.
+    -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
     <link rel="stylesheet" href="css/typography.css">
+    <!--
+      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
+      Loaded last so these rules can customize Bootstrap.
+    -->
     <link rel="stylesheet" href="css/style.css">
   </head>
+  <!--
+    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
+    and footer. min-vh-100 makes the page at least as tall as the viewport.
+  -->
   <body class="d-flex flex-column min-vh-100">
+    <!--
+      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
+      focused.
+    -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <!--
+      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
+      Bootstrap border-bottom draws the divider.
+    -->
     <header class="site-header border-bottom">
+      <!--
+        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
+        gap-2 separates items and py-3 adds vertical padding.
+      -->
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
+          <!--
+            HTML: logo links to Home. alt names the destination; width/height define image
+            proportions and CSS .logo-image sets its displayed size.
+          -->
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -31,6 +69,11 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
+          <!--
+            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
+            wrapping. active and aria-current="page" identify the current page; px/py set
+            padding.
+          -->
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -59,8 +102,21 @@
         </div>
       </nav>
     </header>
+    <!--
+      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
+      page height; tabindex="-1" lets the skip link move focus here.
+    -->
     <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <!--
+        HTML: Home introduction with dining-spot names, a link to Dining Spots and a campus
+        photograph.
+      -->
       <section class="hero container py-4 py-lg-5" aria-labelledby="page-title">
+        <!--
+          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
+          row-cols-lg-2 set the column count; sm starts at 576 px, md at 768 px and lg at
+          992 px. g-4 sets row and column gutters.
+        -->
         <div class="row row-cols-1 row-cols-lg-2 g-4 align-items-center">
           <div class="col">
             <h1 id="page-title" class="mb-3">
@@ -70,6 +126,11 @@
               Four dining spots, their opening hours, and menus in one place so
               you don’t waste a break searching.
             </p>
+            <!--
+              CSS Grid: .hero-spots places four names in two columns. Inside each li,
+              Bootstrap d-flex and align-items-center align the decorative dot with the
+              name; aria-hidden excludes the dot from spoken content.
+            -->
             <ul class="hero-spots list-unstyled mb-4">
               <li class="d-flex align-items-center gap-3">
                 <span class="spot-dot spot-cafeteria" aria-hidden="true"></span
@@ -91,13 +152,24 @@
                 ><span>Mokko</span>
               </li>
             </ul>
+            <!--
+              Bootstrap btn and btn-success style this link as a button. Custom CSS
+              .hero-cta sets its size and shadow; href opens Dining Spots.
+            -->
             <a class="btn btn-success hero-cta" href="eateries.html"
-              >See all dining spots<span class="button-arrow" aria-hidden="true"
-                >→</span
-              ></a
+              >See all dining spots</a
             >
           </div>
+          <!--
+            HTML image: eager/high prioritizes the main photo. width/height reserve its
+            aspect ratio; CSS object-fit: cover crops it to fill the frame.
+          -->
           <div class="col hero-visual">
+            <!--
+              HTML images: alt supplies a text description; width/height reserve
+              proportions. loading="lazy" on later images defers loading until they approach
+              the viewport.
+            -->
             <img
               src="images/hero-photo.jpg"
               alt="AITU students working at a table in the campus dining hall"
@@ -110,14 +182,28 @@
           </div>
         </div>
       </section>
+      <!--
+        HTML: three benefits with links to the dining guide, opening hours and coffee
+        comparison.
+      -->
       <section
         class="container py-4 py-lg-5"
         id="features"
         aria-labelledby="features-title"
       >
         <h2 id="features-title" class="mb-3">Why check here first</h2>
+        <!--
+          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
+          row-cols-md-2, row-cols-lg-3 set the column count; sm starts at 576 px, md at 768
+          px and lg at 992 px. g-4 sets row and column gutters.
+        -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div class="col">
+            <!--
+              Bootstrap card: All spots, one page. h-100 fills the column height; the
+              Flexbox card-body stacks content and mt-auto keeps its action link at the
+              bottom.
+            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
                 <h3 class="mb-3">All spots, one page</h3>
@@ -134,6 +220,10 @@
             </article>
           </div>
           <div class="col">
+            <!--
+              Bootstrap card: Plan your break. h-100 fills the column height; the Flexbox
+              card-body stacks content and mt-auto keeps its action link at the bottom.
+            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
                 <h3 class="mb-3">Plan your break</h3>
@@ -149,7 +239,16 @@
               </div>
             </article>
           </div>
+          <!--
+            CSS: the third benefit fills the row at 768-991 px. From 992 px it returns to
+            the three-column Bootstrap layout.
+          -->
           <div class="col feature-wide">
+            <!--
+              Bootstrap card: Compare before you choose. h-100 fills the column height; the
+              Flexbox card-body stacks content and mt-auto keeps its action link at the
+              bottom.
+            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
                 <h3 class="mb-3">Compare before you choose</h3>
@@ -167,6 +266,10 @@
           </div>
         </div>
       </section>
+      <!--
+        HTML: first-floor map. figure groups the image with its figcaption; the source is
+        images/campus-map.jpg.
+      -->
       <section
         class="container py-4 py-lg-5"
         id="map"
@@ -189,6 +292,10 @@
           <figcaption class="small mt-3">C1.1–C1.3 · 1st floor</figcaption>
         </figure>
       </section>
+      <!--
+        HTML: twelve-photo tour. Previous/next links target photo IDs; CSS controls
+        horizontal scrolling and snapping.
+      -->
       <section
         class="container py-4 py-lg-5"
         id="campus-tour"
@@ -201,8 +308,14 @@
           scrolling.
         </p>
 
+        <!-- Bootstrap layout uses Flexbox: row contains col elements. -->
         <div class="row">
           <div class="col-12">
+            <!--
+              CSS + Flexbox: .photo-tour arranges full-width slides horizontally. overflow-x
+              enables scrolling, scroll-snap aligns a slide and tabindex="0" allows keyboard
+              access.
+            -->
             <div
               id="campus-photos"
               class="photo-tour"
@@ -211,6 +324,10 @@
               aria-label="Campus dining photographs"
               aria-describedby="tour-help"
             >
+              <!--
+                HTML: Photo 1 of 12 - Overview of the campus Cafeteria. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-1"
@@ -237,6 +354,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 2 of 12 - Bakery selection at the Cafeteria. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-2"
@@ -263,6 +384,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 3 of 12 - Dairy products at the Cafeteria. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-3"
@@ -289,6 +414,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 4 of 12 - Overview of Mokko coffee shop. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-4"
@@ -315,6 +444,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 5 of 12 - Sandwiches and salads at Mokko. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-5"
@@ -341,6 +474,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 6 of 12 - Chocolate bars and snacks at Mokko. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-6"
@@ -367,6 +504,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 7 of 12 - Sheker coffee shop sign. Its ID is the arrow-link
+                target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-7"
@@ -393,6 +534,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 8 of 12 - Food and sweet treats at Sheker. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-8"
@@ -419,6 +564,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 9 of 12 - Cakes and pastries at Sheker. Its ID is the arrow-link
+                target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-9"
@@ -445,6 +594,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 10 of 12 - Overview of Coffee Lake. Its ID is the arrow-link
+                target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-10"
@@ -471,6 +624,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 11 of 12 - Sandwiches and mochi at Coffee Lake. Its ID is the
+                arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-11"
@@ -497,6 +654,10 @@
                   ><span aria-hidden="true">›</span></a
                 >
               </div>
+              <!--
+                HTML: Photo 12 of 12 - Packaged meals and onigiri at Coffee Lake. Its ID is
+                the arrow-link target; the first and last slides link to each other.
+              -->
               <div
                 class="tour-photo"
                 id="photo-12"
@@ -528,6 +689,10 @@
         </div>
       </section>
     </main>
+    <!--
+      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
+      use flex-lg-row from 992 px; justify-content-between separates the two groups.
+    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"

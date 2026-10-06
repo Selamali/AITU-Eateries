@@ -1,4 +1,7 @@
-/* Original visual style, shared theme and responsive components. */
+/*
+  CSS variables: shared colors, radius and header height. Variables beginning with --bs-
+  customize the Bootstrap theme.
+*/
 :root {
   --color-bg: #f7f8f3;
   --color-text: #1b1d19;
@@ -10,6 +13,7 @@
   --color-sheker: #30d5c8;
   --color-mokko: #d0b73e;
   --radius: 12px;
+  --site-header-height: 77px;
   --bs-body-bg: var(--color-bg);
   --bs-body-color: var(--color-text);
   --bs-secondary-color: var(--color-text-soft);
@@ -25,25 +29,33 @@
   --bs-border-radius-lg: var(--radius);
   --bs-border-radius-xl: var(--radius);
 }
+/* CSS: page background and default text color. */
 body {
   background: var(--color-bg);
   color: var(--color-text);
 }
+/*
+  CSS: keep images within their containers, preserve proportions and apply the shared corner
+  radius.
+*/
 img {
   display: block;
   max-width: 100%;
   height: auto;
   border-radius: var(--radius);
 }
+/* CSS: default link color and underline offset. */
 a {
   color: var(--color-action);
   text-decoration: none;
   text-underline-offset: 0.2em;
 }
+/* CSS: darken and underline links on hover. */
 a:hover {
   color: var(--color-action-hover);
   text-decoration: underline;
 }
+/* CSS: visible focus outline for keyboard navigation. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -53,9 +65,14 @@ textarea:focus-visible,
   outline: 3px solid var(--color-action);
   outline-offset: 3px;
 }
+/* CSS: leave space above anchor targets so the sticky header does not cover them. */
 [id] {
-  scroll-margin-top: 1.5rem;
+  scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
 }
+/*
+  CSS: hide the skip link above the viewport until focus; z-index places it above the
+  header.
+*/
 .skip-link {
   position: fixed;
   top: 0.75rem;
@@ -67,32 +84,53 @@ textarea:focus-visible,
   border: 2px solid var(--color-action);
   transform: translateY(-200%);
 }
+/* CSS: reveal the skip link when reached with the keyboard. */
 .skip-link:focus {
   transform: translateY(0);
 }
+/* CSS: white background for the shared header and footer. */
 .site-header,
 .site-footer {
   background: white;
 }
+/*
+  CSS sticky: keep the header at the top while scrolling. z-index places it above menu
+  navigation; flex-shrink preserves its height inside the body Flexbox layout.
+*/
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  flex-shrink: 0;
+}
+/* CSS: fixed logo height with its original proportions. */
 .logo-image {
   width: auto;
   height: 44px;
   border-radius: 0;
 }
+/* Bootstrap: customize normal, hovered and active navigation-link colors. */
 .navbar {
   --bs-navbar-color: var(--color-text-soft);
   --bs-navbar-hover-color: var(--color-action-hover);
   --bs-navbar-active-color: var(--color-text);
 }
+/* CSS + Flexbox: vertically center navigation labels in consistently sized links. */
 .navbar .nav-link {
   min-height: 44px;
+  line-height: 1.5;
   display: flex;
   align-items: center;
 }
+/* CSS: bold, underlined link for the current page. */
 .navbar .nav-link.active {
   font-weight: 700;
   text-decoration: underline;
 }
+/*
+  Bootstrap + CSS Flexbox: shared pill shape, padding, 44 px minimum height and centered
+  button content.
+*/
 .btn {
   --bs-btn-border-radius: 50rem;
   --bs-btn-padding-x: 1rem;
@@ -103,6 +141,10 @@ textarea:focus-visible,
   justify-content: center;
   font-weight: 600;
 }
+/*
+  Bootstrap: filled green button colors for normal, hover, pressed, disabled and focused
+  states.
+*/
 .btn-success {
   --bs-btn-color: #fff;
   --bs-btn-bg: var(--color-action);
@@ -117,6 +159,7 @@ textarea:focus-visible,
   --bs-btn-disabled-border-color: var(--color-action);
   --bs-btn-focus-shadow-rgb: 24, 127, 66;
 }
+/* Bootstrap: outlined green button that gains a filled background on hover or activation. */
 .btn-outline-success {
   --bs-btn-color: var(--color-action);
   --bs-btn-border-color: var(--color-action);
@@ -128,29 +171,36 @@ textarea:focus-visible,
   --bs-btn-active-border-color: var(--color-action-hover);
   --bs-btn-focus-shadow-rgb: 24, 127, 66;
 }
+/* CSS: softer color for introductory and secondary text. */
 .lead,
 .small,
 small,
 .site-footer {
   color: var(--color-text-soft);
 }
+/* Bootstrap: white card surfaces and a shared corner radius through component variables. */
 .card {
   --bs-card-bg: #fff;
   --bs-card-border-radius: var(--radius);
   --bs-card-inner-border-radius: var(--radius);
 }
+/* CSS: set the Cafeteria accent inherited by its dot or card border. */
 .spot-cafeteria {
   --spot-color: var(--color-cafeteria);
 }
+/* CSS: orange accent for Coffee Lake. */
 .spot-coffee-lake {
   --spot-color: var(--color-coffee-lake);
 }
+/* CSS: turquoise accent for Sheker. */
 .spot-sheker {
   --spot-color: var(--color-sheker);
 }
+/* CSS: yellow accent for Mokko. */
 .spot-mokko {
   --spot-color: var(--color-mokko);
 }
+/* CSS: circular spot marker; flex-shrink: 0 preserves its size beside text. */
 .spot-dot {
   display: inline-block;
   width: 10px;
@@ -159,33 +209,47 @@ small,
   border-radius: 50%;
   background: var(--spot-color);
 }
+/* CSS: colored left border identifies the dining spot. */
 .eatery-card {
   border-left: 4px solid var(--spot-color);
 }
+/* CSS: secondary color for paragraphs placed directly inside a dining card. */
 .eatery-card > p {
   color: var(--color-text-soft);
 }
+/* CSS: green left border on the Home benefit cards. */
 .feature-card {
   border-left: 4px solid var(--color-cafeteria);
 }
+/*
+  CSS: benefit-description color and line spacing; rules with this selector complement each
+  other.
+*/
 .feature-card p {
   color: var(--color-text-soft);
 }
+/*
+  CSS: hero photo fills its width; object-fit: cover crops without distortion and box-shadow
+  adds depth.
+*/
 .hero-image {
   width: 100%;
   max-height: 560px;
   object-fit: cover;
   box-shadow: 0 16px 32px #1b1d1920;
 }
+/* CSS: full-width map with a thin border. */
 .campus-map {
   width: 100%;
   border: 1px solid var(--bs-border-color);
 }
+/* CSS: shared card-photo height; cover crops edges rather than stretching the image. */
 .spot-image {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
+/* CSS + Flexbox: compact rounded category links with centered text and a light background. */
 .tag-link {
   display: inline-flex;
   align-items: center;
@@ -199,12 +263,14 @@ small,
   background: #f8f9fa;
   text-decoration: none;
 }
+/* CSS: highlight category links on hover or focus while keeping their text un-underlined. */
 .tag-link:hover,
 .tag-link:focus-visible {
   border-color: var(--color-action);
   background: #edf6ef;
   text-decoration: none;
 }
+/* CSS + Flexbox: align a text link with its icon and provide a comfortable click area. */
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -212,17 +278,21 @@ small,
   min-height: 44px;
   font-weight: 600;
 }
+/* CSS: emphasize the spot location with stronger color and font weight. */
 .location-line {
   color: var(--color-text);
   font-weight: 600;
 }
+/* CSS: keep opening hours visually secondary to the location. */
 .hours-line {
   color: var(--color-text-soft);
   font-weight: 400;
 }
+/* CSS: rounded gallery-photo frame. */
 .gallery-item {
   border-radius: var(--radius);
 }
+/* CSS: consistent gallery-image height and a smooth scale transition. */
 .gallery-item img {
   display: block;
   width: 100%;
@@ -230,6 +300,7 @@ small,
   object-fit: cover;
   transition: transform 0.3s ease;
 }
+/* CSS: white caption on a dark overlay; transitions control its appearance. */
 .gallery-item figcaption {
   color: white;
   background: rgba(0, 0, 0, 0.85);
@@ -237,97 +308,152 @@ small,
     opacity 0.3s ease,
     transform 0.3s ease;
 }
+/* CSS: secondary caption text inherits white instead of the global muted color. */
 .gallery-item figcaption .small {
   color: inherit;
 }
+/*
+  CSS media query: apply hover effects to precise pointing devices such as a mouse; touch
+  captions remain visible by default.
+*/
 @media (hover: hover) and (pointer: fine) {
+  /* CSS: hide and slightly offset captions until hover or focus. */
   .gallery-item figcaption {
     opacity: 0;
     transform: translateY(8px);
   }
+  /* CSS: reveal the caption when the figure or its contents are hovered or focused. */
   .gallery-item:hover figcaption,
   .gallery-item:focus figcaption,
   .gallery-item:focus-within figcaption {
     opacity: 1;
     transform: translateY(0);
   }
+  /* CSS: gently enlarge the photo inside its clipping frame. */
   .gallery-item:hover img,
   .gallery-item:focus img,
   .gallery-item:focus-within img {
     transform: scale(1.04);
   }
 }
+/* CSS: shared white table frame with a border and rounded corners. */
 .table-frame {
   position: relative;
   border: 1px solid var(--bs-border-color);
   border-radius: var(--radius);
   background: white;
 }
+/* Bootstrap: set table background and text through component variables. */
 .table {
   --bs-table-bg: white;
   --bs-table-color: var(--color-text);
 }
+/*
+  CSS: position visible table captions above the data; Bootstrap visually-hidden can hide a
+  caption visually in the HTML.
+*/
 .table caption {
   caption-side: top;
   padding: 1rem;
   color: var(--color-text-soft);
   font-size: 14px;
 }
+/* CSS: consistent padding and font size for table cells, excluding the caption. */
 .table > :not(caption) > * > * {
   padding: 0.6rem 0.75rem;
   font-size: 1rem;
 }
+/* CSS: bold row and column headings. */
 .table th {
   font-weight: 700;
 }
+/* CSS: divider between table headings and data. */
 .table thead {
   border-bottom: 2px solid var(--bs-border-color);
 }
+/* CSS: right-align prices, prevent wrapping and use equal-width numeral glyphs. */
 .table .price {
   text-align: right;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
+/* CSS: item-name width and weight, including names shared by several portion rows. */
 .menu-table th[rowspan] {
   width: 55%;
   font-weight: 500;
 }
+/* CSS: vertically center menu-cell contents. */
 .menu-table td {
   vertical-align: middle;
 }
+/* CSS: keep the portion number and unit together in the second-to-last cell. */
 .menu-table td:nth-last-child(2) {
   white-space: nowrap;
 }
+/* Bootstrap: separate background for a menu-category heading. */
 .group-row {
   --bs-table-bg: #f0f2ea;
 }
+/* CSS: medium weight for the label identifying illustrative menu additions. */
 .demo-label {
   font-weight: 500;
 }
+/*
+  CSS: keep spot names, days and hours on one line; the surrounding frame handles
+  narrow-screen scrolling.
+*/
 .hours-table th,
 .hours-table td {
   white-space: nowrap;
 }
+/* CSS: preserve a readable 580 px minimum width and stable comparison columns. */
 .comparison-table {
   min-width: 580px;
   table-layout: fixed;
 }
+/* CSS: allocate 28% of the comparison table to drink names. */
 .comparison-table th:first-child {
   width: 28%;
 }
+/* Bootstrap: green background and dark text for the lowest price per 100 ml. */
 .comparison-table .table-success {
   --bs-table-bg: #d1e7dd;
   --bs-table-color: #1b1d19;
 }
+/* CSS: secondary color for menu and photo-tour explanations. */
 .menu-note {
   color: var(--color-text-soft);
 }
-.menu-nav-links {
-  border-bottom: 1px solid var(--bs-border-color);
-  padding-bottom: 0.75rem;
+/* CSS: jump directly to Menu anchors instead of smoothly scrolling through long tables. */
+.menu-page {
+  scroll-behavior: auto;
 }
+/* CSS sticky: hold menu navigation below the header on a lower stacking layer. */
+.menu-nav {
+  position: sticky;
+  top: var(--site-header-height);
+  z-index: 1020;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+}
+/*
+  CSS: horizontal scrolling for the narrow-screen menu strip. Bootstrap d-flex in HTML
+  enables its Flexbox layout.
+*/
+.menu-nav-links {
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem;
+  scroll-padding-inline: 0.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-action) var(--bs-border-color);
+}
+/*
+  CSS + Flexbox: keep link text on one line, prevent shrinking and provide at least 44 px of
+  height.
+*/
 .menu-nav-links a {
   display: inline-flex;
+  flex: 0 0 auto;
   align-items: center;
   min-height: 44px;
   padding: 0.4rem 0.9rem;
@@ -335,27 +461,33 @@ small,
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
 }
-.menu-nav-links a:hover {
+/* CSS: light green hover and focus background for menu links. */
+.menu-nav-links a:hover,
+.menu-nav-links a:focus-visible {
   background: #e9f7ee;
 }
-.content-note {
-  border: 1px solid var(--bs-border-color);
-  border-radius: var(--radius);
-  background: white;
+/* CSS: anchor spacing accounts for both the header and horizontal menu strip. */
+#menus [id] {
+  scroll-margin-top: calc(var(--site-header-height) + 6rem);
 }
+/* CSS: circular portrait filled with object-fit: cover. */
 .profile-photo {
   width: 96px;
   height: 96px;
   object-fit: cover;
   border-radius: 50%;
 }
+/* CSS: wrap long email addresses instead of widening the card. */
 .contact-links a {
   overflow-wrap: anywhere;
 }
+/* Bootstrap + CSS: stronger field-label weight. */
 .form-label {
   font-weight: 600;
 }
+/* Bootstrap + CSS: shared input and select colors, borders, radius and minimum height. */
 .form-control,
 .form-select {
   background-color: white;
@@ -364,23 +496,34 @@ small,
   border-radius: var(--radius);
   border-color: #90958b;
 }
+/* CSS: readable placeholder text in empty fields. */
 .form-control::placeholder {
   color: var(--color-text-soft);
   opacity: 1;
 }
+/* CSS: green border and soft outer highlight for the focused field. */
 .form-control:focus,
 .form-select:focus {
   background-color: white;
   border-color: var(--color-action);
   box-shadow: 0 0 0 0.2rem #187f4226;
 }
+/* CSS: allow message-height resizing while preserving form width. */
 textarea.form-control {
   resize: vertical;
 }
-/* Native HTML links and CSS scrolling; no scripts are needed. */
+
+/*
+  CSS + Flexbox: automatic left margin pushes the main page links to the right side of the
+  header.
+*/
 .primary-links {
   margin-left: auto;
 }
+/*
+  CSS + Flexbox: horizontal scrolling photo row; scroll-snap-type aligns the viewport with a
+  slide.
+*/
 .photo-tour {
   display: flex;
   overflow-x: auto;
@@ -388,6 +531,10 @@ textarea.form-control {
   border-radius: var(--radius);
   scrollbar-color: #a0aa9a #e8ece2;
 }
+/*
+  CSS + Flexbox: flex: 0 0 100% gives each slide the full strip width. Relative positioning
+  anchors its arrows.
+*/
 .tour-photo {
   position: relative;
   flex: 0 0 100%;
@@ -395,12 +542,17 @@ textarea.form-control {
   height: 500px;
   scroll-snap-align: start;
 }
+/* CSS: fill each photo frame and crop from the center. */
 .tour-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
+/*
+  CSS positioning: place arrows halfway down the photo. Flexbox centers the symbol inside a
+  circular control.
+*/
 .photo-arrow {
   position: absolute;
   top: calc(50% - 24px);
@@ -417,82 +569,108 @@ textarea.form-control {
     sans-serif;
   text-decoration: none;
 }
+/* CSS: arrow colors on hover or keyboard focus. */
 .photo-arrow:hover,
 .photo-arrow:focus-visible {
   color: white;
   background: var(--color-action-hover);
   text-decoration: none;
 }
+/* CSS: place the previous-photo arrow near the left edge. */
 .photo-previous {
   left: 1rem;
 }
+/* CSS: place the next-photo arrow near the right edge. */
 .photo-next {
   right: 1rem;
 }
+/* CSS media query: below 576 px, the logo and page links occupy two header rows. */
 @media (max-width: 575.98px) {
+  /* CSS: two-row header height used by sticky positions and anchor offsets. */
+  :root {
+    --site-header-height: 129px;
+  }
+  /* CSS: put page links on a full-width second row without the automatic left margin. */
   .primary-links {
     width: 100%;
     margin-left: 0;
   }
+  /* CSS + Flexbox: distribute links across the second header row. */
   .primary-links .navbar-nav {
     justify-content: space-between;
   }
+  /* CSS: compact navigation-label size on phones. */
   .primary-links .nav-link {
     font-size: 14px;
   }
 }
+/* CSS media query: adjust benefit cards for the two-column tablet layout. */
 @media (min-width: 768px) and (max-width: 991.98px) {
+  /* CSS: let the third benefit occupy a complete row in the tablet layout. */
   .feature-wide {
     width: 100%;
   }
 }
+/* CSS media query: reduce large photo heights below 768 px. */
 @media (max-width: 767.98px) {
+  /* CSS: turn the hero photo into a 180 px strip; object-position selects the visible crop. */
   .hero-image {
     height: 180px;
     object-position: center 43%;
   }
+  /* CSS: use 300 px photo-tour frames on phones. */
   .tour-photo {
     height: 300px;
   }
 }
+/* CSS media query: respect the device preference for reduced animation. */
 @media (prefers-reduced-motion: reduce) {
+  /* CSS: remove gallery transitions when reduced motion is requested. */
   .gallery-item img,
   .gallery-item figcaption {
     transition: none;
   }
 }
 
-/* Comfortable reading widths and a quieter visual hierarchy. */
+
+/* CSS: balance line lengths in multi-line headings. */
 h1,
 h2,
 h3 {
   text-wrap: balance;
 }
+/* CSS: limit introductory line length using ch units based on character width. */
 .page-intro > p {
   max-width: 62ch;
 }
+/* CSS: constrain the main heading for readable line breaks. */
 .hero h1 {
   max-width: 18ch;
 }
+/* CSS: keep introductory lines short beside the hero photo. */
 .hero .lead {
   max-width: 44ch;
 }
+/* CSS Grid: two equal columns of dining-spot names with row and column gaps. */
 .hero-spots {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem 1.25rem;
   padding-block: 0.25rem 0.75rem;
 }
+/* CSS: display font for spot names; clamp scales the size between fixed limits. */
 .hero-spots li {
   font-family: var(--font-display);
   font-size: clamp(1.25rem, 2vw, 1.65rem);
   font-weight: 700;
   line-height: 1.3;
 }
+/* CSS: slightly larger decorative dots in the hero. */
 .hero-spots .spot-dot {
   width: 12px;
   height: 12px;
 }
+/* CSS: size, internal gap and shadow for See all dining spots. */
 .hero-cta {
   min-height: 52px;
   gap: 1.25rem;
@@ -500,10 +678,12 @@ h3 {
   box-shadow: 0 5px 14px #187f4220;
   text-decoration: none;
 }
+/* CSS: strengthen the main button shadow on hover. */
 .hero-cta:hover {
   text-decoration: none;
   box-shadow: 0 7px 18px #187f422b;
 }
+/* CSS + Flexbox: center the decorative arrow in a translucent circle. */
 .button-arrow {
   display: inline-flex;
   align-items: center;
@@ -515,9 +695,17 @@ h3 {
   font-size: 1.25rem;
   line-height: 1;
 }
+/*
+  CSS: benefit-description color and line spacing; rules with this selector complement each
+  other.
+*/
 .feature-card p {
   line-height: 1.6;
 }
+/*
+  CSS Grid: four columns with a 248 px minimum stay in one horizontal strip; overflow-x
+  contains scrolling within the block.
+*/
 .spots-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(248px, 1fr));
@@ -528,63 +716,137 @@ h3 {
   scrollbar-color: #a0aa9a #e8ece2;
   scrollbar-width: thin;
 }
+/* CSS: permit card contents to fit their Grid column and define a scroll-snap position. */
 .spots-strip .eatery-card {
   min-width: 0;
   scroll-snap-align: start;
 }
+/* CSS: compact photo height specifically for the dining-card strip. */
 .spots-strip .spot-image {
   height: 170px;
 }
+/* CSS: dining-description font size, line spacing and secondary color. */
 .spot-content > p {
   color: var(--color-text-soft);
   font-size: 1rem;
   line-height: 1.6;
 }
+/* CSS: consistent dining-card title size. */
 .spot-content h3 {
   font-size: 1.375rem;
 }
+/* CSS + Flexbox: align footer items to the start of the cross axis. */
 .spots-strip .spot-footer {
   align-items: flex-start;
 }
+/* CSS: readable location size and line height, including wrapped locations. */
 .spots-strip .location-line {
   font-size: 1rem;
   line-height: 1.45;
 }
+/* CSS: make View menu span the card width. */
 .spots-strip .spot-footer .btn {
   width: 100%;
 }
-.menu-intro,
-.menu-nav > .container,
-#menus > .container {
-  max-width: 960px;
+/* CSS: maximum width of the Menu page, including navigation. */
+.menu-layout {
+  max-width: 1140px;
 }
+/* CSS: allow the content column to shrink around wide scrollable tables. */
+#menus {
+  min-width: 0;
+}
+/*
+  CSS media query: from a viewport width of 992 px, switch Menu navigation from a strip to a
+  sidebar.
+*/
+@media (min-width: 992px) {
+  /*
+    CSS Grid: a 190 px sidebar and a flexible content column. Named areas put the
+    introduction above the menu tables.
+  */
+  .menu-layout {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    grid-template-areas:
+      "sidebar intro"
+      "sidebar menus";
+    column-gap: 2rem;
+    align-content: start;
+  }
+  /* CSS Grid: place the introduction in the named intro area on the right. */
+  .menu-intro {
+    grid-area: intro;
+  }
+  /*
+    CSS Grid + sticky: use the sidebar area, 1.5rem below the header. A height limit and
+    vertical overflow keep links reachable in short windows.
+  */
+  .menu-nav {
+    grid-area: sidebar;
+    align-self: start;
+    top: calc(var(--site-header-height) + 1.5rem);
+    margin-top: 3rem;
+    max-height: calc(100vh - var(--site-header-height) - 3rem);
+    overflow-y: auto;
+    background: white;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--radius);
+  }
+  /* CSS + Flexbox: switch menu links from a horizontal row to a vertical column. */
+  .menu-nav-links {
+    flex-direction: column;
+    overflow-x: visible;
+    padding: 0.5rem;
+  }
+  /* CSS Grid: place menu tables in the menus area beneath the introduction. */
+  #menus {
+    grid-area: menus;
+  }
+  /*
+    CSS: desktop anchors need space only for the main header because navigation is beside
+    the content.
+  */
+  #menus [id] {
+    scroll-margin-top: calc(var(--site-header-height) + 1.5rem);
+  }
+}
+/* CSS: allow the portrait-and-name row to fit within its card. */
 .bio-header {
   min-width: 0;
 }
+/* CSS + Flexbox: use a 72 px portrait and prevent it from shrinking. */
 .bio-header .profile-photo {
   width: 72px;
   height: 72px;
   flex: 0 0 72px;
 }
+/* CSS: allow the name block to shrink and wrap inside the Flexbox row. */
 .bio-heading {
   min-width: 0;
 }
+/* CSS: fluid name size with clamp and wrapping for narrow cards. */
 .bio-heading h2 {
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
+/* CSS: limit biography line length and set comfortable line spacing. */
 .bio-card p {
   max-width: 60ch;
   line-height: 1.6;
 }
+/* CSS: limit the form section to 800 px; Bootstrap container centers it. */
 .form-section {
   max-width: 800px;
 }
+/* CSS media query: tighten spot-name spacing on the narrowest phones. */
 @media (max-width: 374.98px) {
+  /* CSS Grid: reduce the gap between the two name columns. */
   .hero-spots {
     column-gap: 0.5rem;
   }
+  /* CSS + Flexbox: reduce the gap between the spot marker and its name. */
   .hero-spots li {
     gap: 0.5rem;
   }

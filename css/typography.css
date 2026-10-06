@@ -1,13 +1,18 @@
-/* Mobile first: <768px, 768–991px, >=992px. */
+/*
+  CSS variables: body and display font families, with fallback fonts if a local font cannot
+  load.
+*/
 :root {
   --font-body: "Mulish", Arial, sans-serif;
   --font-display: "Arima Madurai", Georgia, serif;
 }
+/* CSS: Mulish body text, a 1rem base size (normally 16 px) and 1.65 line height. */
 body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
 }
+/* CSS: Arima Madurai headings, bold weight and compact line height. */
 h1,
 h2,
 h3 {
@@ -15,65 +20,98 @@ h3 {
   font-weight: 700;
   line-height: 1.2;
 }
+/* CSS: main page-title size. */
 h1 {
   font-size: 2rem;
 }
+/* CSS: section-heading size. */
 h2 {
   font-size: 1.5rem;
 }
+/* CSS: card and subsection-heading size. */
 h3 {
   font-size: 1.125rem;
 }
+/*
+  CSS: shared text scale for paragraphs, lists and table cells. More specific .table rules
+  in style.css keep table text compact.
+*/
 p,
 li,
 td,
 th {
   font-size: 1rem;
 }
+/* Bootstrap + CSS: larger introductory paragraph at normal font weight. */
 .lead {
   font-size: 1.0625rem;
   font-weight: 400;
 }
+/* HTML small and Bootstrap .small: a consistent 14 px secondary-text size. */
 small,
 .small {
   font-size: 14px;
 }
+/*
+  CSS mobile-first breakpoint: enlarge text from 768 px while preserving the other base
+  styles.
+*/
 @media (min-width: 768px) {
+  /* CSS: main page-title size. */
   h1 {
     font-size: 2.5rem;
   }
+  /* CSS: section-heading size. */
   h2 {
     font-size: 1.875rem;
   }
+  /* CSS: card and subsection-heading size. */
   h3 {
     font-size: 1.25rem;
   }
+  /*
+    CSS: shared text scale for paragraphs, lists and table cells. More specific .table rules
+    in style.css keep table text compact.
+  */
   p,
   li,
   td,
   th {
     font-size: 1.0625rem;
   }
+  /* Bootstrap + CSS: larger introductory paragraph at normal font weight. */
   .lead {
     font-size: 1.125rem;
   }
 }
+/*
+  CSS mobile-first breakpoint: use the desktop type scale from 992 px, overriding earlier
+  sizes.
+*/
 @media (min-width: 992px) {
+  /* CSS: main page-title size. */
   h1 {
     font-size: 3rem;
   }
+  /* CSS: section-heading size. */
   h2 {
     font-size: 2rem;
   }
+  /* CSS: card and subsection-heading size. */
   h3 {
     font-size: 1.375rem;
   }
+  /*
+    CSS: shared text scale for paragraphs, lists and table cells. More specific .table rules
+    in style.css keep table text compact.
+  */
   p,
   li,
   td,
   th {
     font-size: 1.125rem;
   }
+  /* Bootstrap + CSS: larger introductory paragraph at normal font weight. */
   .lead {
     font-size: 1.25rem;
   }

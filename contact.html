@@ -1,27 +1,65 @@
 <!doctype html>
 <html lang="en">
+  <!--
+    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
+    follow the device width. Title, description and author identify this page.
+  -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AITU Eateries — Contact</title>
     <meta
       name="description"
-      content="Meet the AITU Eateries team and try the clearly labelled, local-only demo contact form.">
+      content="Meet the AITU Eateries team and find their contact details.">
     <meta name="author" content="Amir Makhymetov">
     <meta name="theme-color" content="#187f42">
+    <!--
+      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
+      home screen.
+    -->
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <!--
+      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
+      utilities. The original library file is kept intact.
+    -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
     <link rel="stylesheet" href="css/typography.css">
+    <!--
+      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
+      Loaded last so these rules can customize Bootstrap.
+    -->
     <link rel="stylesheet" href="css/style.css">
   </head>
+  <!--
+    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
+    and footer. min-vh-100 makes the page at least as tall as the viewport.
+  -->
   <body class="d-flex flex-column min-vh-100">
+    <!--
+      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
+      focused.
+    -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <!--
+      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
+      Bootstrap border-bottom draws the divider.
+    -->
     <header class="site-header border-bottom">
+      <!--
+        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
+        gap-2 separates items and py-3 adds vertical padding.
+      -->
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
+          <!--
+            HTML: logo links to Home. alt names the destination; width/height define image
+            proportions and CSS .logo-image sets its displayed size.
+          -->
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -31,6 +69,11 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
+          <!--
+            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
+            wrapping. active and aria-current="page" identify the current page; px/py set
+            padding.
+          -->
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -57,22 +100,50 @@
         </div>
       </nav>
     </header>
+    <!--
+      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
+      page height; tabindex="-1" lets the skip link move focus here.
+    -->
     <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <!-- HTML: contact-page title and introduction. -->
       <section
         class="page-intro container pt-4 pt-lg-5 pb-3"
         aria-labelledby="page-title"
       >
         <h1 id="page-title" class="mb-3">Contact</h1>
         <p class="lead mb-0">
-          Contact the team directly, or try the demonstration form below.
+          Meet the team behind AITU Eateries.
         </p>
       </section>
+      <!--
+        HTML: team biographies, page ownership, design contributions and direct contact
+        links.
+      -->
       <section class="container py-4 py-lg-5" aria-label="The team">
+        <!--
+          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
+          row-cols-lg-2 set the column count; sm starts at 576 px, md at 768 px and lg at
+          992 px. g-4 sets row and column gutters.
+        -->
         <div class="row row-cols-1 row-cols-lg-2 g-4">
           <div class="col">
+            <!--
+              HTML + Bootstrap card: Ramazan Anarbekov biography, project responsibilities
+              and contact details. h-100 keeps the two team cards equal in height.
+            -->
             <article class="card bio-card h-100">
               <div class="card-body p-3 p-sm-4">
+                <!--
+                  Bootstrap + Flexbox: d-flex places portrait and name side by side;
+                  align-items-center and gap-3 align and separate them. CSS crops the
+                  portrait into a circle.
+                -->
                 <div class="bio-header d-flex align-items-center gap-3 mb-4">
+                  <!--
+                    HTML images: alt supplies a text description; width/height reserve
+                    proportions. loading="lazy" on later images defers loading until they
+                    approach the viewport.
+                  -->
                   <img
                     src="images/team-ramazan.jpeg"
                     alt="Ramazan Anarbekov"
@@ -106,6 +177,10 @@
                   Built the Home and Dining Spots pages, using location photos
                   from Aitumap and photographs taken by the team.
                 </p>
+                <!--
+                  HTML: t.me links open Telegram and mailto links open an email app. CSS
+                  allows long addresses to wrap inside the card.
+                -->
                 <p class="contact-links mb-0">
                   Telegram: <a href="https://t.me/sezimali">@sezimali</a
                   ><br>Email:
@@ -117,8 +192,17 @@
             </article>
           </div>
           <div class="col">
+            <!--
+              HTML + Bootstrap card: Amir Makhymetov biography, project responsibilities and
+              contact details. h-100 keeps the two team cards equal in height.
+            -->
             <article class="card bio-card h-100">
               <div class="card-body p-3 p-sm-4">
+                <!--
+                  Bootstrap + Flexbox: d-flex places portrait and name side by side;
+                  align-items-center and gap-3 align and separate them. CSS crops the
+                  portrait into a circle.
+                -->
                 <div class="bio-header d-flex align-items-center gap-3 mb-4">
                   <img
                     src="images/team-amir.jpg"
@@ -146,9 +230,13 @@
                 </p>
                 <p class="mb-4">
                   Built the Menu and Contact pages, including the tables, coffee
-                  comparison and demo form, following the shared color palette
+                  comparison and contact form, following the shared color palette
                   and typography.
                 </p>
+                <!--
+                  HTML: t.me links open Telegram and mailto links open an email app. CSS
+                  allows long addresses to wrap inside the card.
+                -->
                 <p class="contact-links mb-0">
                   Telegram: <a href="https://t.me/curstmind">@curstmind</a
                   ><br>Email:
@@ -159,31 +247,50 @@
           </div>
         </div>
       </section>
+      <!--
+        HTML: name, email, dining-spot and message fields. CSS .form-section limits the
+        section to 800 px.
+      -->
       <section
         class="container py-4 py-lg-5 form-section"
         id="contact-form-section"
         aria-labelledby="form-title"
       >
         <h2 id="form-title" class="mb-3">Contact form</h2>
+        <!--
+          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1 set the
+          column count; sm starts at 576 px, md at 768 px and lg at 992 px. g-4 sets row and
+          column gutters.
+        -->
         <div class="row row-cols-1 g-4">
           <div class="col">
             <div class="card h-100">
               <div class="card-body p-3 p-sm-4">
-                <p class="content-note p-3 mb-4" id="demo-notice">
-                  <strong>Demo form: messages are not sent.</strong> This form
-                  is an inactive layout example. Use the contact links above to
-                  reach the team.
-                </p>
-                <form
-                  id="contact-form"
-                  method="post"
-                  aria-describedby="demo-notice"
-                >
-                  <fieldset disabled>
+                <!--
+                  HTML: editable contact-form fields. The control below uses type="button",
+                  so entered values stay in the fields when it is pressed.
+                -->
+                <form id="contact-form" method="post">
+                  <!--
+                    HTML fieldset groups related fields; legend names the group. Bootstrap
+                    visually-hidden keeps the legend available to screen readers without
+                    displaying it.
+                  -->
+                  <fieldset>
                     <legend class="visually-hidden">
-                      Demo message details
+                      Message details
                     </legend>
+                    <!--
+                      Bootstrap layout uses Flexbox: row contains col elements. row-cols-1
+                      set the column count; sm starts at 576 px, md at 768 px and lg at 992
+                      px. g-4 sets row and column gutters.
+                    -->
                     <div class="row row-cols-1 g-4">
+                      <!--
+                        HTML name input: for/id connects label and field, autocomplete
+                        suggests a name and maxlength limits its length. Bootstrap col-md-6
+                        uses half a row from 768 px; form-control styles the field.
+                      -->
                       <div class="col col-md-6">
                         <label for="cf-name" class="form-label">Name</label
                         ><input
@@ -196,6 +303,11 @@
                           maxlength="120"
                           placeholder="Your full name">
                       </div>
+                      <!--
+                        HTML email input: type="email" identifies the expected value and
+                        autocomplete="email" suggests an address. Bootstrap form-control and
+                        col-md-6 set appearance and responsive width.
+                      -->
                       <div class="col col-md-6">
                         <label for="cf-email" class="form-label">Email</label
                         ><input
@@ -208,6 +320,11 @@
                           maxlength="254"
                           placeholder="you@example.com">
                       </div>
+                      <!--
+                        HTML select: option elements supply the choices; selected disabled
+                        makes the first option a prompt. Bootstrap form-select styles the
+                        dropdown.
+                      -->
                       <div class="col">
                         <label for="cf-topic" class="form-label"
                           >Dining spot</label
@@ -227,6 +344,11 @@
                           <option value="mokko">Mokko</option>
                         </select>
                       </div>
+                      <!--
+                        HTML textarea: rows sets its initial height and maxlength limits
+                        message length. CSS allows vertical resizing while keeping the form
+                        width.
+                      -->
                       <div class="col">
                         <label for="cf-message" class="form-label"
                           >Message</label
@@ -241,8 +363,13 @@
                         ></textarea>
                       </div>
                       <div class="col">
-                        <button type="button" class="btn btn-success" disabled>
-                          Demo only — sending unavailable
+                        <!--
+                          HTML type="button" creates a placeholder action that does not
+                          submit or reload. Bootstrap btn btn-success styles it; required
+                          fields are not validated by this button.
+                        -->
+                        <button type="button" class="btn btn-success">
+                          Send message
                         </button>
                       </div>
                     </div>
@@ -254,6 +381,10 @@
         </div>
       </section>
     </main>
+    <!--
+      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
+      use flex-lg-row from 992 px; justify-content-between separates the two groups.
+    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"

@@ -1,4 +1,9 @@
+/*
+  CSS: register local fonts. font-display: swap shows fallback text while the font loads;
+  family and weight select the matching file.
+*/
 /* Arima Madurai and Mulish, distributed under the SIL Open Font License. */
+/* CSS @font-face: Arima Madurai 500 for medium display text, loaded from font-1.ttf. */
 @font-face {
   font-family: 'Arima Madurai';
   font-style: normal;
@@ -6,6 +11,7 @@
   font-display: swap;
   src: url(font-1.ttf) format('truetype');
 }
+/* CSS @font-face: Arima Madurai 700 for bold headings, loaded from font-2.ttf. */
 @font-face {
   font-family: 'Arima Madurai';
   font-style: normal;
@@ -13,6 +19,7 @@
   font-display: swap;
   src: url(font-2.ttf) format('truetype');
 }
+/* CSS @font-face: Mulish 400 for regular body text, loaded from font-3.ttf. */
 @font-face {
   font-family: 'Mulish';
   font-style: normal;
@@ -20,6 +27,7 @@
   font-display: swap;
   src: url(font-3.ttf) format('truetype');
 }
+/* CSS @font-face: Mulish 500 for medium-weight text, loaded from font-4.ttf. */
 @font-face {
   font-family: 'Mulish';
   font-style: normal;
@@ -27,6 +35,7 @@
   font-display: swap;
   src: url(font-4.ttf) format('truetype');
 }
+/* CSS @font-face: Mulish 600 for semibold labels and buttons, loaded from font-5.ttf. */
 @font-face {
   font-family: 'Mulish';
   font-style: normal;

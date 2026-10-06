@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="en">
+  <!--
+    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
+    follow the device width. Title, description and author identify this page.
+  -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,19 +13,53 @@
       content="Explore all four AITU dining spots, their opening hours and campus photographs.">
     <meta name="author" content="Ramazan Anarbekov">
     <meta name="theme-color" content="#187f42">
+    <!--
+      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
+      home screen.
+    -->
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <!--
+      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
+      utilities. The original library file is kept intact.
+    -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
     <link rel="stylesheet" href="css/typography.css">
+    <!--
+      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
+      Loaded last so these rules can customize Bootstrap.
+    -->
     <link rel="stylesheet" href="css/style.css">
   </head>
+  <!--
+    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
+    and footer. min-vh-100 makes the page at least as tall as the viewport.
+  -->
   <body class="d-flex flex-column min-vh-100">
+    <!--
+      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
+      focused.
+    -->
     <a class="skip-link" href="#main-content">Skip to main content</a>
+    <!--
+      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
+      Bootstrap border-bottom draws the divider.
+    -->
     <header class="site-header border-bottom">
+      <!--
+        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
+        gap-2 separates items and py-3 adds vertical padding.
+      -->
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
+          <!--
+            HTML: logo links to Home. alt names the destination; width/height define image
+            proportions and CSS .logo-image sets its displayed size.
+          -->
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -31,6 +69,11 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
+          <!--
+            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
+            wrapping. active and aria-current="page" identify the current page; px/py set
+            padding.
+          -->
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -57,7 +100,15 @@
         </div>
       </nav>
     </header>
+    <!--
+      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
+      page height; tabindex="-1" lets the skip link move focus here.
+    -->
     <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <!--
+        HTML: page title, introduction and shared first-floor location. Bootstrap pt/pb
+        control top/bottom padding; lg changes spacing from 992 px.
+      -->
       <section
         class="page-intro container pt-4 pt-lg-5 pb-3"
         aria-labelledby="page-title"
@@ -69,18 +120,35 @@
         </p>
         <p class="mb-0">All four spots are on the 1st floor of building C1.</p>
       </section>
+      <!--
+        HTML: four dining cards with descriptions, menu-category links, locations and
+        opening hours.
+      -->
       <section class="container py-4 py-lg-5" aria-labelledby="spots-title">
         <h2 id="spots-title" class="mb-3">The spots</h2>
+        <!--
+          CSS Grid: four columns, each at least 248 px wide, stay in one row. overflow-x:
+          auto keeps any extra width inside this keyboard-focusable strip.
+        -->
         <div
           class="spots-strip"
           role="region"
           tabindex="0"
           aria-label="Dining spots; scroll sideways to explore all four places"
         >
+          <!--
+            HTML + Bootstrap card: Cafeteria. spot-* selects the accent color; h-100 and
+            Flexbox flex-column keep the card structure aligned vertically.
+          -->
           <article
             class="card eatery-card spot-cafeteria h-100 d-flex flex-column p-3"
             id="cafeteria"
           >
+            <!--
+              HTML images: alt supplies a text description; width/height reserve
+              proportions. loading="lazy" on later images defers loading until they approach
+              the viewport.
+            -->
             <img
               src="images/cafeteria.jpg"
               alt="Tables and food counters inside Cafeteria"
@@ -89,6 +157,10 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
+            <!--
+              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
+              description sits above the category links and location block.
+            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Cafeteria</h3>
               <p class="mb-3">
@@ -96,6 +168,10 @@
                 prices on campus. The biggest and busiest spot, so expect a line
                 at lunchtime.
               </p>
+              <!--
+                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
+                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
+              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#cafeteria-salads"
@@ -121,6 +197,11 @@
                   >
                 </li>
               </ul>
+              <!--
+                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
+                separates its items. CSS emphasizes the location, softens the hours and
+                makes View menu full width.
+              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -136,6 +217,10 @@
               </div>
             </div>
           </article>
+          <!--
+            HTML + Bootstrap card: Coffee Lake. spot-* selects the accent color; h-100 and
+            Flexbox flex-column keep the card structure aligned vertically.
+          -->
           <article
             class="card eatery-card spot-coffee-lake h-100 d-flex flex-column p-3"
             id="coffee-lake"
@@ -148,12 +233,20 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
+            <!--
+              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
+              description sits above the category links and location block.
+            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Coffee Lake</h3>
               <p class="mb-3">
                 Iced coffee and tea, sandwiches and ready-to-go meals in a cozy
                 indoor corner. Good for sitting with a laptop.
               </p>
+              <!--
+                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
+                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
+              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#coffee-lake-iced-coffee"
@@ -176,6 +269,11 @@
                   >
                 </li>
               </ul>
+              <!--
+                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
+                separates its items. CSS emphasizes the location, softens the hours and
+                makes View menu full width.
+              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -191,6 +289,10 @@
               </div>
             </div>
           </article>
+          <!--
+            HTML + Bootstrap card: Sheker. spot-* selects the accent color; h-100 and
+            Flexbox flex-column keep the card structure aligned vertically.
+          -->
           <article
             class="card eatery-card spot-sheker h-100 d-flex flex-column p-3"
             id="sheker"
@@ -203,12 +305,20 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
+            <!--
+              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
+              description sits above the category links and location block.
+            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Sheker</h3>
               <p class="mb-3">
                 Hot coffee, cakes, croissants, sandwiches and salads from an
                 open kiosk with small tables.
               </p>
+              <!--
+                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
+                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
+              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#sheker-hot-drinks"
@@ -224,6 +334,11 @@
                   >
                 </li>
               </ul>
+              <!--
+                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
+                separates its items. CSS emphasizes the location, softens the hours and
+                makes View menu full width.
+              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -237,6 +352,10 @@
               </div>
             </div>
           </article>
+          <!--
+            HTML + Bootstrap card: Mokko. spot-* selects the accent color; h-100 and Flexbox
+            flex-column keep the card structure aligned vertically.
+          -->
           <article
             class="card eatery-card spot-mokko h-100 d-flex flex-column p-3"
             id="mokko"
@@ -249,12 +368,20 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
+            <!--
+              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
+              description sits above the category links and location block.
+            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Mokko</h3>
               <p class="mb-3">
                 Classic coffee, packaged sandwiches and salads, chocolate and
                 snacks from a small open kiosk.
               </p>
+              <!--
+                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
+                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
+              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#mokko-coffee">Coffee</a>
@@ -270,6 +397,11 @@
                   >
                 </li>
               </ul>
+              <!--
+                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
+                separates its items. CSS emphasizes the location, softens the hours and
+                makes View menu full width.
+              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -285,15 +417,32 @@
           </article>
         </div>
       </section>
+      <!--
+        HTML: shared opening-hours table, Sunday closure and a time element whose datetime
+        attribute stores the machine-readable date.
+      -->
       <section class="container py-4 py-lg-5" aria-labelledby="hours-title">
         <h2 id="hours-title" class="mb-3">Hours at a glance</h2>
+        <!--
+          Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
+          adds the border and radius; tabindex="0" makes the region keyboard-focusable.
+        -->
         <div
           class="table-responsive table-frame hours-table"
           tabindex="0"
           role="region"
           aria-label="Opening hours; scroll horizontally if needed"
         >
+          <!--
+            HTML: table holds data, thead holds column headings, tbody holds rows, and th/td
+            are cells. Bootstrap table and align-middle supply appearance and vertical
+            alignment.
+          -->
           <table class="table align-middle mb-0" aria-labelledby="hours-title">
+            <!--
+              HTML: scope="col" identifies column headings; scope="row" below identifies row
+              headings. In menu tables, custom CSS .price right-aligns amounts.
+            -->
             <thead>
               <tr>
                 <th scope="col">Spot</th>
@@ -331,6 +480,10 @@
           retained from the project’s base information.
         </p>
       </section>
+      <!--
+        HTML: campus photo gallery. Bootstrap positioning utilities place captions over the
+        photographs.
+      -->
       <section
         class="container py-4 py-lg-5"
         id="gallery"
@@ -342,8 +495,18 @@
           Explore our campus dining spots, food displays and sweet treats.
         </p>
 
+        <!--
+          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
+          row-cols-sm-2, row-cols-lg-3 set the column count; sm starts at 576 px, md at 768
+          px and lg at 992 px. g-4 sets row and column gutters.
+        -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
           <div class="col">
+            <!--
+              HTML figure: Our Cafeteria Cafeteria. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -363,6 +526,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Bakery Selection Cafeteria. Bootstrap position-relative anchors
+              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
+              on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -382,6 +550,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Dairy Products Cafeteria. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -401,6 +574,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Welcome to Mokko Mokko. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -420,6 +598,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Sandwiches & Salads Mokko. Bootstrap position-relative anchors
+              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
+              on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -439,6 +622,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Chocolate & Snacks Mokko. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -458,6 +646,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Welcome to Sheker Sheker. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -477,6 +670,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Snacks & Sweet Treats Sheker. Bootstrap position-relative anchors
+              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
+              on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -496,6 +694,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Cakes & Pastries Sheker. Bootstrap position-relative anchors the
+              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
+              hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -515,6 +718,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Welcome to Coffee Lake Coffee Lake. Bootstrap position-relative
+              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
+              caption on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -534,6 +742,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Sandwiches & Mochi Coffee Lake. Bootstrap position-relative
+              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
+              caption on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -553,6 +766,11 @@
             </figure>
           </div>
           <div class="col">
+            <!--
+              HTML figure: Ready-to-Go Meals Coffee Lake. Bootstrap position-relative
+              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
+              caption on hover or focus and keeps it visible on touch screens.
+            -->
             <figure
               class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
               tabindex="0"
@@ -574,6 +792,10 @@
         </div>
       </section>
     </main>
+    <!--
+      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
+      use flex-lg-row from 992 px; justify-content-between separates the two groups.
+    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
