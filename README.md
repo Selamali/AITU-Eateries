@@ -10,12 +10,12 @@ A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT Univers
 
 ## Pages and authors
 
-| File | Author | What the page contains |
+| File  | What the page contains |
 | --- | --- | --- |
-| `index.html` | Ramazan Anarbekov | Introduction, links to useful sections, campus map and a twelve-photo dining tour |
-| `eateries.html` | Ramazan Anarbekov | Four dining cards, locations, menu-category links, opening hours and a photo gallery |
-| `menu.html` | Amir Makhymetov | Navigation between four menus, portion and price tables, and a coffee-price comparison |
-| `contact.html` | Amir Makhymetov | Team biographies, contributions, contact links and a contact-form layout |
+| `index.html` | Introduction, links to useful sections, campus map and a twelve-photo dining tour |
+| `eateries.html` | Four dining cards, locations, menu-category links, opening hours and a photo gallery |
+| `menu.html` | Navigation between four menus, portion and price tables, and a coffee-price comparison |
+| `contact.html` | Team biographies, contributions, contact links and a contact-form layout |
 
 Each author is responsible for two HTML pages. Their names also appear in page metadata, footers and team biographies.
 
