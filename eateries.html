@@ -1,34 +1,39 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AITU Eateries — Dining Spots</title>
     <meta
       name="description"
-      content="What each AITU campus dining spot serves, where to find it, and its opening hours."
-    />
-    <link rel="stylesheet" href="vendor/fonts/fonts.css" />
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/typography.css" />
-    <link rel="stylesheet" href="css/style.css" />
+      content="Explore all four AITU dining spots, their opening hours and campus photographs.">
+    <meta name="author" content="Ramazan Anarbekov">
+    <meta name="theme-color" content="#187f42">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
   </head>
-
   <body class="d-flex flex-column min-vh-100">
-    <header id="site-header" class="border-bottom">
-      <!-- Task 5: Bootstrap navbar; expands at 992px, collapses below it. -->
-      <nav class="navbar navbar-expand-lg bg-white py-3" aria-label="Primary">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header border-bottom">
+      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
         <div class="container">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
-              class="logo-image"
               src="images/logo.jpg"
               alt="AITU Eateries home"
               width="520"
               height="232"
-          /></a>
+              class="logo-image"
+              loading="eager"
+              decoding="async"></a>
           <button
-            class="navbar-toggler px-3 py-2"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#main-nav"
@@ -36,323 +41,562 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
           </button>
           <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-1">
+            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="index.html"
-                  >Home</a
-                >
+                <a class="nav-link px-3 py-2" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active text-success fw-bold"
-                  href="eateries.html"
+                  class="nav-link px-3 py-2 active"
                   aria-current="page"
+                  href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="menu.html"
-                  >Menu</a
-                >
+                <a class="nav-link px-3 py-2" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="contact.html"
-                  >Contact</a
-                >
+                <a class="nav-link px-3 py-2" href="contact.html">Contact</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main class="flex-grow-1">
-      <section class="page-intro container pt-4 pt-lg-5 pb-3">
-        <h1 class="mb-3">Dining Spots</h1>
+    <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <section
+        class="page-intro container pt-4 pt-lg-5 pb-3"
+        aria-labelledby="page-title"
+      >
+        <h1 id="page-title" class="mb-3">Dining Spots</h1>
         <p class="lead mb-3">
-          What's on offer, where to find each place, and when it's open -
-          everything you need before you leave for a break.
+          Find a full lunch, your usual coffee, or something sweet between
+          classes.
         </p>
+        <p class="mb-0">All four spots are on the 1st floor of building C1.</p>
       </section>
-
-      <section class="locations container py-4 py-lg-5" id="locations">
-        <h2 class="mb-3">The spots</h2>
-        <div class="row g-4 mt-0">
-          <div class="col-12 col-md-6 col-lg-6">
-            <article
-              class="eatery-card card-green h-100 d-flex flex-column p-3 p-sm-4"
-              id="stolovaya"
-            >
-              <img
-                src="images/stolovaya.jpg"
-                alt="Students getting hot meals at the busy AITU Cafeteria counter"
-                class="img-fluid mb-3 rounded-3"
-              />
+      <section class="container py-4 py-lg-5" aria-labelledby="spots-title">
+        <h2 id="spots-title" class="mb-3">The spots</h2>
+        <div
+          class="spots-strip"
+          role="region"
+          tabindex="0"
+          aria-label="Dining spots; scroll sideways to explore all four places"
+        >
+          <article
+            class="card eatery-card spot-cafeteria h-100 d-flex flex-column p-3"
+            id="cafeteria"
+          >
+            <img
+              src="images/cafeteria.jpg"
+              alt="Tables and food counters inside Cafeteria"
+              width="1000"
+              height="667"
+              class="spot-image mb-3"
+              loading="lazy"
+              decoding="async">
+            <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Cafeteria</h3>
               <p class="mb-3">
-                Hot dishes, soups, and fresh pastries at the lowest prices on
-                campus — the biggest and busiest spot, so expect a line around
-                lunchtime.
+                Hot dishes, soups, salads, fresh bakery and dairy at the lowest
+                prices on campus. The biggest and busiest spot, so expect a line
+                at lunchtime.
               </p>
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Hot dishes
+                <li>
+                  <a class="tag-link" href="menu.html#cafeteria-salads"
+                    >Salads</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Soups
+                <li>
+                  <a class="tag-link" href="menu.html#cafeteria-soups">Soups</a>
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Pastries
+                <li>
+                  <a class="tag-link" href="menu.html#cafeteria-hot-dishes"
+                    >Hot dishes</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Salads
+                <li>
+                  <a class="tag-link" href="menu.html#cafeteria-bakery"
+                    >Bakery</a
+                  >
+                </li>
+                <li>
+                  <a class="tag-link" href="menu.html#cafeteria-dairy-drinks"
+                    >Dairy &amp; drinks</a
+                  >
                 </li>
               </ul>
               <div
-                class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
+                class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
-                <p class="small mb-0 text-body-secondary">C1.3</p>
-                <a
-                  href="menu.html#cafeteria"
-                  class="btn btn-outline-success px-3 py-2 rounded-pill"
-                  >View menu</a
+                <div>
+                  <p class="location-line mb-1">C1.3</p>
+                  <p class="small hours-line mb-0">Mon–Fri · 9:00–20:00</p>
+                </div>
+                <a class="btn btn-outline-success" href="menu.html#cafeteria"
+                  >View menu<span class="visually-hidden">
+                    for Cafeteria</span
+                  ></a
                 >
               </div>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6">
-            <article
-              class="eatery-card card-terracotta h-100 d-flex flex-column p-3 p-sm-4"
-              id="coffee-lake"
-            >
-              <img
-                src="images/coffee-lake.jpg"
-                alt="Coffee Lake indoor seating area next to the coffee counter"
-                class="img-fluid mb-3 rounded-3"
-              />
+            </div>
+          </article>
+          <article
+            class="card eatery-card spot-coffee-lake h-100 d-flex flex-column p-3"
+            id="coffee-lake"
+          >
+            <img
+              src="images/coffee-lake.jpg"
+              alt="Seating and the coffee counter at Coffee Lake"
+              width="1000"
+              height="750"
+              class="spot-image mb-3"
+              loading="lazy"
+              decoding="async">
+            <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Coffee Lake</h3>
               <p class="mb-3">
-                Coffee, tea, and sandwiches in a cozy indoor corner — good if
-                you want to sit with a laptop and get some work done.
+                Iced coffee and tea, sandwiches and ready-to-go meals in a cozy
+                indoor corner. Good for sitting with a laptop.
               </p>
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Coffee &amp; tea
+                <li>
+                  <a class="tag-link" href="menu.html#coffee-lake-iced-coffee"
+                    >Iced coffee</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Sandwiches
+                <li>
+                  <a class="tag-link" href="menu.html#coffee-lake-iced-tea"
+                    >Iced tea</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Light snacks
+                <li>
+                  <a class="tag-link" href="menu.html#coffee-lake-sandwiches"
+                    >Sandwiches</a
+                  >
+                </li>
+                <li>
+                  <a class="tag-link" href="menu.html#coffee-lake-ready-to-go"
+                    >Ready-to-go</a
+                  >
                 </li>
               </ul>
               <div
-                class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
+                class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
-                <p class="small mb-0 text-body-secondary">C1.2 (atrium)</p>
-                <a
-                  href="menu.html#coffee-lake"
-                  class="btn btn-outline-success px-3 py-2 rounded-pill"
-                  >View menu</a
+                <div>
+                  <p class="location-line mb-1">C1.2 (atrium)</p>
+                  <p class="small hours-line mb-0">Mon–Sat · 9:00–20:00</p>
+                </div>
+                <a class="btn btn-outline-success" href="menu.html#coffee-lake"
+                  >View menu<span class="visually-hidden">
+                    for Coffee Lake</span
+                  ></a
                 >
               </div>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6">
-            <article
-              class="eatery-card card-turquoise h-100 d-flex flex-column p-3 p-sm-4"
-              id="sheker"
-            >
-              <img
-                src="images/sheker.jpg"
-                alt="Sheker open kiosk with small tables and string lights"
-                class="img-fluid mb-3 rounded-3"
-              />
+            </div>
+          </article>
+          <article
+            class="card eatery-card spot-sheker h-100 d-flex flex-column p-3"
+            id="sheker"
+          >
+            <img
+              src="images/sheker.jpg"
+              alt="Sheker kiosk with tables in the campus atrium"
+              width="1000"
+              height="750"
+              class="spot-image mb-3"
+              loading="lazy"
+              decoding="async">
+            <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Sheker</h3>
               <p class="mb-3">
-                Coffee, salads, sandwiches, croissants, and desserts from an
-                open kiosk with small tables — easy for a quick chat between
-                classes.
+                Hot coffee, cakes, croissants, sandwiches and salads from an
+                open kiosk with small tables.
               </p>
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Coffee &amp; drinks
+                <li>
+                  <a class="tag-link" href="menu.html#sheker-hot-drinks"
+                    >Hot drinks</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Salads
+                <li>
+                  <a class="tag-link" href="menu.html#sheker-sweets">Sweets</a>
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Sandwiches
-                </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Desserts
+                <li>
+                  <a class="tag-link" href="menu.html#sheker-sandwiches-salads"
+                    >Sandwiches &amp; salads</a
+                  >
                 </li>
               </ul>
               <div
-                class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
+                class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
-                <p class="small mb-0 text-body-secondary">
-                  Between C1.1 and C1.2
-                </p>
-                <a
-                  href="menu.html#sheker"
-                  class="btn btn-outline-success px-3 py-2 rounded-pill"
-                  >View menu</a
+                <div>
+                  <p class="location-line mb-1">Between C1.1 and C1.2</p>
+                  <p class="small hours-line mb-0">Mon–Sat · 10:00–19:30</p>
+                </div>
+                <a class="btn btn-outline-success" href="menu.html#sheker"
+                  >View menu<span class="visually-hidden"> for Sheker</span></a
                 >
               </div>
-            </article>
-          </div>
-          <div class="col-12 col-md-6 col-lg-6">
-            <article
-              class="eatery-card card-yellow h-100 d-flex flex-column p-3 p-sm-4"
-              id="mokko"
-            >
-              <img
-                src="images/mokko-coffee.jpg"
-                alt="Mokko open kiosk with small tables in the atrium"
-                class="img-fluid mb-3 rounded-3"
-              />
+            </div>
+          </article>
+          <article
+            class="card eatery-card spot-mokko h-100 d-flex flex-column p-3"
+            id="mokko"
+          >
+            <img
+              src="images/mokko.jpg"
+              alt="Mokko kiosk and seating in the campus atrium"
+              width="1000"
+              height="750"
+              class="spot-image mb-3"
+              loading="lazy"
+              decoding="async">
+            <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Mokko</h3>
               <p class="mb-3">
-                Coffee and something sweet from a small open kiosk — a quick
-                stop between classes.
+                Classic coffee, packaged sandwiches and salads, chocolate and
+                snacks from a small open kiosk.
               </p>
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Coffee
+                <li>
+                  <a class="tag-link" href="menu.html#mokko-coffee">Coffee</a>
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Snacks
+                <li>
+                  <a class="tag-link" href="menu.html#mokko-sandwiches-salads"
+                    >Sandwiches &amp; salads</a
+                  >
                 </li>
-                <li class="small border rounded-pill bg-light px-2 py-1">
-                  Sweets
+                <li>
+                  <a class="tag-link" href="menu.html#mokko-chocolate-snacks"
+                    >Chocolate &amp; snacks</a
+                  >
                 </li>
               </ul>
               <div
-                class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
+                class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
-                <p class="small mb-0 text-body-secondary">
-                  Between C1.2 and C1.3
-                </p>
-                <a
-                  href="menu.html#mokko"
-                  class="btn btn-outline-success px-3 py-2 rounded-pill"
-                  >View menu</a
+                <div>
+                  <p class="location-line mb-1">Between C1.2 and C1.3</p>
+                  <p class="small hours-line mb-0">Mon–Fri · 10:00–19:00</p>
+                </div>
+                <a class="btn btn-outline-success" href="menu.html#mokko"
+                  >View menu<span class="visually-hidden"> for Mokko</span></a
                 >
               </div>
-            </article>
-          </div>
+            </div>
+          </article>
         </div>
       </section>
-
-      <section class="hours container py-4 py-lg-5" id="hours">
-        <h2 class="mb-3">Hours at a glance</h2>
+      <section class="container py-4 py-lg-5" aria-labelledby="hours-title">
+        <h2 id="hours-title" class="mb-3">Hours at a glance</h2>
         <div
-          class="table-responsive border rounded-3 bg-white mt-3 mt-lg-4"
+          class="table-responsive table-frame hours-table"
           tabindex="0"
           role="region"
-          aria-label="Opening days and hours for every dining spot"
+          aria-label="Opening hours; scroll horizontally if needed"
         >
-          <table class="table table-hover align-middle mb-0">
-            <caption class="px-3 py-2">
-              Opening days and hours for every dining spot
-            </caption>
+          <table class="table align-middle mb-0" aria-labelledby="hours-title">
             <thead>
               <tr>
-                <th scope="col" class="p-2 p-sm-3">Dining spot</th>
-                <th scope="col" class="p-2 p-sm-3">Where</th>
-                <th scope="col" class="p-2 p-sm-3">Days</th>
-                <th scope="col" class="p-2 p-sm-3">Hours</th>
+                <th scope="col">Spot</th>
+                <th scope="col">Days</th>
+                <th scope="col">Hours</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="p-2 p-sm-3">Cafeteria</td>
-                <td class="p-2 p-sm-3">C1.3</td>
-                <td class="p-2 p-sm-3">Mon–Fri</td>
-                <td class="p-2 p-sm-3">9:00–20:00</td>
+                <th scope="row">Cafeteria</th>
+                <td>Mon–Fri</td>
+                <td>9:00–20:00</td>
               </tr>
               <tr>
-                <td class="p-2 p-sm-3">Coffee Lake</td>
-                <td class="p-2 p-sm-3">C1.2 (atrium)</td>
-                <td class="p-2 p-sm-3">Mon–Sat</td>
-                <td class="p-2 p-sm-3">9:00–20:00</td>
+                <th scope="row">Coffee Lake</th>
+                <td>Mon–Sat</td>
+                <td>9:00–20:00</td>
               </tr>
               <tr>
-                <td class="p-2 p-sm-3">Sheker</td>
-                <td class="p-2 p-sm-3">Between C1.1 and C1.2</td>
-                <td class="p-2 p-sm-3">Mon–Sat</td>
-                <td class="p-2 p-sm-3">10:00–19:30</td>
+                <th scope="row">Sheker</th>
+                <td>Mon–Sat</td>
+                <td>10:00–19:30</td>
               </tr>
               <tr>
-                <td class="p-2 p-sm-3">Mokko</td>
-                <td class="p-2 p-sm-3">Between C1.2 and C1.3</td>
-                <td class="p-2 p-sm-3">Mon–Fri</td>
-                <td class="p-2 p-sm-3">10:00–19:00</td>
+                <th scope="row">Mokko</th>
+                <td>Mon–Fri</td>
+                <td>10:00–19:00</td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p class="mt-3 mb-2">Sundays: all spots closed.</p>
+        <p class="small mb-0">
+          Last checked: <time datetime="2026-10-06">6 October 2026</time>. Hours
+          retained from the project’s base information.
+        </p>
       </section>
+      <section
+        class="container py-4 py-lg-5"
+        id="gallery"
+        aria-labelledby="gallery-title"
+      >
+        <h2 class="mb-3" id="gallery-title">Gallery</h2>
 
-      <section class="team-bio container py-4 py-lg-5" id="about-ramazan">
-        <h2 class="mb-3">About this page's author</h2>
-        <div class="bio-card h-100 bg-white border rounded-3 p-3 p-sm-4">
-          <div class="row g-3 align-items-start">
-            <div class="col-12 col-sm-auto">
+        <p class="menu-note mb-3">
+          Explore our campus dining spots, food displays and sweet treats.
+        </p>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
               <img
-                src="images/team-ramazan.jpeg"
-                alt="Portrait of Ramazan Anarbekov"
-                class="profile-photo img-fluid d-block"
-              />
-            </div>
-            <div class="col-12 col-sm">
-              <h3 class="mb-3">Ramazan Anarbekov</h3>
-              <p class="bio-role mb-3">Group SE-2504 Team-lead</p>
-              <p class="mb-3">
-                Researched font combinations and found a great pairing,
-                <b>Arima Madurai + Mulish</b>, on Figma’s Font Pairings
-                resource.
-              </p>
-              <p class="mb-3">
-                Developed the color palette based on the actual locations: green
-                from the cafeteria, birch tones from Shaker, yellow/gold from
-                Mocco, and orange from Coffee Lake. I used Coolors to create a
-                cohesive palette that matched the overall style.
-              </p>
-              <p class="mb-3">
-                For the logo, I kept the process simple and used Gemini to adapt
-                the original logo to fit our concept.
-              </p>
-              <p class="mb-0">
-                Finally, I started building the website. For the Eateries
-                section, I used photos from Aitumap and, when needed, asked my
-                teammate to take photos of the locations.
-              </p>
-            </div>
+                src="gallery/cafeteria-view.jpg"
+                alt="General view of the campus Cafeteria"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Our Cafeteria</strong>
+                <span class="d-block small mt-1">Cafeteria</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/cafeteria-bakery.jpg"
+                alt="Selection of baked goods at the Cafeteria"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="898"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Bakery Selection</strong>
+                <span class="d-block small mt-1">Cafeteria</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/cafeteria-dairy.jpg"
+                alt="Dairy products displayed at the Cafeteria"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Dairy Products</strong>
+                <span class="d-block small mt-1">Cafeteria</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/mokko-view.jpg"
+                alt="General view of the Mokko coffee shop"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="675"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Welcome to Mokko</strong>
+                <span class="d-block small mt-1">Mokko</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/mokko-food.jpg"
+                alt="Sandwiches and salads displayed at Mokko"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Sandwiches &amp; Salads</strong>
+                <span class="d-block small mt-1">Mokko</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/mokko-snacks.jpg"
+                alt="Selection of packaged chocolate bars at Mokko"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Chocolate &amp; Snacks</strong>
+                <span class="d-block small mt-1">Mokko</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/sheker-sign.jpg"
+                alt="Sheker coffee shop sign"
+                loading="lazy"
+                class="img-fluid"
+                width="900"
+                height="1200"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Welcome to Sheker</strong>
+                <span class="d-block small mt-1">Sheker</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/sheker-food.jpg"
+                alt="Sandwiches, pancakes and cheesecake at Sheker"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Snacks &amp; Sweet Treats</strong>
+                <span class="d-block small mt-1">Sheker</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/sheker-desserts.jpg"
+                alt="Selection of cakes and pastries at Sheker"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="745"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Cakes &amp; Pastries</strong>
+                <span class="d-block small mt-1">Sheker</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/coffee-lake-view.jpg"
+                alt="General view of the Coffee Lake coffee shop"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="675"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Welcome to Coffee Lake</strong>
+                <span class="d-block small mt-1">Coffee Lake</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/coffee-lake-food.jpg"
+                alt="Sandwiches, mochi and other products at Coffee Lake"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Sandwiches &amp; Mochi</strong>
+                <span class="d-block small mt-1">Coffee Lake</span>
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col">
+            <figure
+              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
+              tabindex="0"
+            >
+              <img
+                src="gallery/coffee-lake-boxes.jpg"
+                alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
+                loading="lazy"
+                class="img-fluid"
+                width="1200"
+                height="900"
+                decoding="async">
+              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
+                <strong class="d-block">Ready-to-Go Meals</strong>
+                <span class="d-block small mt-1">Coffee Lake</span>
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
     </main>
-
-    <footer id="site-footer" class="border-top bg-white py-4 mt-4">
+    <footer class="site-footer border-top py-4">
       <div
-        class="container d-flex flex-column flex-lg-row justify-content-between gap-2"
+        class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
       >
-        <p class="small text-body-secondary mb-0">
-          © 2026 AITU Eateries — educational project, Astana IT University.
+        <p class="small mb-0">
+          © 2026 AITU Eateries · Astana IT University<br>Educational project ·
+          SE-2504
         </p>
-        <p class="small text-body-secondary mb-0">
-          Team: Anarbekov Ramazan, Makhymetov Amir
+        <p class="small mb-0">
+          Team: Ramazan Anarbekov &amp; Amir Makhymetov<br>Page author:
+          Ramazan Anarbekov
         </p>
-        <a class="small link-success" href="media-queries.html"
-          >CSS media queries demo</a
-        >
       </div>
     </footer>
-
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
   </body>
 </html>

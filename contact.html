@@ -1,34 +1,40 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AITU Eateries — Contact</title>
     <meta
       name="description"
-      content="Get in touch with the AITU Eateries team, or send us a message about any campus dining spot."
-    />
-    <link rel="stylesheet" href="vendor/fonts/fonts.css" />
-    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/typography.css" />
-    <link rel="stylesheet" href="css/style.css" />
+      content="Meet the AITU Eateries team and try the clearly labelled, local-only demo contact form.">
+    <meta name="author" content="Amir Makhymetov">
+    <meta name="theme-color" content="#187f42">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+    <script src="js/contact.js" defer></script>
   </head>
-
   <body class="d-flex flex-column min-vh-100">
-    <header id="site-header" class="border-bottom">
-      <!-- Task 5: Bootstrap navbar; expands at 992px, collapses below it. -->
-      <nav class="navbar navbar-expand-lg bg-white py-3" aria-label="Primary">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header border-bottom">
+      <nav class="navbar navbar-expand-lg py-3" aria-label="Primary">
         <div class="container">
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
-              class="logo-image"
               src="images/logo.jpg"
               alt="AITU Eateries home"
               width="520"
               height="232"
-          /></a>
+              class="logo-image"
+              loading="eager"
+              decoding="async"></a>
           <button
-            class="navbar-toggler px-3 py-2"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#main-nav"
@@ -36,30 +42,26 @@
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" aria-hidden="true"></span>
           </button>
           <div class="collapse navbar-collapse" id="main-nav">
-            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-1">
+            <ul class="navbar-nav ms-auto mb-0 mt-3 mt-lg-0 gap-2">
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="index.html"
-                  >Home</a
-                >
+                <a class="nav-link px-3 py-2" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="eateries.html"
+                <a class="nav-link px-3 py-2" href="eateries.html"
                   >Dining Spots</a
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3 py-2 link-success" href="menu.html"
-                  >Menu</a
-                >
+                <a class="nav-link px-3 py-2" href="menu.html">Menu</a>
               </li>
               <li class="nav-item">
                 <a
-                  class="nav-link px-3 py-2 active text-success fw-bold"
-                  href="contact.html"
+                  class="nav-link px-3 py-2 active"
                   aria-current="page"
+                  href="contact.html"
                   >Contact</a
                 >
               </li>
@@ -68,278 +70,231 @@
         </div>
       </nav>
     </header>
-    <main class="flex-grow-1">
-      <section class="page-intro container pt-4 pt-lg-5 pb-3">
-        <h1 class="mb-3">Contact</h1>
-        <p class="lead mb-3">
-          Reach out to the team behind AITU Eateries directly, or send us a
-          message using the form below.
+    <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <section
+        class="page-intro container pt-4 pt-lg-5 pb-3"
+        aria-labelledby="page-title"
+      >
+        <h1 id="page-title" class="mb-3">Contact</h1>
+        <p class="lead mb-0">
+          Contact the team directly, or try the demonstration form below.
         </p>
       </section>
-
-      <section class="team-bio container py-4 py-lg-5" id="team-contacts">
-        <h2 class="mb-3">The team</h2>
-
-        <div class="row g-4 mt-0">
-          <div class="col-12 col-lg-6">
-            <div class="bio-card h-100 bg-white border rounded-3 p-3 p-sm-4">
-              <div class="row g-3 align-items-start">
-                <div class="col-12 col-sm-auto">
+      <section class="container py-4 py-lg-5" aria-label="The team">
+        <div class="row row-cols-1 row-cols-lg-2 g-4">
+          <div class="col">
+            <article class="card bio-card h-100">
+              <div class="card-body p-3 p-sm-4">
+                <div class="bio-header d-flex align-items-center gap-3 mb-4">
                   <img
                     src="images/team-ramazan.jpeg"
-                    alt="Portrait of Ramazan Anarbekov"
-                    class="profile-photo img-fluid d-block"
-                  />
+                    alt="Ramazan Anarbekov"
+                    width="384"
+                    height="384"
+                    class="profile-photo"
+                    loading="lazy"
+                    decoding="async">
+                  <div class="bio-heading">
+                    <h2 class="mb-1">Ramazan Anarbekov</h2>
+                    <p class="small mb-0">SE-2504 · Team lead</p>
+                  </div>
                 </div>
-                <div class="col-12 col-sm">
-                  <h3 class="mb-3">Ramazan Anarbekov</h3>
-
-                  <p class="bio-role mb-3">Group SE-2504 · Team-lead</p>
-
-                  <p class="mb-0">
-                    Telegram:
-                    <a href="https://t.me/sezimali">@sezimali</a>
-                    <br />
-
-                    Email:
-                    <a href="mailto:anarbekovramazan@outlook.com">
-                      anarbekovramazan@outlook.com
-                    </a>
-                  </p>
-                </div>
+                <p class="mb-4">
+                  <strong>Page author:</strong> Home and Dining Spots.
+                </p>
+                <p class="mb-3">
+                  Researched the Arima Madurai and Mulish font pairing using
+                  Figma’s Font Pairings resource.
+                </p>
+                <p class="mb-3">
+                  Developed the palette with Coolors, drawing on the green of
+                  Cafeteria, orange of Coffee Lake, turquoise of Sheker and
+                  yellow of Mokko.
+                </p>
+                <p class="mb-3">
+                  Used Gemini to adapt the original logo to the AITU Eateries
+                  concept.
+                </p>
+                <p class="mb-4">
+                  Built the Home and Dining Spots pages, using location photos
+                  from Aitumap and photographs taken by the team.
+                </p>
+                <p class="contact-links mb-0">
+                  Telegram: <a href="https://t.me/sezimali">@sezimali</a
+                  ><br>Email:
+                  <a href="mailto:anarbekovramazan@outlook.com"
+                    >anarbekovramazan@outlook.com</a
+                  >
+                </p>
               </div>
-            </div>
+            </article>
           </div>
-          <div class="col-12 col-lg-6">
-            <div class="bio-card h-100 bg-white border rounded-3 p-3 p-sm-4">
-              <div class="row g-3 align-items-start">
-                <div class="col-12 col-sm-auto">
+          <div class="col">
+            <article class="card bio-card h-100">
+              <div class="card-body p-3 p-sm-4">
+                <div class="bio-header d-flex align-items-center gap-3 mb-4">
                   <img
                     src="images/team-amir.jpg"
-                    alt="Portrait of Amir Makhymetov"
-                    class="profile-photo img-fluid d-block"
-                  />
+                    alt="Amir Makhymetov"
+                    width="277"
+                    height="384"
+                    class="profile-photo"
+                    loading="lazy"
+                    decoding="async">
+                  <div class="bio-heading">
+                    <h2 class="mb-1">Amir Makhymetov</h2>
+                    <p class="small mb-0">SE-2504 · Frontend engineer</p>
+                  </div>
                 </div>
-                <div class="col-12 col-sm">
-                  <h3 class="mb-3">Amir Makhymetov</h3>
-
-                  <p class="bio-role mb-3">Group SE-2504 · Frontend Engineer</p>
-
-                  <p class="mb-0">
-                    Telegram:
-                    <a href="https://t.me/curstmind">@curstmind</a>
-                    <br />
-
-                    Email:
-                    <a href="mailto:lolo243@inbox.ru"> lolo243@inbox.ru </a>
-                  </p>
-                </div>
+                <p class="mb-4">
+                  <strong>Page author:</strong> Menu and Contact.
+                </p>
+                <p class="mb-3">
+                  Collected the base prices from the printed price lists of all
+                  four spots; items added later are demo data.
+                </p>
+                <p class="mb-3">
+                  Visited Cafeteria, Coffee Lake, Sheker and Mokko to photograph
+                  their menus and food displays.
+                </p>
+                <p class="mb-4">
+                  Built the Menu and Contact pages, including the tables, coffee
+                  comparison and demo form, following the shared color palette
+                  and typography.
+                </p>
+                <p class="contact-links mb-0">
+                  Telegram: <a href="https://t.me/curstmind">@curstmind</a
+                  ><br>Email:
+                  <a href="mailto:lolo243@inbox.ru">lolo243@inbox.ru</a>
+                </p>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
-      
-      <!-- Assignment 3: Task 8 — Bootstrap Cards -->
-<section class="menu-section container py-4 py-lg-5"
-         id="coffee-spots">
-  <h2 class="mb-3">Explore our coffee spots</h2>
-
-  <p class="menu-note mb-4">
-    Check the menus before sending us your question.
-  </p>
-
-  <div class="card-group d-flex flex-column flex-lg-row gap-4">
-
-    <article class="card border rounded-3 overflow-hidden mb-0">
-      <img src="gallery/mokko-view.jpg"
-           class="card-img-top"
-           alt="Mokko coffee shop on campus"
-           loading="lazy">
-
-      <div class="card-body d-flex flex-column p-4">
-        <h3 class="card-title h4">Mokko</h3>
-
-        <p class="card-text">
-          Discover coffee, sandwiches, salads and chocolate snacks
-          for a break between classes.
-        </p>
-
-        <a href="menu.html#mokko"
-           class="btn btn-outline-success mt-auto align-self-start">
-          View Mokko menu
-        </a>
-      </div>
-    </article>
-
-    <article class="card border rounded-3 overflow-hidden mb-0">
-      <img src="gallery/sheker-sign.jpg"
-           class="card-img-top"
-           alt="Sheker coffee shop sign"
-           loading="lazy">
-
-      <div class="card-body d-flex flex-column p-4">
-        <h3 class="card-title h4">Sheker</h3>
-
-        <p class="card-text">
-          Explore hot drinks, pastries and sweet treats
-          to enjoy during your study break.
-        </p>
-
-        <a href="menu.html#sheker"
-           class="btn btn-outline-success mt-auto align-self-start">
-          View Sheker menu
-        </a>
-      </div>
-    </article>
-
-    <article class="card border rounded-3 overflow-hidden mb-0">
-      <img src="gallery/coffee-lake-view.jpg"
-           class="card-img-top"
-           alt="Coffee Lake dining spot on campus"
-           loading="lazy">
-
-      <div class="card-body d-flex flex-column p-4">
-        <h3 class="card-title h4">Coffee Lake</h3>
-
-        <p class="card-text">
-          Find iced coffee, sandwiches, mochi and ready-to-go
-          meals for your campus day.
-        </p>
-
-        <a href="menu.html#coffee-lake"
-           class="btn btn-outline-success mt-auto align-self-start">
-          View Coffee Lake menu
-        </a>
-      </div>
-    </article>
-
-  </div>
-</section>
-
       <section
-        class="menu-section container py-4 py-lg-5"
+        class="container py-4 py-lg-5 form-section"
         id="contact-form-section"
+        aria-labelledby="form-title"
       >
-        <h2 class="mb-3">Send us a message</h2>
-        <p class="menu-note mb-3">
-          Have a question, suggestion, or found an error in the menu? Let us
-          know.
-        </p>
-
-        <div class="row">
-          <form id="contact-form"
-      action="#contact-form-section"
-      method="get"
-      class="col-12 col-lg-8">
-
-  <div class="bg-white border rounded-3 p-3 p-md-4">
-    <p class="small text-body-secondary mb-4">
-      All fields are required.
-    </p>
-
-    <div class="row g-3">
-
-      <!-- Name -->
-      <div class="col-12 col-md-6">
-        <label for="cf-name" class="form-label fw-semibold">
-          Name
-        </label>
-
-        <input type="text"
-               class="form-control"
-               id="cf-name"
-               name="name"
-               placeholder="Your full name"
-               autocomplete="name"
-               required>
-      </div>
-
-      <!-- Email with an input group -->
-      <div class="col-12 col-md-6">
-        <label for="cf-email" class="form-label fw-semibold">
-          Email
-        </label>
-
-        <div class="input-group">
-          <span class="input-group-text" aria-hidden="true">@</span>
-
-          <input type="email"
-                 class="form-control"
-                 id="cf-email"
-                 name="email"
-                 placeholder="you@example.com"
-                 autocomplete="email"
-                 required>
-        </div>
-      </div>
-
-      <!-- Topic -->
-      <div class="col-12">
-        <label for="cf-topic" class="form-label fw-semibold">
-          Dining spot
-        </label>
-
-        <select class="form-select"
-                id="cf-topic"
-                name="topic"
-                required>
-          <option value="" selected disabled>Choose a dining spot</option>
-          <option value="general">General question</option>
-          <option value="cafeteria">Cafeteria</option>
-          <option value="coffee-lake">Coffee Lake</option>
-          <option value="sheker">Sheker</option>
-          <option value="mokko">Mokko</option>
-        </select>
-      </div>
-
-      <!-- Message -->
-      <div class="col-12">
-        <label for="cf-message" class="form-label fw-semibold">
-          Message
-        </label>
-
-        <textarea class="form-control"
-                  id="cf-message"
-                  name="message"
-                  rows="5"
-                  placeholder="Write your question or suggestion"
-                  required></textarea>
-      </div>
-
-      <!-- Submit -->
-      <div class="col-12">
-        <div class="d-grid d-sm-flex">
-          <button type="submit"
-                  class="btn btn-success btn-lg rounded-pill px-4">
-            Send message
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</form>
+        <h2 id="form-title" class="mb-3">Try the contact form</h2>
+        <div class="row row-cols-1 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body p-3 p-sm-4">
+                <p class="content-note p-3 mb-4" id="demo-notice">
+                  <strong>Demo form: messages are not sent.</strong> Your
+                  entries stay in this browser and are not saved. Use the team’s
+                  email or Telegram links for a real message.
+                </p>
+                <noscript
+                  ><p>
+                    This demo needs JavaScript. Please use the contact links
+                    above.
+                  </p></noscript
+                >
+                <form
+                  id="contact-form"
+                  action="contact.html#contact-form-section"
+                  method="post"
+                  aria-describedby="demo-notice"
+                >
+                  <fieldset id="contact-fields" disabled>
+                    <legend class="visually-hidden">
+                      Demo message details
+                    </legend>
+                    <p class="small mb-4">All fields are required.</p>
+                    <div class="row row-cols-1 g-4">
+                      <div class="col col-md-6">
+                        <label for="cf-name" class="form-label">Name</label
+                        ><input
+                          class="form-control"
+                          id="cf-name"
+                          name="name"
+                          type="text"
+                          autocomplete="name"
+                          required
+                          maxlength="120"
+                          placeholder="Your full name">
+                      </div>
+                      <div class="col col-md-6">
+                        <label for="cf-email" class="form-label">Email</label
+                        ><input
+                          class="form-control"
+                          id="cf-email"
+                          name="email"
+                          type="email"
+                          autocomplete="email"
+                          required
+                          maxlength="254"
+                          placeholder="you@example.com">
+                      </div>
+                      <div class="col">
+                        <label for="cf-topic" class="form-label"
+                          >Dining spot</label
+                        ><select
+                          class="form-select"
+                          id="cf-topic"
+                          name="topic"
+                          required
+                        >
+                          <option value="" selected disabled>
+                            Choose a dining spot
+                          </option>
+                          <option value="general">General question</option>
+                          <option value="cafeteria">Cafeteria</option>
+                          <option value="coffee-lake">Coffee Lake</option>
+                          <option value="sheker">Sheker</option>
+                          <option value="mokko">Mokko</option>
+                        </select>
+                      </div>
+                      <div class="col">
+                        <label for="cf-message" class="form-label"
+                          >Message</label
+                        ><textarea
+                          class="form-control"
+                          id="cf-message"
+                          name="message"
+                          rows="5"
+                          required
+                          maxlength="3000"
+                          placeholder="Write your question or suggestion"
+                        ></textarea>
+                      </div>
+                      <div class="col">
+                        <button type="submit" class="btn btn-success">
+                          Submit demo message
+                        </button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+                <p
+                  id="form-status"
+                  class="form-status mb-0"
+                  role="status"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
-
-    <footer id="site-footer" class="border-top bg-white py-4 mt-4">
+    <footer class="site-footer border-top py-4">
       <div
-        class="container d-flex flex-column flex-lg-row justify-content-between gap-2"
+        class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
       >
-        <p class="small text-body-secondary mb-0">
-          © 2026 AITU Eateries — educational project, Astana IT University.
+        <p class="small mb-0">
+          © 2026 AITU Eateries · Astana IT University<br>Educational project ·
+          SE-2504
         </p>
-        <p class="small text-body-secondary mb-0">
-          Team: Anarbekov Ramazan, Makhymetov Amir
+        <p class="small mb-0">
+          Team: Ramazan Anarbekov &amp; Amir Makhymetov<br>Page author: Amir
+          Makhymetov
         </p>
-        <a class="small link-success" href="media-queries.html"
-          >CSS media queries demo</a
-        >
       </div>
     </footer>
-
-    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
   </body>
 </html>

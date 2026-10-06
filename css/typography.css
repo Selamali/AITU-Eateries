@@ -1,5 +1,4 @@
-/* Task 1: mobile-first font sizes shared by both parts of the assignment.
-   Mobile: <768px. Tablet: 768-991px. Desktop: >=992px. */
+/* Mobile first: <768px, 768–991px, >=992px. */
 :root {
   --font-body: "Mulish", Arial, sans-serif;
   --font-display: "Arima Madurai", Georgia, serif;
@@ -25,11 +24,19 @@ h2 {
 h3 {
   font-size: 1.125rem;
 }
-p {
+p,
+li,
+td,
+th {
   font-size: 1rem;
 }
 .lead {
   font-size: 1.0625rem;
+  font-weight: 400;
+}
+small,
+.small {
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   h1 {
@@ -41,7 +48,10 @@ p {
   h3 {
     font-size: 1.25rem;
   }
-  p {
+  p,
+  li,
+  td,
+  th {
     font-size: 1.0625rem;
   }
   .lead {
@@ -58,7 +68,10 @@ p {
   h3 {
     font-size: 1.375rem;
   }
-  p {
+  p,
+  li,
+  td,
+  th {
     font-size: 1.125rem;
   }
   .lead {
