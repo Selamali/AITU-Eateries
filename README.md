@@ -11,7 +11,7 @@ A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT Univers
 ## Pages and authors
 
 | File  | What the page contains |
-| --- | --- | --- |
+| --- | --- |
 | `index.html` | Introduction, links to useful sections, campus map and a twelve-photo dining tour |
 | `eateries.html` | Four dining cards, locations, menu-category links, opening hours and a photo gallery |
 | `menu.html` | Navigation between four menus, portion and price tables, and a coffee-price comparison |
