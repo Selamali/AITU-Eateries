@@ -300,17 +300,20 @@ small,
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-/* CSS: white caption on a dark overlay; transitions control its appearance. */
+
+/* Gallery captions: cream background and green accents */
 .gallery-item figcaption {
-  color: white;
-  background: rgba(0, 0, 0, 0.85);
+  color: #17452b;
+  background: rgba(247, 248, 243, 0.96);
+  border-top: 3px solid var(--color-action);
+  backdrop-filter: blur(8px);
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
-/* CSS: secondary caption text inherits white instead of the global muted color. */
+
 .gallery-item figcaption .small {
-  color: inherit;
+  color: #52634f;
 }
 /*
   CSS media query: apply hover effects to precise pointing devices such as a mouse; touch
