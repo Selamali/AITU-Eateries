@@ -34,6 +34,7 @@
       Loaded last so these rules can customize Bootstrap.
     -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/site.js" defer></script>
   </head>
   <!--
     Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
@@ -423,6 +424,7 @@
       -->
       <section class="container py-4 py-lg-5" aria-labelledby="hours-title">
         <h2 id="hours-title" class="mb-3">Hours at a glance</h2>
+        <p id="astana-time" class="astana-time mb-4">Loading current time...</p>
         <!--
           Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
           adds the border and radius; tabindex="0" makes the region keyboard-focusable.
@@ -479,6 +481,81 @@
           Last checked: <time datetime="2026-10-06">6 October 2026</time>. Hours
           retained from the project’s base information.
         </p>
+      </section>
+      <!-- Task 2: each question independently opens its answer through site.js. -->
+      <section class="container py-4 py-lg-5" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="mb-3">Frequently Asked Questions</h2>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-location"
+          >
+            Where are the dining spots located?
+          </button>
+          <div id="faq-location" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="px-3 pb-3 mb-0">
+                All four dining spots are located on the 1st floor of building C1
+                at Astana IT University.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-saturday"
+          >
+            Which dining spots are open on Saturdays?
+          </button>
+          <div id="faq-saturday" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="px-3 pb-3 mb-0">
+                Coffee Lake and Sheker are open on Saturdays. Coffee Lake operates
+                from 9:00 to 20:00, and Sheker from 10:00 to 19:30.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-sunday"
+          >
+            Are any dining spots open on Sundays?
+          </button>
+          <div id="faq-sunday" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="px-3 pb-3 mb-0">
+                No. All four dining spots are closed on Sundays.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-menus"
+          >
+            Where can I find the menus?
+          </button>
+          <div id="faq-menus" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="px-3 pb-3 mb-0">
+                You can visit the Menu page or use the View menu links on the
+                dining spot cards.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
       <!--
         HTML: campus photo gallery. Bootstrap positioning utilities place captions over the

@@ -34,6 +34,7 @@
       Loaded last so these rules can customize Bootstrap.
     -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/site.js" defer></script>
   </head>
   <!--
     Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
@@ -156,9 +157,20 @@
               Bootstrap btn and btn-success style this link as a button. Custom CSS
               .hero-cta sets its size and shadow; href opens Dining Spots.
             -->
-            <a class="btn btn-success hero-cta" href="eateries.html"
-              >See all dining spots</a
-            >
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <a class="btn btn-success hero-cta" href="eateries.html"
+                >See all dining spots</a
+              >
+              <button
+                type="button"
+                id="change-bg-button"
+                class="btn btn-outline-success page-color-button"
+                aria-label="Change page color"
+                title="Change page color"
+              >
+                <span class="color-swatch" aria-hidden="true"></span>
+              </button>
+            </div>
           </div>
           <!--
             HTML image: eager/high prioritizes the main photo. width/height reserve its
