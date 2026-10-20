@@ -270,7 +270,8 @@
                   HTML: editable contact-form fields. The control below uses type="button",
                   so entered values stay in the fields when it is pressed.
                 -->
-                <form id="contact-form" method="post">
+                <form id="contact-form" method="post"
+      onsubmit="event.preventDefault(); document.getElementById('form-status').textContent = 'Demo form: validation passed. No message was sent.';">
                   <!--
                     HTML fieldset groups related fields; legend names the group. Bootstrap
                     visually-hidden keeps the legend available to screen readers without
@@ -368,9 +369,12 @@
                           submit or reload. Bootstrap btn btn-success styles it; required
                           fields are not validated by this button.
                         -->
-                        <button type="button" class="btn btn-success">
-                          Send message
+                        <button type="submit" class="btn btn-success">
+                              Send message
                         </button>
+                        <p id="form-status"
+                              class="text-success small mt-3 mb-0"
+                              role="status"></p>
                       </div>
                     </div>
                   </fieldset>
