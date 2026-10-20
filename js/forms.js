@@ -1,4 +1,3 @@
-// Find the registration form.
 const registrationForm = document.getElementById("registration-form");
 
 if (registrationForm) {
@@ -6,71 +5,100 @@ if (registrationForm) {
   const emailInput = document.getElementById("reg-email");
   const passwordInput = document.getElementById("reg-password");
   const confirmInput = document.getElementById("reg-confirm");
+
+  const nameError = document.getElementById("reg-name-error");
+  const emailError = document.getElementById("reg-email-error");
+  const passwordError = document.getElementById("reg-password-error");
+  const confirmError = document.getElementById("reg-confirm-error");
+
   const statusMessage = document.getElementById("registration-status");
 
-  // Show or clear an error.
-  function showError(input, message) {
-    const error = document.getElementById(input.id + "-error");
-
-    error.textContent = message;
-    input.classList.toggle("is-invalid", message !== "");
-    input.setAttribute("aria-invalid", message !== "");
-  }
-
-  // Check the form on submit.
   registrationForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const inputs = [
-      nameInput,
-      emailInput,
-      passwordInput,
-      confirmInput
-    ];
-
-    // Clear previous results.
+    // Clear old messages
     statusMessage.textContent = "";
 
-    inputs.forEach(function (input) {
-      showError(input, "");
-    });
+    nameError.textContent = "";
+    emailError.textContent = "";
+    passwordError.textContent = "";
+    confirmError.textContent = "";
 
-    // Check required fields.
-    inputs.forEach(function (input) {
-      if (input.value.trim() === "") {
-        showError(input, "This field is required.");
-      }
-    });
+    // Remove old red borders
+    nameInput.classList.remove("is-invalid");
+    emailInput.classList.remove("is-invalid");
+    passwordInput.classList.remove("is-invalid");
+    confirmInput.classList.remove("is-invalid");
 
-    // Check the email format.
-    if (emailInput.value.trim() !== "" &&
-        !emailInput.checkValidity()) {
-      showError(emailInput, "Enter a valid email address.");
+    // Reset accessibility state
+    nameInput.setAttribute("aria-invalid", "false");
+    emailInput.setAttribute("aria-invalid", "false");
+    passwordInput.setAttribute("aria-invalid", "false");
+    confirmInput.setAttribute("aria-invalid", "false");
+
+
+    // Check name
+    if (nameInput.value.trim() === "") {
+      nameError.textContent = "This field is required.";
+      nameInput.classList.add("is-invalid");
+      nameInput.setAttribute("aria-invalid", "true");
     }
 
-    // Check the password length.
-    if (passwordInput.value.trim() !== "" &&
-        passwordInput.value.length < 8) {
-      showError(passwordInput, "Use at least 8 characters.");
+
+    // Check email
+    if (emailInput.value.trim() === "") {
+      emailError.textContent = "This field is required.";
+      emailInput.classList.add("is-invalid");
+      emailInput.setAttribute("aria-invalid", "true");
+    } 
+    else if (!emailInput.checkValidity()) {
+      emailError.textContent = "Enter a valid email address.";
+      emailInput.classList.add("is-invalid");
+      emailInput.setAttribute("aria-invalid", "true");
     }
 
-    // Check password confirmation.
-    if (confirmInput.value.trim() !== "" &&
-        confirmInput.value !== passwordInput.value) {
-      showError(confirmInput, "Passwords do not match.");
+
+    // Check password
+    if (passwordInput.value.trim() === "") {
+      passwordError.textContent = "This field is required.";
+      passwordInput.classList.add("is-invalid");
+      passwordInput.setAttribute("aria-invalid", "true");
+    } 
+    else if (passwordInput.value.length < 8) {
+      passwordError.textContent = "Use at least 8 characters.";
+      passwordInput.classList.add("is-invalid");
+      passwordInput.setAttribute("aria-invalid", "true");
     }
 
-    // Stop if a field is invalid.
-    const firstError = registrationForm.querySelector(".is-invalid");
+
+    // Check confirm password
+    if (confirmInput.value.trim() === "") {
+      confirmError.textContent = "This field is required.";
+      confirmInput.classList.add("is-invalid");
+      confirmInput.setAttribute("aria-invalid", "true");
+    } 
+    else if (confirmInput.value !== passwordInput.value) {
+      confirmError.textContent = "Passwords do not match.";
+      confirmInput.classList.add("is-invalid");
+      confirmInput.setAttribute("aria-invalid", "true");
+    }
+
+
+    // Find first incorrect field
+    const firstError =
+      registrationForm.querySelector(".is-invalid");
 
     if (firstError) {
       statusMessage.className = "text-danger mt-3 mb-0";
-      statusMessage.textContent = "Please correct the highlighted fields.";
+      statusMessage.textContent =
+        "Please correct the highlighted fields.";
+
       firstError.focus();
       return;
     }
 
-    // Show a successful demo result.
+
+    // Everything is correct
     statusMessage.className = "text-success mt-3 mb-0";
     statusMessage.textContent =
       "Validation passed! Demo only: no account was created.";
@@ -78,12 +106,12 @@ if (registrationForm) {
     registrationForm.reset();
   });
 
-  // Clear the old result when editing.
+
+  // Clear success/error status when user starts typing again
   registrationForm.addEventListener("input", function () {
     statusMessage.textContent = "";
   });
 }
-
 
 // Task 3: subscription popup.
 const subscriptionPopup = document.getElementById("subscription-popup");
@@ -94,36 +122,53 @@ if (subscriptionPopup) {
   const subscriptionForm = document.getElementById("subscription-form");
   const subscriptionStatus = document.getElementById("subscription-status");
 
-  // Open the popup.
+
+  // Open popup
   openButton.addEventListener("click", function () {
+
+    // Clear old form data
     subscriptionForm.reset();
+
+    // Clear old message
     subscriptionStatus.textContent = "";
+
+    // Show popup
     subscriptionPopup.showModal();
   });
 
-  // Close with the button.
+
+  // Close popup
   closeButton.addEventListener("click", function () {
     subscriptionPopup.close();
   });
 
-  // Close when clicking the backdrop.
+
+  // Close popup when clicking outside
   subscriptionPopup.addEventListener("click", function (event) {
+
     if (event.target === subscriptionPopup) {
       subscriptionPopup.close();
     }
+
   });
 
-  // Show the demo result.
+
+  // Submit subscription form
   subscriptionForm.addEventListener("submit", function (event) {
+
+    // Do not reload the page
     event.preventDefault();
 
+    // Show success message
     subscriptionStatus.textContent =
       "Email accepted! Demo only: no subscription was created.";
 
+    // Clear email field
     subscriptionForm.reset();
   });
 
-  // Clear the result when editing.
+
+  // Clear old message when user starts typing
   subscriptionForm.addEventListener("input", function () {
     subscriptionStatus.textContent = "";
   });
