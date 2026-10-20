@@ -944,3 +944,21 @@ h3 {
     gap: 0.5rem;
   }
 }
+/* task 3:Subscription popup */
+.subscription-popup {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100vh - 32px);
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: 16px;
+  background: #fff;
+  color: inherit;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark background behind the popup */
+.subscription-popup::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}

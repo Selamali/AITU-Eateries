@@ -5,6 +5,7 @@
     follow the device width. Title, description and author identify this page.
   -->
   <head>
+    <script src="js/forms.js" defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AITU Eateries — Menu</title>
@@ -112,16 +113,34 @@
         the sidebar on wide screens.
       -->
       <section
-        class="page-intro pt-4 pt-lg-5 pb-3 menu-intro"
-        aria-labelledby="page-title"
-      >
-        <h1 id="page-title" class="mb-3">Menu</h1>
-        <p class="lead mb-3">Find your next coffee, snack or lunch.</p>
-        <p class="menu-note small mb-0">
-          Prices in ₸. Demo additions are illustrative; confirm prices and
-          availability at the counter.
-        </p>
-      </section>
+  class="page-intro pt-4 pt-lg-5 pb-3 menu-intro"
+  aria-labelledby="page-title">
+
+  <div class="d-flex flex-column flex-sm-row
+              justify-content-between align-items-sm-center gap-3 mb-3">
+
+    <div>
+      <h1 id="page-title" class="mb-2">Menu</h1>
+      <p class="lead mb-0">
+        Find your next coffee, snack or lunch.
+      </p>
+    </div>
+
+    <!-- Task 3: open the subscription popup -->
+    <button
+      type="button"
+      id="open-subscription"
+      class="btn btn-success flex-shrink-0 align-self-start
+             align-self-sm-center">
+      Get menu updates
+    </button>
+  </div>
+
+  <p class="menu-note small mb-0">
+    Prices in ₸. Demo additions are illustrative; confirm prices and
+    availability at the counter.
+  </p>
+</section>
       <!--
         HTML anchors link to sections on this page. Bootstrap d-flex enables Flexbox; CSS
         uses a horizontal strip below 992 px and a vertical sidebar from 992 px, both sticky
@@ -2281,6 +2300,8 @@
           </p>
         </section>
       </div>
+
+      
     </main>
     <!--
       HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
@@ -2300,5 +2321,55 @@
         </p>
       </div>
     </footer>
+
+    <!-- Task 3: subscription popup -->
+<dialog
+  id="subscription-popup"
+  class="subscription-popup"
+  aria-labelledby="subscription-title">
+
+  <div class="p-4">
+    <div class="d-flex justify-content-between align-items-start gap-3">
+      <h2 id="subscription-title" class="h4">
+        Subscribe to menu updates
+      </h2>
+
+      <button
+        type="button"
+        id="close-subscription"
+        class="btn-close"
+        aria-label="Close subscription form">
+      </button>
+    </div>
+
+    <p>Enter your email to follow menu updates.</p>
+
+    <form id="subscription-form">
+      <div class="mb-3">
+        <label for="subscription-email" class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="subscription-email"
+          class="form-control"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-success">
+        Subscribe
+      </button>
+
+      <p
+        id="subscription-status"
+        class="text-success mt-3 mb-0"
+        role="status">
+      </p>
+    </form>
+  </div>
+</dialog>
   </body>
 </html>
