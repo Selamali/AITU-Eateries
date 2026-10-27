@@ -128,6 +128,15 @@ textarea:focus-visible,
   font-weight: 700;
   text-decoration: underline;
 }
+/* Make keyboard focus distinct from the current-page underline. */
+.primary-links .nav-link:focus {
+  outline: 3px solid var(--color-action);
+  outline-offset: 3px;
+  border-radius: 6px;
+  background: #eef6ef;
+  color: var(--color-action-hover);
+  box-shadow: none;
+}
 /*
   Bootstrap + CSS Flexbox: shared pill shape, padding, 44 px minimum height and centered
   button content.
@@ -443,7 +452,7 @@ small,
   --bs-table-bg: #d1e7dd;
   --bs-table-color: #1b1d19;
 }
-/* CSS: secondary color for menu and photo-tour explanations. */
+/* CSS: secondary color for menu and gallery explanations. */
 .menu-note {
   color: var(--color-text-soft);
 }
@@ -543,70 +552,6 @@ textarea.form-control {
 .primary-links {
   margin-left: auto;
 }
-/*
-  CSS + Flexbox: horizontal scrolling photo row; scroll-snap-type aligns the viewport with a
-  slide.
-*/
-.photo-tour {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  border-radius: var(--radius);
-  scrollbar-color: #a0aa9a #e8ece2;
-}
-/*
-  CSS + Flexbox: flex: 0 0 100% gives each slide the full strip width. Relative positioning
-  anchors its arrows.
-*/
-.tour-photo {
-  position: relative;
-  flex: 0 0 100%;
-  min-width: 0;
-  height: 500px;
-  scroll-snap-align: start;
-}
-/* CSS: fill each photo frame and crop from the center. */
-.tour-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-/*
-  CSS positioning: place arrows halfway down the photo. Flexbox centers the symbol inside a
-  circular control.
-*/
-.photo-arrow {
-  position: absolute;
-  top: calc(50% - 24px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  color: white;
-  background: #1b1d19cc;
-  font:
-    2.5rem/1 Arial,
-    sans-serif;
-  text-decoration: none;
-}
-/* CSS: arrow colors on hover or keyboard focus. */
-.photo-arrow:hover,
-.photo-arrow:focus-visible {
-  color: white;
-  background: var(--color-action-hover);
-  text-decoration: none;
-}
-/* CSS: place the previous-photo arrow near the left edge. */
-.photo-previous {
-  left: 1rem;
-}
-/* CSS: place the next-photo arrow near the right edge. */
-.photo-next {
-  right: 1rem;
-}
 /* CSS media query: below 576 px, the logo and page links occupy two header rows. */
 @media (max-width: 575.98px) {
   /* CSS: two-row header height used by sticky positions and anchor offsets. */
@@ -640,10 +585,6 @@ textarea.form-control {
   .hero-image {
     height: 180px;
     object-position: center 43%;
-  }
-  /* CSS: use 300 px photo-tour frames on phones. */
-  .tour-photo {
-    height: 300px;
   }
 }
 /* Task 5: a compact highlight for the live Astana clock. */
@@ -961,4 +902,255 @@ h3 {
 /* Dark background behind the popup */
 .subscription-popup::backdrop {
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Interactive gallery */
+.photo-guide .gallery-card {
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 8px 24px #1b1d1908;
+}
+
+.photo-guide .gallery-viewer {
+  margin: 0;
+}
+
+.photo-guide .gallery-image-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Fill the panel without stretching the photo's proportions. */
+.photo-guide .gallery-image {
+  width: 100%;
+  height: clamp(280px, 46vw, 560px);
+  object-fit: cover;
+  border-radius: 0;
+  background: var(--color-bg);
+  cursor: pointer;
+}
+
+/* Keep the sign visible when cropping this portrait photograph. */
+.photo-guide .gallery-image[src$="sheker-sign.jpg"] {
+  object-position: center 24%;
+}
+
+.photo-guide .gallery-arrow {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #ffffffcc;
+  border-radius: 50%;
+  background: #fffffff2;
+  color: var(--color-action-hover);
+  box-shadow: 0 3px 12px #1b1d1926;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.photo-guide .gallery-chevron {
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  pointer-events: none;
+}
+
+.photo-guide .gallery-arrow-previous .gallery-chevron {
+  transform: translateX(2px) rotate(-135deg);
+}
+
+.photo-guide .gallery-arrow-next .gallery-chevron {
+  transform: translateX(-2px) rotate(45deg);
+}
+
+.photo-guide .gallery-arrow-previous {
+  left: 1rem;
+}
+
+.photo-guide .gallery-arrow-next {
+  right: 1rem;
+}
+
+.photo-guide .gallery-arrow:hover:not(:disabled) {
+  background: var(--color-action);
+  color: white;
+}
+
+.photo-guide .gallery-arrow:focus {
+  outline: 3px solid white;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px var(--color-action-hover);
+}
+
+.photo-guide .gallery-arrow:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.photo-guide .gallery-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+}
+
+.photo-guide .gallery-caption {
+  min-height: 3em;
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.photo-guide .gallery-counter {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50rem;
+  background: #eef6ef;
+  color: var(--color-action-hover);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-guide .gallery-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #edf0e8;
+}
+
+.photo-guide .gallery-controls > .btn {
+  width: 100%;
+}
+
+.photo-guide .gallery-sound-message {
+  margin: 0.5rem 0 0;
+  color: var(--color-action-hover);
+}
+
+/* Space around the grid keeps raised thumbnails and focus outlines visible. */
+.photo-guide .gallery-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.625rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.photo-guide .gallery-thumbnail {
+  position: relative;
+  min-width: 0;
+  padding: 0.125rem;
+  border: 3px solid transparent;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.photo-guide .gallery-thumbnail img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--color-bg);
+}
+
+.photo-guide .gallery-thumbnail[aria-current="true"] {
+  border-color: var(--color-action);
+  transform: translateY(-4px);
+}
+
+.photo-guide .gallery-thumbnail:hover:not([aria-current="true"]) {
+  border-color: #b9cbb8;
+}
+
+/* A check mark identifies selection even without color or movement. */
+.photo-guide .gallery-selection-mark {
+  display: none;
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-action);
+  color: white;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.photo-guide .gallery-thumbnail[aria-current="true"] .gallery-selection-mark {
+  display: block;
+}
+
+.photo-guide .gallery-thumbnail:focus,
+.photo-guide .gallery-controls > .btn:focus {
+  outline: 3px solid var(--color-text);
+  outline-offset: 3px;
+}
+
+@media (min-width: 576px) {
+  .photo-guide .gallery-controls > .btn {
+    width: auto;
+  }
+
+  .photo-guide .gallery-thumbnails {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .photo-guide .gallery-status {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 6.25rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .photo-guide .gallery-caption {
+    min-height: 0;
+    font-size: 1.25rem;
+  }
+
+  .photo-guide .gallery-controls {
+    padding: 1rem 1.5rem;
+  }
+
+  .photo-guide .gallery-arrow {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 992px) {
+  .photo-guide .gallery-thumbnails {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-guide .gallery-thumbnail {
+    transition: none;
+  }
+
+  .photo-guide .gallery-thumbnail[aria-current="true"] {
+    transform: none;
+  }
 }

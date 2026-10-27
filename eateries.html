@@ -17,9 +17,9 @@
       HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
       home screen.
     -->
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
+    <link rel="icon" href="favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
     <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
     <!--
@@ -557,315 +557,288 @@
           </div>
         </div>
       </section>
-      <!--
-        HTML: campus photo gallery. Bootstrap positioning utilities place captions over the
-        photographs.
-      -->
+      <!-- Photo guide: HTML provides the initial view and every photo's data. -->
       <section
-        class="container py-4 py-lg-5"
+        class="photo-guide container py-4 py-lg-5"
         id="gallery"
         aria-labelledby="gallery-title"
       >
-        <h2 class="mb-3" id="gallery-title">Gallery</h2>
-
-        <p class="menu-note mb-3">
-          Explore our campus dining spots, food displays and sweet treats.
+        <h2 class="mb-3" id="gallery-title">Explore the spots</h2>
+        <p class="menu-note mb-4">
+          Choose a photo or use the arrows to explore. Find a spot you like,
+          then take a look at its menu. Click the large photo or a photo button,
+          then use the left and right arrow keys to browse. You can also reach
+          the buttons with Tab. Each photo change plays a short sound.
         </p>
 
-        <!--
-          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
-          row-cols-sm-2, row-cols-lg-3 set the column count; sm starts at 576 px, md at 768
-          px and lg at 992 px. g-4 sets row and column gutters.
-        -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-          <div class="col">
-            <!--
-              HTML figure: Our Cafeteria Cafeteria. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
+        <div class="gallery-card">
+          <figure class="gallery-viewer">
+            <div class="gallery-image-panel">
               <img
+                id="gallery-image"
+                class="gallery-image"
                 src="gallery/cafeteria-view.jpg"
                 alt="General view of the campus Cafeteria"
-                loading="lazy"
-                class="img-fluid"
                 width="1200"
                 height="900"
                 decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Our Cafeteria</strong>
-                <span class="d-block small mt-1">Cafeteria</span>
-              </figcaption>
-            </figure>
+              <button
+                type="button"
+                id="gallery-previous"
+                class="gallery-arrow gallery-arrow-previous"
+                aria-label="Previous photo"
+                title="Previous photo"
+                disabled
+              >
+                <span class="gallery-chevron" aria-hidden="true"></span>
+              </button>
+              <button
+                type="button"
+                id="gallery-next"
+                class="gallery-arrow gallery-arrow-next"
+                aria-label="Next photo"
+                title="Next photo"
+                disabled
+              >
+                <span class="gallery-chevron" aria-hidden="true"></span>
+              </button>
+            </div>
+            <!-- Only this short caption and count are announced after a change. -->
+            <figcaption class="gallery-status" role="status" aria-atomic="true">
+              <p id="gallery-caption" class="gallery-caption">Cafeteria — General view</p>
+              <p id="gallery-counter" class="gallery-counter">Photo 1 of 12</p>
+            </figcaption>
+          </figure>
+
+          <div class="gallery-controls">
+            <a id="gallery-menu" class="btn btn-success" href="menu.html#cafeteria">View Cafeteria menu</a>
           </div>
-          <div class="col">
-            <!--
-              HTML figure: Bakery Selection Cafeteria. Bootstrap position-relative anchors
-              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
-              on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/cafeteria-bakery.jpg"
-                alt="Selection of baked goods at the Cafeteria"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="898"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Bakery Selection</strong>
-                <span class="d-block small mt-1">Cafeteria</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Dairy Products Cafeteria. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/cafeteria-dairy.jpg"
-                alt="Dairy products displayed at the Cafeteria"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Dairy Products</strong>
-                <span class="d-block small mt-1">Cafeteria</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Welcome to Mokko Mokko. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/mokko-view.jpg"
-                alt="General view of the Mokko coffee shop"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="675"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Welcome to Mokko</strong>
-                <span class="d-block small mt-1">Mokko</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Sandwiches & Salads Mokko. Bootstrap position-relative anchors
-              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
-              on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/mokko-food.jpg"
-                alt="Sandwiches and salads displayed at Mokko"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Sandwiches &amp; Salads</strong>
-                <span class="d-block small mt-1">Mokko</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Chocolate & Snacks Mokko. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/mokko-snacks.jpg"
-                alt="Selection of packaged chocolate bars at Mokko"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Chocolate &amp; Snacks</strong>
-                <span class="d-block small mt-1">Mokko</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Welcome to Sheker Sheker. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/sheker-sign.jpg"
-                alt="Sheker coffee shop sign"
-                loading="lazy"
-                class="img-fluid"
-                width="900"
-                height="1200"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Welcome to Sheker</strong>
-                <span class="d-block small mt-1">Sheker</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Snacks & Sweet Treats Sheker. Bootstrap position-relative anchors
-              the overlaid caption; overflow-hidden clips the image. CSS reveals the caption
-              on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/sheker-food.jpg"
-                alt="Sandwiches, pancakes and cheesecake at Sheker"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Snacks &amp; Sweet Treats</strong>
-                <span class="d-block small mt-1">Sheker</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Cakes & Pastries Sheker. Bootstrap position-relative anchors the
-              overlaid caption; overflow-hidden clips the image. CSS reveals the caption on
-              hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/sheker-desserts.jpg"
-                alt="Selection of cakes and pastries at Sheker"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="745"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Cakes &amp; Pastries</strong>
-                <span class="d-block small mt-1">Sheker</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Welcome to Coffee Lake Coffee Lake. Bootstrap position-relative
-              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
-              caption on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/coffee-lake-view.jpg"
-                alt="General view of the Coffee Lake coffee shop"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="675"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Welcome to Coffee Lake</strong>
-                <span class="d-block small mt-1">Coffee Lake</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Sandwiches & Mochi Coffee Lake. Bootstrap position-relative
-              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
-              caption on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/coffee-lake-food.jpg"
-                alt="Sandwiches, mochi and other products at Coffee Lake"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Sandwiches &amp; Mochi</strong>
-                <span class="d-block small mt-1">Coffee Lake</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="col">
-            <!--
-              HTML figure: Ready-to-Go Meals Coffee Lake. Bootstrap position-relative
-              anchors the overlaid caption; overflow-hidden clips the image. CSS reveals the
-              caption on hover or focus and keeps it visible on touch screens.
-            -->
-            <figure
-              class="gallery-item h-100 m-0 position-relative overflow-hidden rounded-3"
-              tabindex="0"
-            >
-              <img
-                src="gallery/coffee-lake-boxes.jpg"
-                alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
-                loading="lazy"
-                class="img-fluid"
-                width="1200"
-                height="900"
-                decoding="async">
-              <figcaption class="position-absolute bottom-0 start-0 end-0 p-3">
-                <strong class="d-block">Ready-to-Go Meals</strong>
-                <span class="d-block small mt-1">Coffee Lake</span>
-              </figcaption>
-            </figure>
-          </div>
+        </div>
+        <p id="gallery-sound-message" class="gallery-sound-message small" role="status"></p>
+        <audio id="gallery-audio" src="audio/photo-click.mp3" preload="none"></audio>
+        <noscript>
+          <p class="mt-3">Enable JavaScript to select photos and use gallery sound. The first photo and its menu link are available above.</p>
+        </noscript>
+
+        <!-- Native buttons retain standard keyboard activation and focus. -->
+        <div class="gallery-thumbnails">
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Cafeteria — General view"
+            data-menu="menu.html#cafeteria"
+            data-spot="Cafeteria"
+            aria-label="Show photo 1: General view of the campus Cafeteria"
+            aria-current="true"
+            disabled
+          >
+            <img
+              src="gallery/cafeteria-view.jpg"
+              alt="General view of the campus Cafeteria"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Cafeteria — Bakery Selection"
+            data-menu="menu.html#cafeteria"
+            data-spot="Cafeteria"
+            aria-label="Show photo 2: Selection of baked goods at the Cafeteria"
+            disabled
+          >
+            <img
+              src="gallery/cafeteria-bakery.jpg"
+              alt="Selection of baked goods at the Cafeteria"
+              width="1200"
+              height="898"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Cafeteria — Dairy Products"
+            data-menu="menu.html#cafeteria"
+            data-spot="Cafeteria"
+            aria-label="Show photo 3: Dairy products displayed at the Cafeteria"
+            disabled
+          >
+            <img
+              src="gallery/cafeteria-dairy.jpg"
+              alt="Dairy products displayed at the Cafeteria"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Mokko — General view"
+            data-menu="menu.html#mokko"
+            data-spot="Mokko"
+            aria-label="Show photo 4: General view of the Mokko coffee shop"
+            disabled
+          >
+            <img
+              src="gallery/mokko-view.jpg"
+              alt="General view of the Mokko coffee shop"
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Mokko — Sandwiches &amp; Salads"
+            data-menu="menu.html#mokko"
+            data-spot="Mokko"
+            aria-label="Show photo 5: Sandwiches and salads displayed at Mokko"
+            disabled
+          >
+            <img
+              src="gallery/mokko-food.jpg"
+              alt="Sandwiches and salads displayed at Mokko"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Mokko — Chocolate &amp; Snacks"
+            data-menu="menu.html#mokko"
+            data-spot="Mokko"
+            aria-label="Show photo 6: Selection of packaged chocolate bars at Mokko"
+            disabled
+          >
+            <img
+              src="gallery/mokko-snacks.jpg"
+              alt="Selection of packaged chocolate bars at Mokko"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Sheker — Coffee shop sign"
+            data-menu="menu.html#sheker"
+            data-spot="Sheker"
+            aria-label="Show photo 7: Sheker coffee shop sign"
+            disabled
+          >
+            <img
+              src="gallery/sheker-sign.jpg"
+              alt="Sheker coffee shop sign"
+              width="900"
+              height="1200"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Sheker — Snacks &amp; Sweet Treats"
+            data-menu="menu.html#sheker"
+            data-spot="Sheker"
+            aria-label="Show photo 8: Sandwiches, pancakes and cheesecake at Sheker"
+            disabled
+          >
+            <img
+              src="gallery/sheker-food.jpg"
+              alt="Sandwiches, pancakes and cheesecake at Sheker"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Sheker — Cakes &amp; Pastries"
+            data-menu="menu.html#sheker"
+            data-spot="Sheker"
+            aria-label="Show photo 9: Selection of cakes and pastries at Sheker"
+            disabled
+          >
+            <img
+              src="gallery/sheker-desserts.jpg"
+              alt="Selection of cakes and pastries at Sheker"
+              width="1200"
+              height="745"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Coffee Lake — General view"
+            data-menu="menu.html#coffee-lake"
+            data-spot="Coffee Lake"
+            aria-label="Show photo 10: General view of the Coffee Lake coffee shop"
+            disabled
+          >
+            <img
+              src="gallery/coffee-lake-view.jpg"
+              alt="General view of the Coffee Lake coffee shop"
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Coffee Lake — Sandwiches &amp; Mochi"
+            data-menu="menu.html#coffee-lake"
+            data-spot="Coffee Lake"
+            aria-label="Show photo 11: Sandwiches, mochi and other products at Coffee Lake"
+            disabled
+          >
+            <img
+              src="gallery/coffee-lake-food.jpg"
+              alt="Sandwiches, mochi and other products at Coffee Lake"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
+          <button
+            type="button"
+            class="gallery-thumbnail"
+            data-caption="Coffee Lake — Ready-to-Go Meals"
+            data-menu="menu.html#coffee-lake"
+            data-spot="Coffee Lake"
+            aria-label="Show photo 12: Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
+            disabled
+          >
+            <img
+              src="gallery/coffee-lake-boxes.jpg"
+              alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
+              width="1200"
+              height="900"
+              loading="lazy"
+              decoding="async">
+            <span class="gallery-selection-mark" aria-hidden="true">✓</span>
+          </button>
         </div>
       </section>
     </main>
