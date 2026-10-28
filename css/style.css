@@ -257,15 +257,14 @@ small,
 .feature-card p {
   color: var(--color-text-soft);
 }
-/*
-  CSS: hero photo fills its width; object-fit: cover crops without distortion and box-shadow
-  adds depth.
-*/
+/* CSS: show the complete transparent hero illustration without cropping or a frame. */
 .hero-image {
   width: 100%;
-  max-height: 560px;
-  object-fit: cover;
-  box-shadow: 0 16px 32px #1b1d1920;
+  max-width: 560px;
+  height: auto;
+  margin-inline: auto;
+  object-fit: contain;
+  border-radius: 0;
 }
 /* CSS: full-width map with a thin border. */
 .campus-map {
@@ -579,12 +578,10 @@ textarea.form-control {
     width: 100%;
   }
 }
-/* CSS media query: reduce large photo heights below 768 px. */
+/* CSS media query: keep the full illustration compact on smaller screens. */
 @media (max-width: 767.98px) {
-  /* CSS: turn the hero photo into a 180 px strip; object-position selects the visible crop. */
   .hero-image {
-    height: 180px;
-    object-position: center 43%;
+    max-width: 360px;
   }
 }
 /* Task 5: a compact highlight for the live Astana clock. */
@@ -681,7 +678,7 @@ h3 {
 .hero h1 {
   max-width: 18ch;
 }
-/* CSS: keep introductory lines short beside the hero photo. */
+/* CSS: keep introductory lines short beside the hero illustration. */
 .hero .lead {
   max-width: 44ch;
 }
