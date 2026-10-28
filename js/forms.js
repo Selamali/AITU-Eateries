@@ -250,10 +250,10 @@ if (!contactForm.reportValidity()) {
   contactEmailError.textContent = "";
   contactStatus.textContent = "";
 }
-  }
+  
 
   contactForm.addEventListener("submit", handleContactSubmit);
   contactEmail.addEventListener("input", clearContactEmailError);
-
+}
 
 
