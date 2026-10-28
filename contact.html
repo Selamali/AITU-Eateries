@@ -271,9 +271,9 @@
                   HTML: editable contact-form fields. The control below uses type="button",
                   so entered values stay in the fields when it is pressed.
                 -->
-                <form id="contact-form" method="post"
-      onsubmit="event.preventDefault(); document.getElementById('form-status').textContent = 'Demo form: validation passed. No message was sent.';">
-                  <!--
+                <form id="contact-form" method="post" novalidate>
+                                                        
+                <!--
                     HTML fieldset groups related fields; legend names the group. Bootstrap
                     visually-hidden keeps the legend available to screen readers without
                     displaying it.
@@ -311,16 +311,18 @@
                         col-md-6 set appearance and responsive width.
                       -->
                       <div class="col col-md-6">
-                        <label for="cf-email" class="form-label">Email</label
-                        ><input
-                          class="form-control"
-                          id="cf-email"
-                          name="email"
-                          type="email"
-                          autocomplete="email"
-                          required
-                          maxlength="254"
-                          placeholder="you@example.com">
+                        <label for="cf-email" class="form-label">Email</label>
+                        <input
+                        class="form-control"
+                        id="cf-email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        required
+                        maxlength="254"
+                        placeholder="you@example.com"
+                        aria-describedby="cf-email-error">
+                        <div id="cf-email-error" class="invalid-feedback"></div>
                       </div>
                       <!--
                         HTML select: option elements supply the choices; selected disabled

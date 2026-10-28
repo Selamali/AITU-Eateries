@@ -37,25 +37,46 @@ if (registrationForm) {
     confirmInput.setAttribute("aria-invalid", "false");
 
 
-    // Check name
-    if (nameInput.value.trim() === "") {
-      nameError.textContent = "This field is required.";
-      nameInput.classList.add("is-invalid");
-      nameInput.setAttribute("aria-invalid", "true");
-    }
+    // Check name.
+const name = nameInput.value.trim();
 
+const hasLetter = /[a-zа-яёәғқңөұүһі]/i.test(name);
 
-    // Check email
-    if (emailInput.value.trim() === "") {
-      emailError.textContent = "This field is required.";
-      emailInput.classList.add("is-invalid");
-      emailInput.setAttribute("aria-invalid", "true");
-    } 
-    else if (!emailInput.checkValidity()) {
-      emailError.textContent = "Enter a valid email address.";
-      emailInput.classList.add("is-invalid");
-      emailInput.setAttribute("aria-invalid", "true");
-    }
+const hasLink =
+  /https?:\/\/|www\.|[a-zа-яёәғқңөұүһі0-9-]+\.[a-zа-яёәғқңөұүһі]{2,}/i.test(name);
+
+if (name === "") {
+  nameError.textContent = "Enter your name.";
+} else if (name.length < 2) {
+  nameError.textContent = "Your name must contain at least 2 characters.";
+} else if (hasLink) {
+  nameError.textContent = "Links are not allowed in your name.";
+} else if (!hasLetter) {
+  nameError.textContent = "Your name must contain at least one letter.";
+}
+
+if (nameError.textContent !== "") {
+  nameInput.classList.add("is-invalid");
+  nameInput.setAttribute("aria-invalid", "true");
+}
+
+// Check email.
+const email = emailInput.value.trim();
+emailInput.value = email;
+
+const hasValidDomain = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[a-z]{2,}$/i.test(email);
+
+if (email === "") {
+  emailError.textContent = "Enter your email.";
+} else if (!emailInput.checkValidity() || !hasValidDomain) {
+  emailError.textContent =
+    "Enter a valid email with at least 2 letters after the last dot.";
+}
+
+if (emailError.textContent !== "") {
+  emailInput.classList.add("is-invalid");
+  emailInput.setAttribute("aria-invalid", "true");
+}
 
 
     // Check password
@@ -173,3 +194,66 @@ if (subscriptionPopup) {
     subscriptionStatus.textContent = "";
   });
 }
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  const contactEmail = document.getElementById("cf-email");
+  const contactEmailError = document.getElementById("cf-email-error");
+  const contactStatus = document.getElementById("form-status");
+
+  function handleContactSubmit(event) {
+    event.preventDefault();
+
+    const email = contactEmail.value.trim();
+    contactEmail.value = email;
+
+    const  hasValidDomain =/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[a-z]{2,}$/i.test(email);
+
+    if (!contactEmail.checkValidity() || !hasValidDomain) {
+      contactEmailError.textContent = "";
+contactStatus.textContent = "";
+
+if (email === "") {
+  contactEmailError.textContent = "Enter your email.";
+} else if (!contactEmail.checkValidity()) {
+  contactEmailError.textContent =
+    "Enter a valid email address, for example 123@mail.kz.";
+} else if (!hasValidDomain) {
+  contactEmailError.textContent =
+    "The domain must end with at least 2 letters, for example .kz or .com.";
+}
+
+if (contactEmailError.textContent !== "") {
+  contactEmail.classList.add("is-invalid");
+  contactEmail.setAttribute("aria-invalid", "true");
+  contactEmail.focus();
+  return;
+}
+}
+
+    contactEmail.classList.remove("is-invalid");
+    contactEmail.setAttribute("aria-invalid", "false");
+
+    // Check the remaining required fields.
+if (!contactForm.reportValidity()) {
+  contactStatus.textContent = "";
+  return;
+}
+    contactStatus.textContent =
+      "Demo form: validation passed. No message was sent.";
+  }
+
+  function clearContactEmailError() {
+  contactEmail.classList.remove("is-invalid");
+  contactEmail.setAttribute("aria-invalid", "false");
+  contactEmailError.textContent = "";
+  contactStatus.textContent = "";
+}
+  }
+
+  contactForm.addEventListener("submit", handleContactSubmit);
+  contactEmail.addEventListener("input", clearContactEmailError);
+
+
+
