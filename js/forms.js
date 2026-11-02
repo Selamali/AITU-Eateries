@@ -257,3 +257,14 @@ if (!contactForm.reportValidity()) {
 }
 
 
+const loginDialog = document.getElementById("login-dialog");
+
+if (loginDialog) {
+  document.getElementById("open-login").addEventListener("click", function () {
+    loginDialog.showModal();
+  });
+
+  document.getElementById("close-login").addEventListener("click", function () {
+    loginDialog.close();
+  });
+}
