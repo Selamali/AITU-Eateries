@@ -1,5 +1,4 @@
-// Existing features: background color, FAQ and Astana clock.
-// Task 4: cycle through three page colors without saving the choice.
+// Page background.
 const changeBgButton = document.getElementById("change-bg-button");
 
 if (changeBgButton) {
@@ -12,7 +11,7 @@ if (changeBgButton) {
   });
 }
 
-// Task 2: toggle each answer independently; CSS handles the animation.
+// Independent FAQ toggles; transitions are in CSS.
 const faqQuestions = document.querySelectorAll(".faq-question");
 
 faqQuestions.forEach(function (question) {
@@ -26,7 +25,7 @@ faqQuestions.forEach(function (question) {
   });
 });
 
-// Task 5: show a fresh date in Astana's time zone every second.
+// Astana clock.
 const astanaTime = document.getElementById("astana-time");
 
 if (astanaTime) {
@@ -49,7 +48,6 @@ if (astanaTime) {
   setInterval(updateAstanaTime, 1000);
 }
 
-// Interactive gallery: initialize only when its container exists.
 function initializePhotoGuide() {
   const gallery = document.querySelector("#gallery");
 
@@ -60,11 +58,11 @@ function initializePhotoGuide() {
   const thumbnailButtons = gallery.querySelectorAll(".gallery-thumbnail");
   const galleryPhotos = [];
 
-  // HTML is the source of photo paths, descriptions and menu destinations.
+  // Cache real photo URLs before lazy loading removes data-src.
   for (const button of thumbnailButtons) {
     const image = button.querySelector("img");
     const photo = {
-      src: image.getAttribute("src"),
+      src: image.getAttribute("data-src") || image.getAttribute("src"),
       alt: image.alt,
       caption: button.dataset.caption,
       menu: button.dataset.menu,
@@ -87,7 +85,7 @@ function initializePhotoGuide() {
   const soundMessage = gallery.querySelector("#gallery-sound-message");
   let currentPhotoIndex = 0;
 
-  // Gallery sound: always play after a user changes the photo, never on load.
+  // Play sound only after a user changes the photo.
   const gallerySound = {
     audio: gallery.querySelector("#gallery-audio"),
     play() {
@@ -106,7 +104,7 @@ function initializePhotoGuide() {
   }
 
   function handleGallerySoundError(error) {
-    // A rapid second click can interrupt the previous play request.
+    // Rapid clicks can interrupt playback.
     if (error.name === "AbortError") {
       return;
     }
@@ -115,7 +113,6 @@ function initializePhotoGuide() {
     soundMessage.textContent = "Sound is unavailable. You can still explore the photos.";
   }
 
-  // Photo display and controls.
   function showPhoto(index) {
     if (index < 0) {
       index = galleryPhotos.length - 1;
@@ -141,7 +138,6 @@ function initializePhotoGuide() {
     });
   }
 
-  // Register each listener once. Native buttons also handle Enter and Space.
   galleryPhotos.forEach(function connectThumbnail(photo, index) {
     photo.button.disabled = false;
     photo.button.addEventListener("click", function selectThumbnail() {
@@ -167,12 +163,11 @@ function initializePhotoGuide() {
   function focusGalleryControl(event) {
     let button = event.target.closest(".gallery-thumbnail, .gallery-arrow");
 
-    // Clicking the large photo also gives its keyboard controls focus.
     if (!button && event.target.closest(".gallery-image-panel")) {
       button = nextButton;
     }
 
-    // Some browsers do not focus buttons when they are clicked.
+    // Some browsers do not focus buttons on click.
     if (button && gallery.contains(button)) {
       button.focus({ preventScroll: true });
     }
@@ -183,7 +178,7 @@ function initializePhotoGuide() {
       return;
     }
 
-    // Only photo controls handle arrows; menu links keep their native behavior.
+    // Arrow keys affect photo controls only.
     if (!event.target.matches(".gallery-thumbnail, .gallery-arrow")) {
       return;
     }
@@ -204,11 +199,10 @@ function initializePhotoGuide() {
   previousButton.disabled = false;
   nextButton.disabled = false;
 
-  // Initial rendering is silent and does not move focus or scroll the page.
+  // Initial render stays silent and preserves focus.
   showPhoto(0);
 }
 
-// Keyboard navigation: arrow keys move focus within the primary links.
 function initializePrimaryNavigation() {
   const navigation = document.querySelector("#main-nav");
 
@@ -223,7 +217,7 @@ function initializePrimaryNavigation() {
   }
 
   function moveNavigationFocus(event) {
-    // Preserve browser shortcuts such as Alt+ArrowLeft and modified keys.
+    // Preserve browser keyboard shortcuts.
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
       return;
     }
@@ -255,7 +249,7 @@ function initializePrimaryNavigation() {
 
   navigation.addEventListener("keydown", moveNavigationFocus);
 
-  // Give arrows a starting point without overriding a focused control or anchor.
+  // Set initial focus only when no control or anchor has it.
   const currentPageLink = navigation.querySelector('a[aria-current="page"]');
   if (currentPageLink && document.activeElement === document.body && !window.location.hash) {
     currentPageLink.focus({ preventScroll: true });

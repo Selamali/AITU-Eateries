@@ -1,9 +1,5 @@
 <!doctype html>
 <html lang="en">
-  <!--
-    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
-    follow the device width. Title, description and author identify this page.
-  -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,54 +9,25 @@
       content="A student guide to Cafeteria, Coffee Lake, Sheker and Mokko on the AITU campus.">
     <meta name="author" content="Ramazan Anarbekov">
     <meta name="theme-color" content="#187f42">
-    <!--
-      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
-      home screen.
-    -->
     <link rel="icon" href="favicon/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
-    <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
-    <!--
-      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
-      utilities. The original library file is kept intact.
-    -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
     <link rel="stylesheet" href="css/typography.css">
-    <!--
-      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
-      Loaded last so these rules can customize Bootstrap.
-    -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
     <script src="js/site.js" defer></script>
+    <script src="js/script.js" defer></script>
   </head>
-  <!--
-    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
-    and footer. min-vh-100 makes the page at least as tall as the viewport.
-  -->
   <body class="d-flex flex-column min-vh-100">
-    <!--
-      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
-      focused.
-    -->
+    <div class="reading-progress" aria-hidden="true">
+      <span id="scroll-progress"></span>
+    </div>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!--
-      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
-      Bootstrap border-bottom draws the divider.
-    -->
     <header class="site-header border-bottom">
-      <!--
-        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
-        gap-2 separates items and py-3 adds vertical padding.
-      -->
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
-          <!--
-            HTML: logo links to Home. alt names the destination; width/height define image
-            proportions and CSS .logo-image sets its displayed size.
-          -->
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -70,11 +37,6 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <!--
-            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
-            wrapping. active and aria-current="page" identify the current page; px/py set
-            padding.
-          -->
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -103,21 +65,8 @@
         </div>
       </nav>
     </header>
-    <!--
-      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
-      page height; tabindex="-1" lets the skip link move focus here.
-    -->
     <main id="main-content" class="flex-grow-1" tabindex="-1">
-      <!--
-        HTML: Home introduction with dining-spot names, a link to Dining Spots and a campus
-        photograph.
-      -->
       <section class="hero container py-4 py-lg-5" aria-labelledby="page-title">
-        <!--
-          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
-          row-cols-lg-2 set the column count; sm starts at 576 px, md at 768 px and lg at
-          992 px. g-4 sets row and column gutters.
-        -->
         <div class="row row-cols-1 row-cols-lg-2 g-4 align-items-center">
           <div class="col">
             <h1 id="page-title" class="mb-3">
@@ -127,11 +76,6 @@
               Four dining spots, their opening hours, and menus in one place so
               you don’t waste a break searching.
             </p>
-            <!--
-              CSS Grid: .hero-spots places four names in two columns. Inside each li,
-              Bootstrap d-flex and align-items-center align the decorative dot with the
-              name; aria-hidden excludes the dot from spoken content.
-            -->
             <ul class="hero-spots list-unstyled mb-4">
               <li class="d-flex align-items-center gap-3">
                 <span class="spot-dot spot-cafeteria" aria-hidden="true"></span
@@ -153,10 +97,6 @@
                 ><span>Mokko</span>
               </li>
             </ul>
-            <!--
-              Bootstrap btn and btn-success style this link as a button. Custom CSS
-              .hero-cta sets its size and shadow; href opens Dining Spots.
-            -->
             <div class="d-flex flex-wrap align-items-center gap-3">
               <a class="btn btn-success hero-cta" href="eateries.html"
                 >See all dining spots</a
@@ -172,21 +112,12 @@
               </button>
             </div>
           </div>
-          <!--
-            HTML image: eager/high prioritizes the main photo. width/height reserve its
-            aspect ratio; CSS object-fit: cover crops it to fill the frame.
-          -->
           <div class="col hero-visual">
-            <!--
-              HTML images: alt supplies a text description; width/height reserve
-              proportions. loading="lazy" on later images defers loading until they approach
-              the viewport.
-            -->
             <img
-              src="images/hero-photo.jpg"
-              alt="AITU students working at a table in the campus dining hall"
-              width="1200"
-              height="1600"
+              src="images/hero-breakfast.png"
+              alt="Papercraft coffee cup, croissant, sandwich and strawberry"
+              width="1254"
+              height="1254"
               class="hero-image"
               loading="eager"
               fetchpriority="high"
@@ -194,28 +125,27 @@
           </div>
         </div>
       </section>
-      <!--
-        HTML: three benefits with links to the dining guide, opening hours and coffee
-        comparison.
-      -->
+      <section id="site-stats" class="container py-4" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="visually-hidden">The guide at a glance</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <strong class="stat-number" data-count="4" aria-hidden="true">4</strong>
+            <span class="stat-label"><span class="visually-hidden">4 </span>Dining spots</span>
+          </div>
+          <div class="stat-card">
+            <strong class="stat-number" data-count="62" aria-hidden="true">62</strong>
+            <span class="stat-label"><span class="visually-hidden">62 </span>Menu items</span>
+          </div>
+        </div>
+      </section>
       <section
         class="container py-4 py-lg-5"
         id="features"
         aria-labelledby="features-title"
       >
         <h2 id="features-title" class="mb-3">Why check here first</h2>
-        <!--
-          Bootstrap layout uses Flexbox: row contains col elements. row-cols-1,
-          row-cols-md-2, row-cols-lg-3 set the column count; sm starts at 576 px, md at 768
-          px and lg at 992 px. g-4 sets row and column gutters.
-        -->
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div class="col">
-            <!--
-              Bootstrap card: All spots, one page. h-100 fills the column height; the
-              Flexbox card-body stacks content and mt-auto keeps its action link at the
-              bottom.
-            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
                 <h3 class="mb-3">All spots, one page</h3>
@@ -232,10 +162,6 @@
             </article>
           </div>
           <div class="col">
-            <!--
-              Bootstrap card: Plan your break. h-100 fills the column height; the Flexbox
-              card-body stacks content and mt-auto keeps its action link at the bottom.
-            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
                 <h3 class="mb-3">Plan your break</h3>
@@ -251,37 +177,23 @@
               </div>
             </article>
           </div>
-          <!--
-            CSS: the third benefit fills the row at 768-991 px. From 992 px it returns to
-            the three-column Bootstrap layout.
-          -->
           <div class="col feature-wide">
-            <!--
-              Bootstrap card: Compare before you choose. h-100 fills the column height; the
-              Flexbox card-body stacks content and mt-auto keeps its action link at the
-              bottom.
-            -->
             <article class="card feature-card h-100">
               <div class="card-body d-flex flex-column p-3 p-sm-4">
-                <h3 class="mb-3">Compare before you choose</h3>
+                <h3 class="mb-3">Explore our menus</h3>
                 <p class="mb-4">
-                  See the listed coffee prices and compare Americano and Latte
-                  prices per 100 ml.
+                Browse food and drink prices at campus dining spots.
                 </p>
                 <a
-                  class="btn btn-outline-success align-self-start mt-auto"
-                  href="menu.html#compare"
-                  >Compare coffee prices</a
-                >
+                 class="btn btn-outline-success align-self-start mt-auto"
+                 href="menu.html">
+                 View menus
+                </a>
               </div>
             </article>
           </div>
         </div>
       </section>
-      <!--
-        HTML: first-floor map. figure groups the image with its figcaption; the source is
-        images/campus-map.jpg.
-      -->
       <section
         class="container py-4 py-lg-5"
         id="map"
@@ -305,10 +217,6 @@
         </figure>
       </section>
     </main>
-    <!--
-      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
-      use flex-lg-row from 992 px; justify-content-between separates the two groups.
-    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"

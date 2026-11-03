@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="en" class="menu-page">
-  <!--
-    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
-    follow the device width. Title, description and author identify this page.
-  -->
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,53 +10,36 @@
       content="Browse campus menus and compare coffee prices at Sheker, Mokko and Coffee Lake.">
     <meta name="author" content="Amir Makhymetov">
     <meta name="theme-color" content="#187f42">
-    <!--
-      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
-      home screen.
-    -->
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
-    <!-- CSS: load local font files through @font-face. -->
+    
+    <link rel="icon" href="favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
-    <!--
-      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
-      utilities. The original library file is kept intact.
-    -->
+  
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
+   
     <link rel="stylesheet" href="css/typography.css">
-    <!--
-      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
-      Loaded last so these rules can customize Bootstrap.
-    -->
+   
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
+    <script src="js/site.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="js/coffee-planner.js" defer></script>
   </head>
-  <!--
-    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
-    and footer. min-vh-100 makes the page at least as tall as the viewport.
-  -->
+  
   <body class="d-flex flex-column min-vh-100">
-    <!--
-      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
-      focused.
-    -->
+    <div class="reading-progress" aria-hidden="true">
+      <span id="scroll-progress"></span>
+    </div>
+    
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!--
-      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
-      Bootstrap border-bottom draws the divider.
-    -->
+   
     <header class="site-header border-bottom">
-      <!--
-        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
-        gap-2 separates items and py-3 adds vertical padding.
-      -->
+      
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
-          <!--
-            HTML: logo links to Home. alt names the destination; width/height define image
-            proportions and CSS .logo-image sets its displayed size.
-          -->
+          
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -69,11 +49,7 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <!--
-            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
-            wrapping. active and aria-current="page" identify the current page; px/py set
-            padding.
-          -->
+          
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -102,49 +78,139 @@
         </div>
       </nav>
     </header>
-    <!--
-      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
-      page height; tabindex="-1" lets the skip link move focus here.
-    -->
+   
     <main id="main-content" class="flex-grow-1 container menu-layout" tabindex="-1">
-      <!--
-        HTML: page title and pricing note. CSS .menu-intro places this introduction beside
-        the sidebar on wide screens.
-      -->
+     
       <section
-        class="page-intro pt-4 pt-lg-5 pb-3 menu-intro"
-        aria-labelledby="page-title"
-      >
-        <h1 id="page-title" class="mb-3">Menu</h1>
-        <p class="lead mb-3">Find your next coffee, snack or lunch.</p>
-        <p class="menu-note small mb-0">
-          Prices in ₸. Demo additions are illustrative; confirm prices and
-          availability at the counter.
-        </p>
-      </section>
-      <!--
-        HTML anchors link to sections on this page. Bootstrap d-flex enables Flexbox; CSS
-        uses a horizontal strip below 992 px and a vertical sidebar from 992 px, both sticky
-        below the header.
-      -->
+  class="page-intro pt-4 pt-lg-5 pb-3 menu-intro"
+  aria-labelledby="page-title">
+
+  <div class="d-flex flex-column flex-sm-row
+              justify-content-between align-items-sm-center gap-3 mb-3">
+
+    <div>
+      <h1 id="page-title" class="mb-2">Menu</h1>
+      <p class="lead mb-0">
+        Find your next coffee, snack or lunch.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      id="open-subscription"
+      class="btn btn-success flex-shrink-0 align-self-start
+             align-self-sm-center">
+      Get menu updates
+    </button>
+  </div>
+
+  <p class="menu-note small mb-0">
+    Prices in ₸. Demo additions are illustrative; confirm prices and
+    availability at the counter.
+  </p>
+
+  <section class="coffee-planner border rounded-3 p-4 mt-4"
+         aria-labelledby="coffee-planner-title">
+
+  <h2 id="coffee-planner-title" class="h4">
+    Coffee within your budget
+  </h2>
+
+  <p class="text-muted">
+    Find selected Americano and Latte options from our menus.
+  </p>
+
+  <p id="coffee-progress" class="fw-semibold" aria-live="polite">
+    Step 1 of 3: Your coffee
+  </p>
+
+  <form id="coffee-planner-form" novalidate>
+
+    <div id="coffee-step-1">
+      <label for="coffee-temperature" class="form-label">
+        What coffee would you like?
+      </label>
+
+      <select id="coffee-temperature"
+              class="form-select mb-3">
+        <option value="any">Any</option>
+        <option value="hot">Hot</option>
+        <option value="iced">Iced</option>
+      </select>
+
+      <button type="button"
+              id="coffee-next"
+              class="btn btn-success">
+        Next
+      </button>
+    </div>
+
+    <div id="coffee-step-2" hidden>
+      <label for="coffee-budget" class="form-label">
+        Your budget (₸)
+      </label>
+
+      <input type="number"
+             id="coffee-budget"
+             class="form-control"
+             min="1"
+             step="1"
+             placeholder="For example, 1000"
+             aria-describedby="coffee-budget-error"
+             required>
+
+      <p id="coffee-budget-error"
+         class="text-danger mt-2"
+         aria-live="polite"></p>
+
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button"
+                id="coffee-back"
+                class="btn btn-outline-secondary">
+          Back
+        </button>
+
+        <button type="submit" class="btn btn-success">
+          Find options
+        </button>
+      </div>
+    </div>
+
+    <div id="coffee-step-3" hidden>
+      <h3 class="h5">Your options</h3>
+
+      <div id="coffee-results" class="mb-3"></div>
+
+      <div class="d-flex flex-wrap gap-2">
+        <button type="button"
+                id="coffee-results-back"
+                class="btn btn-outline-secondary">
+          Back
+        </button>
+
+        <button type="button"
+                id="coffee-restart"
+                class="btn btn-success">
+          Start again
+        </button>
+      </div>
+    </div>
+
+  </form>
+</section>
+</section>
+     
       <nav class="menu-nav" aria-label="Choose a menu">
         <div class="menu-nav-links d-flex gap-1">
           <a href="#cafeteria">Cafeteria</a>
           <a href="#coffee-lake">Coffee Lake</a>
           <a href="#sheker">Sheker</a>
           <a href="#mokko">Mokko</a>
-          <a href="#compare">Compare</a>
         </div>
       </nav>
-      <!--
-        CSS Grid: from 992 px, this container occupies the right-hand menus area. min-width:
-        0 lets the column shrink around scrollable tables.
-      -->
+      
       <div id="menus">
-        <!--
-          HTML: Cafeteria menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
+       
         <section
           class="py-4 menu-section"
           id="cafeteria"
@@ -154,29 +220,19 @@
             <span class="spot-dot spot-cafeteria" aria-hidden="true"></span
             >Cafeteria
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
+         
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Cafeteria menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
+           
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Cafeteria — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
+              
               <thead>
                 <tr>
                   <th id="cafeteria-col-item" scope="col">Item</th>
@@ -186,11 +242,7 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Salads. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
+              
               <tbody id="cafeteria-salads">
                 <tr class="group-row">
                   <th
@@ -201,11 +253,7 @@
                     Salads
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
+               
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-0"
@@ -249,22 +297,14 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Soups. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
+              <!-- Category IDs are linked from Dining Spots. -->
               <tbody id="cafeteria-soups">
                 <tr class="group-row">
                   <th id="cafeteria-soups-heading" colspan="3" scope="rowgroup">
                     Soups
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
+               
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-2"
@@ -334,11 +374,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Hot dishes. The ID is targeted by Dining Spots tags; colspan="3" spans
-                the category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="cafeteria-hot-dishes">
                 <tr class="group-row">
                   <th
@@ -349,11 +384,7 @@
                     Hot dishes
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
+                <!-- Items can span portion rows; data-source distinguishes base and demo entries. -->
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-4"
@@ -439,22 +470,12 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sides. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="cafeteria-sides">
                 <tr class="group-row">
                   <th id="cafeteria-sides-heading" colspan="3" scope="rowgroup">
                     Sides
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-8"
@@ -498,11 +519,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Bakery · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="cafeteria-bakery">
                 <tr class="group-row">
                   <th
@@ -514,11 +530,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="cafeteria-item-10"
@@ -604,11 +615,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Dairy & drinks · Demo additions. The ID is targeted by Dining Spots
-                tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="cafeteria-dairy-drinks">
                 <tr class="group-row">
                   <th
@@ -620,11 +626,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="cafeteria-item-14"
@@ -734,10 +735,6 @@
             </table>
           </div>
         </section>
-        <!--
-          HTML: Coffee Lake menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="coffee-lake"
@@ -750,29 +747,16 @@
             <span class="spot-dot spot-coffee-lake" aria-hidden="true"></span
             >Coffee Lake
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Coffee Lake menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Coffee Lake — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="coffee-lake-col-item" scope="col">Item</th>
@@ -782,11 +766,6 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Iced drinks — all 500 ml. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-iced-coffee">
                 <tr class="group-row">
                   <th
@@ -797,11 +776,6 @@
                     Iced drinks — all 500 ml
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="coffee-lake-item-0"
@@ -992,11 +966,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Iced tea — all 500 ml · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-iced-tea">
                 <tr class="group-row">
                   <th
@@ -1008,11 +977,7 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
+               
                 <tr data-source="demo">
                   <th
                     id="coffee-lake-item-9"
@@ -1056,11 +1021,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-sandwiches">
                 <tr class="group-row">
                   <th
@@ -1072,11 +1032,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="coffee-lake-item-11"
@@ -1120,11 +1075,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Ready-to-go · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-ready-to-go">
                 <tr class="group-row">
                   <th
@@ -1136,11 +1086,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="coffee-lake-item-13"
@@ -1229,10 +1174,6 @@
             </table>
           </div>
         </section>
-        <!--
-          HTML: Sheker menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="sheker"
@@ -1241,29 +1182,16 @@
           <h2 id="sheker-title" class="mb-3 d-flex align-items-center gap-2">
             <span class="spot-dot spot-sheker" aria-hidden="true"></span>Sheker
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Sheker menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Sheker — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="sheker-col-item" scope="col">Item</th>
@@ -1273,11 +1201,6 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Hot drinks. The ID is targeted by Dining Spots tags; colspan="3" spans
-                the category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="sheker-hot-drinks">
                 <tr class="group-row">
                   <th
@@ -1288,11 +1211,6 @@
                     Hot drinks
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="sheker-item-0"
@@ -1553,11 +1471,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sweets · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="sheker-sweets">
                 <tr class="group-row">
                   <th id="sheker-sweets-heading" colspan="3" scope="rowgroup">
@@ -1565,11 +1478,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="sheker-item-8"
@@ -1676,11 +1584,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches & salads · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="sheker-sandwiches-salads">
                 <tr class="group-row">
                   <th
@@ -1692,11 +1595,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="sheker-item-13"
@@ -1748,10 +1646,6 @@
             is needed to confirm the difference.
           </p>
         </section>
-        <!--
-          HTML: Mokko menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="mokko"
@@ -1760,29 +1654,16 @@
           <h2 id="mokko-title" class="mb-3 d-flex align-items-center gap-2">
             <span class="spot-dot spot-mokko" aria-hidden="true"></span>Mokko
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Mokko menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Mokko — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="mokko-col-item" scope="col">Item</th>
@@ -1792,22 +1673,12 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Coffee. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="mokko-coffee">
                 <tr class="group-row">
                   <th id="mokko-coffee-heading" colspan="3" scope="rowgroup">
                     Coffee
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="mokko-item-0"
@@ -2000,11 +1871,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches & salads · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="mokko-sandwiches-salads">
                 <tr class="group-row">
                   <th
@@ -2016,11 +1882,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="mokko-item-6"
@@ -2085,11 +1946,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Chocolate & snacks · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="mokko-chocolate-snacks">
                 <tr class="group-row">
                   <th
@@ -2101,11 +1957,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="mokko-item-9"
@@ -2151,141 +2002,11 @@
               </tbody>
             </table>
           </div>
-          <p class="small mt-3 mb-0">
-            Espresso: the original price of 990 ₸ is retained. Its portion needs
-            confirmation: the base table placed it under 300 ml, and the
-            proposed 40 ml correction could not be verified from the available
-            photographs.
-          </p>
-        </section>
-        <!--
-          HTML: compare the smallest listed drinks. Prices per 100 ml are stored in the
-          table after calculating price / volume * 100 and rounding.
-        -->
-        <section
-          class="py-4 menu-section"
-          id="compare"
-          aria-labelledby="compare-title"
-        >
-          <h2 id="compare-title" class="mb-3">Compare coffee prices</h2>
-          <p class="mb-4">
-            The smallest listed size at each spot. All prices are in ₸;
-            per-100-ml figures are rounded to the nearest tenge.
-          </p>
-          <p id="compare-scroll" class="small mb-3">
-            On a small screen, swipe the table sideways or focus it and use the
-            arrow keys.
-          </p>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
-          <div
-            class="table-responsive table-frame"
-            tabindex="0"
-            role="region"
-            aria-label="Coffee price comparison"
-            aria-describedby="compare-scroll"
-          >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
-            <table class="table comparison-table align-middle mb-0">
-              <caption class="visually-hidden">
-                Hot coffee at Sheker and Mokko; iced coffee at Coffee Lake
-              </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
-              <thead>
-                <tr>
-                  <th scope="col">Drink</th>
-                  <th scope="col" class="price">
-                    Sheker<br><span class="small">350 ml</span>
-                  </th>
-                  <th scope="col" class="price">
-                    Mokko<br><span class="small">300 ml</span>
-                  </th>
-                  <th scope="col" class="price">
-                    Coffee Lake<br><span class="small">500 ml, iced</span>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Americano</th>
-                  <td class="price">750</td>
-                  <td class="price">990</td>
-                  <td class="price">900</td>
-                </tr>
-                <tr>
-                  <th scope="row">Latte</th>
-                  <td class="price">850</td>
-                  <td class="price">990</td>
-                  <td class="price">1 000</td>
-                </tr>
-                <tr>
-                  <th scope="row">Cappuccino</th>
-                  <td class="price">850</td>
-                  <td class="price">990</td>
-                  <td class="price">—</td>
-                </tr>
-                <tr>
-                  <th scope="row">Raf</th>
-                  <td class="price">1 050</td>
-                  <td class="price">990</td>
-                  <td class="price">—</td>
-                </tr>
-                <!--
-                  Bootstrap table-success highlights the lowest per-100-ml price in this row
-                  and the next. visually-hidden adds the same meaning for screen readers.
-                -->
-                <tr>
-                  <th scope="row">Americano, per 100 ml</th>
-                  <td class="price">214</td>
-                  <td class="price">330</td>
-                  <td class="price table-success">
-                    <strong>180</strong
-                    ><span class="visually-hidden">
-                      — lowest price per 100 ml</span
-                    >
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Latte, per 100 ml</th>
-                  <td class="price">243</td>
-                  <td class="price">330</td>
-                  <td class="price table-success">
-                    <strong>200</strong
-                    ><span class="visually-hidden">
-                      — lowest price per 100 ml</span
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="mt-4 mb-2">
-            <strong
-              >Coffee Lake is cheapest per millilitre, Mokko is the most
-              expensive.</strong
-            >
-          </p>
-          <p class="mb-0">
-            This comparison applies to the listed Americano and Latte sizes.
-            Coffee Lake serves them iced, so volume alone does not make the
-            drinks equivalent.
-          </p>
         </section>
       </div>
+
+      
     </main>
-    <!--
-      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
-      use flex-lg-row from 992 px; justify-content-between separates the two groups.
-    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
@@ -2300,5 +2021,54 @@
         </p>
       </div>
     </footer>
+
+<dialog
+  id="subscription-popup"
+  class="subscription-popup"
+  aria-labelledby="subscription-title">
+
+  <div class="p-4">
+    <div class="d-flex justify-content-between align-items-start gap-3">
+      <h2 id="subscription-title" class="h4">
+        Subscribe to menu updates
+      </h2>
+
+      <button
+        type="button"
+        id="close-subscription"
+        class="btn-close"
+        aria-label="Close subscription form">
+      </button>
+    </div>
+
+    <p>Enter your email to follow menu updates.</p>
+
+    <form id="subscription-form">
+      <div class="mb-3">
+        <label for="subscription-email" class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="subscription-email"
+          class="form-control"
+          placeholder="you@example.com"
+          autocomplete="email"
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-success">
+        Subscribe
+      </button>
+
+      <p
+        id="subscription-status"
+        class="text-success mt-3 mb-0"
+        role="status">
+      </p>
+    </form>
+  </div>
+</dialog>
   </body>
 </html>
