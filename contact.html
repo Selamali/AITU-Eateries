@@ -21,6 +21,7 @@
     <script src="js/script.js" defer></script>
     <script src="js/forms.js" defer></script>
   </head>
+
   <body class="d-flex flex-column min-vh-100">
     <div class="reading-progress" aria-hidden="true">
       <span id="scroll-progress"></span>
@@ -176,9 +177,22 @@
                 </p>
                
                 <p class="contact-links mb-0">
-                  Telegram: <a href="https://t.me/curstmind">@curstmind</a
-                  ><br>Email:
+                  Telegram: <a href="https://t.me/curstmind">@curstmind</a>
+                  <br>
+                  Email:
                   <a href="mailto:lolo243@inbox.ru">lolo243@inbox.ru</a>
+
+                  <span class="copy-wrapper">
+                    <button
+                      type="button"
+                      class="copy-button btn btn-outline-success btn-sm"
+                      data-copy="lolo243@inbox.ru"
+                      aria-label="Copy email">
+                      <span class="copy-icon" aria-hidden="true">📋</span>
+                      Copy
+                    </button>
+                  <span class="copy-tooltip" role="status"></span>
+                  </span>
                 </p>
               </div>
             </article>
@@ -209,16 +223,20 @@
                     <div class="row row-cols-1 g-4">
                       
                       <div class="col col-md-6">
-                        <label for="cf-name" class="form-label">Name</label
-                        ><input
+                        <label for="cf-name" class="form-label">Name</label>
+
+                        <input
                           class="form-control"
                           id="cf-name"
                           name="name"
+                          aria-describedby="cf-name-error"
                           type="text"
                           autocomplete="name"
                           required
                           maxlength="120"
                           placeholder="Your full name">
+
+                        <div id="cf-name-error" class="invalid-feedback"></div>
                       </div>
                      
                       <div class="col col-md-6">
@@ -390,5 +408,8 @@
       </form>
   </div>
 </dialog>
+
+<div id="notification" role="status" aria-live="polite"></div>
+
   </body>
 </html>

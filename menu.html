@@ -108,7 +108,7 @@
     Prices in ₸. Demo additions are illustrative; confirm prices and
     availability at the counter.
   </p>
-
+  
   <section class="coffee-planner border rounded-3 p-4 mt-4"
          aria-labelledby="coffee-planner-title">
 
@@ -208,7 +208,25 @@
           <a href="#mokko">Mokko</a>
         </div>
       </nav>
+       
+      <div id="menus">
       
+      <div class="mt-4 mb-4">
+      <label for="menu-search" class="form-label">Search menu</label>
+
+      <input
+          type="search"
+          id="menu-search"
+          class="form-control"
+          placeholder="Enter a dish or drink name..."
+          aria-describedby="menu-search-status"
+          autocomplete="off">
+
+      <div id="menu-suggestions" class="list-group mt-1" style="display: none;"></div>
+
+        <p id="menu-search-status" class="small mt-2" role="status"></p>
+      </div>
+
       <div id="menus">
        
         <section

@@ -13,6 +13,9 @@ if (registrationForm) {
 
   const statusMessage = document.getElementById("registration-status");
 
+  const contactName = document.getElementById("cf-name");
+  const contactNameError = document.getElementById("cf-name-error");
+
   registrationForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -182,8 +185,36 @@ if (contactForm) {
   const contactEmailError = document.getElementById("cf-email-error");
   const contactStatus = document.getElementById("form-status");
 
+  const contactName = document.getElementById("cf-name");
+  const contactNameError = document.getElementById("cf-name-error");  
+
+  const submitButton = $(contactForm).find('button[type="submit"]');
+  const originalButtonHtml = submitButton.html();
+  let isSubmitting = false;
   function handleContactSubmit(event) {
     event.preventDefault();
+
+    if (isSubmitting) return;
+
+    const name = contactName.value.trim();
+
+    contactNameError.textContent = "";
+    contactName.classList.remove("is-invalid");
+    contactName.setAttribute("aria-invalid", "false");
+
+    if (name === "") {
+       contactNameError.textContent = "Enter your name.";
+    } else if (name.length < 2) {
+        contactNameError.textContent = "Use at least 2 characters.";
+      }
+
+if (contactNameError.textContent !== "") {
+  contactName.classList.add("is-invalid");
+  contactName.setAttribute("aria-invalid", "true");
+  contactStatus.textContent = "";
+  contactName.focus();
+  return;
+}
 
     const email = contactEmail.value.trim();
     contactEmail.value = email;
@@ -219,8 +250,33 @@ if (!contactForm.reportValidity()) {
   contactStatus.textContent = "";
   return;
 }
-    contactStatus.textContent =
-      "Demo form: validation passed. No message was sent.";
+    // Task 6: loading spinner after successful validation.
+    isSubmitting = true;
+    contactStatus.textContent = "";
+
+    submitButton.prop("disabled", true).html(
+      '<span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>' +
+      'Please wait…'
+    );
+
+    $(contactForm).attr("aria-busy", "true");
+
+    setTimeout(function () {
+      submitButton.prop("disabled", false).html(originalButtonHtml);
+
+    $(contactForm).removeAttr("aria-busy");
+    isSubmitting = false;
+
+    contactStatus.textContent = "";
+
+  // Task 7: temporary notification.
+    $("#notification")
+      .stop(true, true)
+      .text("Validation successful! Demo only: no message was sent.")
+      .fadeIn(300)
+      .delay(3000)
+      .fadeOut(500);
+    }, 2000);
   }
 
   function clearContactEmailError() {

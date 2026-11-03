@@ -1231,3 +1231,38 @@ body.login-dialog-open {
 @media (prefers-reduced-motion: reduce) {
   .photo-guide .lazy-image.is-loaded { animation: none; }
 }
+
+#notification {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  max-width: calc(100vw - 48px);
+  padding: 16px 24px;
+  background-color: #198754;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.copy-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.copy-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  width: max-content;
+  max-width: 220px;
+  padding: 6px 10px;
+  background: #212529;
+  color: white;
+  font-size: 13px;
+  border-radius: 6px;
+  z-index: 2000;
+}

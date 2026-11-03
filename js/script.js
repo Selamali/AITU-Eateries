@@ -198,3 +198,154 @@ $(document).ready(function () {
   initFaqSearch();
   initLazyImages();
 });
+
+
+
+//Amirs
+
+// Task 1: real-time menu search.
+$(document).ready(function () {
+  const searchInput = $("#menu-search");
+
+  if (!searchInput.length) return;
+
+  // Save the dish name for every row, including portion variants.
+  $("#menus tbody").each(function () {
+    let dishName = "";
+
+    $(this).children("tr").not(".group-row").each(function () {
+      const nameCell = $(this).find('th[scope="row"]');
+
+      if (nameCell.length) {
+        dishName = nameCell.text().replace(/\s+/g, " ").trim().toLowerCase();
+      }
+
+      $(this).data("dishName", dishName);
+    });
+  });
+
+  searchInput.on("input", function () {
+    const query = $(this).val().trim().toLowerCase();
+    let found = false;
+
+    $("#menus tbody").each(function () {
+      let groupHasMatches = false;
+
+      $(this).children("tr").not(".group-row").each(function () {
+        const matches = $(this).data("dishName").includes(query);
+
+        $(this).toggle(matches);
+
+        if (matches) {
+          groupHasMatches = true;
+          found = true;
+        }
+      });
+
+      // Hide categories that have no matching dishes.
+      $(this).toggle(groupHasMatches);
+    });
+
+    $("#menu-search-status").text(
+      found ? "" : "No matching dishes found."
+    );
+
+    // Recalculate Ramazan's scroll progress bar.
+    $(document).trigger("layoutchange");
+  });
+});
+
+
+// Task 2:autocomplete search suggestions.
+$(document).ready(function () {
+  const searchInput = $("#menu-search");
+  const suggestions = $("#menu-suggestions");
+
+  if (!searchInput.length) return;
+
+  const dishNames = [];
+
+  // Collect unique dish names from the tables.
+  $('#menus th[scope="row"]').each(function () {
+    const name = $(this).text().replace(/\s+/g, " ").trim();
+
+    if (!dishNames.includes(name)) {
+      dishNames.push(name);
+    }
+  });
+
+  // Show matching suggestions while typing.
+  searchInput.on("input", function () {
+    const query = $(this).val().trim().toLowerCase();
+
+    suggestions.empty().hide();
+
+    if (query === "") return;
+
+    const matches = dishNames.filter(function (name) {
+      return name.toLowerCase().includes(query);
+    });
+
+    matches.slice(0, 6).forEach(function (name) {
+      const button = $("<button>")
+        .attr("type", "button")
+        .addClass("list-group-item list-group-item-action")
+        .text(name);
+
+      button.on("click", function () {
+        searchInput.val(name);
+
+        // Run Task 1's filter, including if you changed it to keyup.
+        searchInput.trigger("input").trigger("keyup");
+
+        suggestions.empty().hide();
+        searchInput.focus();
+      });
+
+      suggestions.append(button);
+    });
+
+    suggestions.toggle(matches.length > 0);
+  });
+
+  // Close suggestions when clicking outside the search.
+  $(document).on("click", function (event) {
+    if (!$(event.target).closest("#menu-search, #menu-suggestions").length) {
+      suggestions.hide();
+    }
+  });
+
+  searchInput.on("keydown", function (event) {
+    if (event.key === "Escape") {
+      suggestions.hide();
+    }
+  });
+});
+
+// Task 8: copy contact text to clipboard.
+$(document).ready(function () {
+  $(".copy-button").on("click", async function () {
+    const button = $(this);
+    const icon = button.find(".copy-icon");
+    const tooltip = button.siblings(".copy-tooltip");
+    const text = button.attr("data-copy");
+
+    button.prop("disabled", true);
+
+    try {
+      await navigator.clipboard.writeText(text);
+
+      icon.text("✓");
+      tooltip.text("Copied to clipboard!").fadeIn(150);
+    } catch (error) {
+      tooltip.text("Could not copy. Please copy manually.").fadeIn(150);
+    }
+
+    setTimeout(function () {
+      tooltip.fadeOut(200, function () {
+        icon.text("📋");
+        button.prop("disabled", false);
+      });
+    }, 2000);
+  });
+});
