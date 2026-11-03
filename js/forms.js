@@ -16,7 +16,6 @@ if (registrationForm) {
   registrationForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    // Clear old messages
     statusMessage.textContent = "";
 
     nameError.textContent = "";
@@ -24,20 +23,17 @@ if (registrationForm) {
     passwordError.textContent = "";
     confirmError.textContent = "";
 
-    // Remove old red borders
     nameInput.classList.remove("is-invalid");
     emailInput.classList.remove("is-invalid");
     passwordInput.classList.remove("is-invalid");
     confirmInput.classList.remove("is-invalid");
 
-    // Reset accessibility state
     nameInput.setAttribute("aria-invalid", "false");
     emailInput.setAttribute("aria-invalid", "false");
     passwordInput.setAttribute("aria-invalid", "false");
     confirmInput.setAttribute("aria-invalid", "false");
 
 
-    // Check name.
 const name = nameInput.value.trim();
 
 const hasLetter = /[a-zа-яёәғқңөұүһі]/i.test(name);
@@ -60,7 +56,6 @@ if (nameError.textContent !== "") {
   nameInput.setAttribute("aria-invalid", "true");
 }
 
-// Check email.
 const email = emailInput.value.trim();
 emailInput.value = email;
 
@@ -79,7 +74,6 @@ if (emailError.textContent !== "") {
 }
 
 
-    // Check password
     if (passwordInput.value.trim() === "") {
       passwordError.textContent = "This field is required.";
       passwordInput.classList.add("is-invalid");
@@ -92,7 +86,6 @@ if (emailError.textContent !== "") {
     }
 
 
-    // Check confirm password
     if (confirmInput.value.trim() === "") {
       confirmError.textContent = "This field is required.";
       confirmInput.classList.add("is-invalid");
@@ -105,7 +98,6 @@ if (emailError.textContent !== "") {
     }
 
 
-    // Find first incorrect field
     const firstError =
       registrationForm.querySelector(".is-invalid");
 
@@ -119,7 +111,6 @@ if (emailError.textContent !== "") {
     }
 
 
-    // Everything is correct
     statusMessage.className = "text-success mt-3 mb-0";
     statusMessage.textContent =
       "Validation passed! Demo only: no account was created.";
@@ -128,13 +119,12 @@ if (emailError.textContent !== "") {
   });
 
 
-  // Clear success/error status when user starts typing again
   registrationForm.addEventListener("input", function () {
     statusMessage.textContent = "";
   });
 }
 
-// Task 3: subscription popup.
+// Subscription dialog.
 const subscriptionPopup = document.getElementById("subscription-popup");
 
 if (subscriptionPopup) {
@@ -144,27 +134,22 @@ if (subscriptionPopup) {
   const subscriptionStatus = document.getElementById("subscription-status");
 
 
-  // Open popup
   openButton.addEventListener("click", function () {
 
-    // Clear old form data
     subscriptionForm.reset();
 
-    // Clear old message
     subscriptionStatus.textContent = "";
 
-    // Show popup
     subscriptionPopup.showModal();
   });
 
 
-  // Close popup
   closeButton.addEventListener("click", function () {
     subscriptionPopup.close();
   });
 
 
-  // Close popup when clicking outside
+  // Clicking the backdrop closes the dialog.
   subscriptionPopup.addEventListener("click", function (event) {
 
     if (event.target === subscriptionPopup) {
@@ -174,22 +159,17 @@ if (subscriptionPopup) {
   });
 
 
-  // Submit subscription form
   subscriptionForm.addEventListener("submit", function (event) {
 
-    // Do not reload the page
     event.preventDefault();
 
-    // Show success message
     subscriptionStatus.textContent =
       "Email accepted! Demo only: no subscription was created.";
 
-    // Clear email field
     subscriptionForm.reset();
   });
 
 
-  // Clear old message when user starts typing
   subscriptionForm.addEventListener("input", function () {
     subscriptionStatus.textContent = "";
   });
@@ -235,7 +215,6 @@ if (contactEmailError.textContent !== "") {
     contactEmail.classList.remove("is-invalid");
     contactEmail.setAttribute("aria-invalid", "false");
 
-    // Check the remaining required fields.
 if (!contactForm.reportValidity()) {
   contactStatus.textContent = "";
   return;

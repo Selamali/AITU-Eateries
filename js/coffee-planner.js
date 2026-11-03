@@ -1,26 +1,22 @@
-// Find the form on the page.
 const coffeeForm = document.getElementById("coffee-planner-form");
 
 if (coffeeForm) {
-  // Form steps.
   const step1 = document.getElementById("coffee-step-1");
   const step2 = document.getElementById("coffee-step-2");
   const step3 = document.getElementById("coffee-step-3");
 
-  // Inputs and messages.
   const temperatureInput = document.getElementById("coffee-temperature");
   const budgetInput = document.getElementById("coffee-budget");
   const budgetError = document.getElementById("coffee-budget-error");
   const progress = document.getElementById("coffee-progress");
   const results = document.getElementById("coffee-results");
 
-  // Buttons.
   const nextButton = document.getElementById("coffee-next");
   const backButton = document.getElementById("coffee-back");
   const resultsBackButton = document.getElementById("coffee-results-back");
   const restartButton = document.getElementById("coffee-restart");
 
-  // Selected drinks from our menus.
+  // Selected menu drinks, not the full catalogue.
   const coffees = [
     {
       name: "Americano",
@@ -72,7 +68,6 @@ if (coffeeForm) {
     }
   ];
 
-  // Object that stores the user's choices.
   const preferences = {
     temperature: "any",
     budget: 0,
@@ -82,7 +77,6 @@ if (coffeeForm) {
     }
   };
 
-  // Show the first step.
   function showCoffeeStep() {
     step1.hidden = false;
     step2.hidden = true;
@@ -92,7 +86,6 @@ if (coffeeForm) {
     temperatureInput.focus();
   }
 
-  // Show the second step.
   function showBudgetStep() {
     preferences.temperature = temperatureInput.value;
 
@@ -104,7 +97,6 @@ if (coffeeForm) {
     budgetInput.focus();
   }
 
-  // Check whether one drink matches the user's choices.
   function matchesPreferences(coffee) {
     if (coffee.price > preferences.budget) {
       return false;
@@ -125,13 +117,11 @@ if (coffeeForm) {
     }
   }
 
-  // Find drinks and show the results.
   function findCoffee(event) {
     event.preventDefault();
 
     const budget = Number(budgetInput.value);
 
-    // Check the budget.
     if (!Number.isFinite(budget) || budget <= 0) {
       budgetError.textContent = "Enter a budget greater than zero.";
       budgetInput.focus();
@@ -146,21 +136,17 @@ if (coffeeForm) {
 
     budgetError.textContent = "";
 
-    // Save the current choices.
     preferences.budget = budget;
     preferences.temperature = temperatureInput.value;
 
-    // Create a new array containing only suitable drinks.
     const matchingCoffees = coffees.filter(matchesPreferences);
 
-    // Remove results from the previous search.
     results.innerHTML = "";
 
     if (matchingCoffees.length === 0) {
       results.textContent =
         "No matching drinks. Go back and try a larger budget or another coffee type.";
     } else {
-      // Create a card for each matching drink.
       for (const coffee of matchingCoffees) {
         const card = document.createElement("div");
         card.className = "border rounded-3 p-3 mb-3";
@@ -189,7 +175,6 @@ if (coffeeForm) {
       }
     }
 
-    // Show the third step.
     step1.hidden = true;
     step2.hidden = true;
     step3.hidden = false;
@@ -198,7 +183,6 @@ if (coffeeForm) {
     resultsBackButton.focus();
   }
 
-  // Clear the form and return to the beginning.
   function startAgain() {
     coffeeForm.reset();
 
@@ -211,12 +195,10 @@ if (coffeeForm) {
     showCoffeeStep();
   }
 
-  // Remove the old error when the user edits the budget.
   function clearBudgetError() {
     budgetError.textContent = "";
   }
 
-  // Connect actions to buttons and form events.
   nextButton.addEventListener("click", showBudgetStep);
   backButton.addEventListener("click", showCoffeeStep);
   resultsBackButton.addEventListener("click", showBudgetStep);

@@ -2,9 +2,6 @@
 <html lang="en" class="menu-page">
 
   <head>
-    <script src="js/forms.js" defer></script>
-    <script src="js/coffee-planner.js" defer></script>
-    <script src="js/site.js" defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AITU Eateries — Menu</title>
@@ -14,10 +11,9 @@
     <meta name="author" content="Amir Makhymetov">
     <meta name="theme-color" content="#187f42">
     
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="favicon-180.png" sizes="180x180">
-    <!-- CSS: load local font files through @font-face. -->
+    <link rel="icon" href="favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
   
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
@@ -25,9 +21,17 @@
     <link rel="stylesheet" href="css/typography.css">
    
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
+    <script src="js/site.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/forms.js" defer></script>
+    <script src="js/coffee-planner.js" defer></script>
   </head>
   
   <body class="d-flex flex-column min-vh-100">
+    <div class="reading-progress" aria-hidden="true">
+      <span id="scroll-progress"></span>
+    </div>
     
     <a class="skip-link" href="#main-content">Skip to main content</a>
    
@@ -91,7 +95,6 @@
       </p>
     </div>
 
-    <!-- Task 3: open the subscription popup -->
     <button
       type="button"
       id="open-subscription"
@@ -123,7 +126,6 @@
 
   <form id="coffee-planner-form" novalidate>
 
-    <!-- Step 1: choose the coffee temperature -->
     <div id="coffee-step-1">
       <label for="coffee-temperature" class="form-label">
         What coffee would you like?
@@ -143,7 +145,6 @@
       </button>
     </div>
 
-    <!-- Step 2: enter the budget -->
     <div id="coffee-step-2" hidden>
       <label for="coffee-budget" class="form-label">
         Your budget (₸)
@@ -175,7 +176,6 @@
       </div>
     </div>
 
-    <!-- Step 3: show matching drinks -->
     <div id="coffee-step-3" hidden>
       <h3 class="h5">Your options</h3>
 
@@ -297,11 +297,7 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Soups. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
+              <!-- Category IDs are linked from Dining Spots. -->
               <tbody id="cafeteria-soups">
                 <tr class="group-row">
                   <th id="cafeteria-soups-heading" colspan="3" scope="rowgroup">
@@ -378,11 +374,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Hot dishes. The ID is targeted by Dining Spots tags; colspan="3" spans
-                the category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="cafeteria-hot-dishes">
                 <tr class="group-row">
                   <th
@@ -393,11 +384,7 @@
                     Hot dishes
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
+                <!-- Items can span portion rows; data-source distinguishes base and demo entries. -->
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-4"
@@ -483,22 +470,12 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sides. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="cafeteria-sides">
                 <tr class="group-row">
                   <th id="cafeteria-sides-heading" colspan="3" scope="rowgroup">
                     Sides
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="cafeteria-item-8"
@@ -542,11 +519,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Bakery · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="cafeteria-bakery">
                 <tr class="group-row">
                   <th
@@ -558,11 +530,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="cafeteria-item-10"
@@ -648,11 +615,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Dairy & drinks · Demo additions. The ID is targeted by Dining Spots
-                tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="cafeteria-dairy-drinks">
                 <tr class="group-row">
                   <th
@@ -664,11 +626,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="cafeteria-item-14"
@@ -778,10 +735,6 @@
             </table>
           </div>
         </section>
-        <!--
-          HTML: Coffee Lake menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="coffee-lake"
@@ -794,29 +747,16 @@
             <span class="spot-dot spot-coffee-lake" aria-hidden="true"></span
             >Coffee Lake
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Coffee Lake menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Coffee Lake — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="coffee-lake-col-item" scope="col">Item</th>
@@ -826,11 +766,6 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Iced drinks — all 500 ml. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-iced-coffee">
                 <tr class="group-row">
                   <th
@@ -841,11 +776,6 @@
                     Iced drinks — all 500 ml
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="coffee-lake-item-0"
@@ -1036,11 +966,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Iced tea — all 500 ml · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-iced-tea">
                 <tr class="group-row">
                   <th
@@ -1096,11 +1021,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-sandwiches">
                 <tr class="group-row">
                   <th
@@ -1112,11 +1032,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="coffee-lake-item-11"
@@ -1160,11 +1075,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Ready-to-go · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="coffee-lake-ready-to-go">
                 <tr class="group-row">
                   <th
@@ -1176,11 +1086,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="coffee-lake-item-13"
@@ -1269,10 +1174,6 @@
             </table>
           </div>
         </section>
-        <!--
-          HTML: Sheker menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="sheker"
@@ -1281,29 +1182,16 @@
           <h2 id="sheker-title" class="mb-3 d-flex align-items-center gap-2">
             <span class="spot-dot spot-sheker" aria-hidden="true"></span>Sheker
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Sheker menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Sheker — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="sheker-col-item" scope="col">Item</th>
@@ -1313,11 +1201,6 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Hot drinks. The ID is targeted by Dining Spots tags; colspan="3" spans
-                the category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="sheker-hot-drinks">
                 <tr class="group-row">
                   <th
@@ -1328,11 +1211,6 @@
                     Hot drinks
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="sheker-item-0"
@@ -1593,11 +1471,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sweets · Demo additions. The ID is targeted by Dining Spots tags;
-                colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="sheker-sweets">
                 <tr class="group-row">
                   <th id="sheker-sweets-heading" colspan="3" scope="rowgroup">
@@ -1605,11 +1478,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="sheker-item-8"
@@ -1716,11 +1584,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches & salads · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="sheker-sandwiches-salads">
                 <tr class="group-row">
                   <th
@@ -1732,11 +1595,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="sheker-item-13"
@@ -1788,10 +1646,6 @@
             is needed to confirm the difference.
           </p>
         </section>
-        <!--
-          HTML: Mokko menu. The section ID is an anchor destination; aria-labelledby
-          connects the section to its heading.
-        -->
         <section
           class="py-4 menu-section"
           id="mokko"
@@ -1800,29 +1654,16 @@
           <h2 id="mokko-title" class="mb-3 d-flex align-items-center gap-2">
             <span class="spot-dot spot-mokko" aria-hidden="true"></span>Mokko
           </h2>
-          <!--
-            Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-            adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-          -->
           <div
             class="table-responsive table-frame"
             role="region"
             tabindex="0"
             aria-label="Mokko menu; scroll horizontally if needed"
           >
-            <!--
-              HTML: table holds data, thead holds column headings, tbody holds rows, and
-              th/td are cells. Bootstrap table and align-middle supply appearance and
-              vertical alignment.
-            -->
             <table class="table menu-table align-middle mb-0">
               <caption class="visually-hidden">
                 Mokko — portions and prices in Kazakhstani tenge
               </caption>
-              <!--
-                HTML: scope="col" identifies column headings; scope="row" below identifies
-                row headings. In menu tables, custom CSS .price right-aligns amounts.
-              -->
               <thead>
                 <tr>
                   <th id="mokko-col-item" scope="col">Item</th>
@@ -1832,22 +1673,12 @@
                   </th>
                 </tr>
               </thead>
-              <!--
-                HTML: Coffee. The ID is targeted by Dining Spots tags; colspan="3" spans the
-                category heading across all columns and scope="rowgroup" identifies the
-                group.
-              -->
               <tbody id="mokko-coffee">
                 <tr class="group-row">
                   <th id="mokko-coffee-heading" colspan="3" scope="rowgroup">
                     Coffee
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="base">
                   <th
                     id="mokko-item-0"
@@ -2040,11 +1871,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Sandwiches & salads · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="mokko-sandwiches-salads">
                 <tr class="group-row">
                   <th
@@ -2056,11 +1882,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="mokko-item-6"
@@ -2125,11 +1946,6 @@
                   </td>
                 </tr>
               </tbody>
-              <!--
-                HTML: Chocolate & snacks · Demo additions. The ID is targeted by Dining
-                Spots tags; colspan="3" spans the category heading across all columns and
-                scope="rowgroup" identifies the group.
-              -->
               <tbody id="mokko-chocolate-snacks">
                 <tr class="group-row">
                   <th
@@ -2141,11 +1957,6 @@
                     <span class="small demo-label">· Demo additions</span>
                   </th>
                 </tr>
-                <!--
-                  HTML: one portion and price per row. rowspan shares an item name across
-                  sizes; headers connects each cell to its item and column/group headings.
-                  data-source marks original (base) or added (demo) entries.
-                -->
                 <tr data-source="demo">
                   <th
                     id="mokko-item-9"
@@ -2211,7 +2022,6 @@
       </div>
     </footer>
 
-    <!-- Task 3: subscription popup -->
 <dialog
   id="subscription-popup"
   class="subscription-popup"

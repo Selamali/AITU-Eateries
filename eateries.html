@@ -1,9 +1,5 @@
 <!doctype html>
 <html lang="en">
-  <!--
-    HTML: page settings. UTF-8 supports text characters; viewport makes responsive styles
-    follow the device width. Title, description and author identify this page.
-  -->
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,54 +9,25 @@
       content="Explore all four AITU dining spots, their opening hours and campus photographs.">
     <meta name="author" content="Ramazan Anarbekov">
     <meta name="theme-color" content="#187f42">
-    <!--
-      HTML: browser-tab icons and the apple-touch-icon used when saving the site to a device
-      home screen.
-    -->
     <link rel="icon" href="favicon/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
-    <!-- CSS: load local font files through @font-face. -->
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
-    <!--
-      Bootstrap 5.3.8: shared component styles, Flexbox-based layout classes and spacing
-      utilities. The original library file is kept intact.
-    -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <!-- Custom CSS: shared font families and text sizes for mobile, tablet and desktop. -->
     <link rel="stylesheet" href="css/typography.css">
-    <!--
-      Custom CSS: theme colors, components, Flexbox, CSS Grid and responsive adjustments.
-      Loaded last so these rules can customize Bootstrap.
-    -->
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
     <script src="js/site.js" defer></script>
+    <script src="js/script.js" defer></script>
   </head>
-  <!--
-    Bootstrap + Flexbox: d-flex creates a flex container; flex-column stacks header, main
-    and footer. min-vh-100 makes the page at least as tall as the viewport.
-  -->
   <body class="d-flex flex-column min-vh-100">
-    <!--
-      HTML + CSS: keyboard shortcut to the main content; the link becomes visible when
-      focused.
-    -->
+    <div class="reading-progress" aria-hidden="true">
+      <span id="scroll-progress"></span>
+    </div>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <!--
-      HTML: shared site header. CSS .site-header keeps it at the top with position: sticky;
-      Bootstrap border-bottom draws the divider.
-    -->
     <header class="site-header border-bottom">
-      <!--
-        Bootstrap navbar uses Flexbox. container limits width, flex-wrap allows wrapping,
-        gap-2 separates items and py-3 adds vertical padding.
-      -->
       <nav class="navbar py-3" aria-label="Primary">
         <div class="container flex-wrap gap-2">
-          <!--
-            HTML: logo links to Home. alt names the destination; width/height define image
-            proportions and CSS .logo-image sets its displayed size.
-          -->
           <a class="navbar-brand p-0 me-3" href="index.html"
             ><img
               src="images/logo.jpg"
@@ -70,11 +37,6 @@
               class="logo-image"
               loading="eager"
               decoding="async"></a>
-          <!--
-            Bootstrap + Flexbox: flex-row arranges page links horizontally; flex-wrap allows
-            wrapping. active and aria-current="page" identify the current page; px/py set
-            padding.
-          -->
           <div class="primary-links" id="main-nav">
             <ul class="navbar-nav flex-row flex-wrap mb-0">
               <li class="nav-item">
@@ -101,15 +63,7 @@
         </div>
       </nav>
     </header>
-    <!--
-      HTML: main page content and target of the skip link. Bootstrap flex-grow-1 fills spare
-      page height; tabindex="-1" lets the skip link move focus here.
-    -->
     <main id="main-content" class="flex-grow-1" tabindex="-1">
-      <!--
-        HTML: page title, introduction and shared first-floor location. Bootstrap pt/pb
-        control top/bottom padding; lg changes spacing from 992 px.
-      -->
       <section
         class="page-intro container pt-4 pt-lg-5 pb-3"
         aria-labelledby="page-title"
@@ -121,35 +75,18 @@
         </p>
         <p class="mb-0">All four spots are on the 1st floor of building C1.</p>
       </section>
-      <!--
-        HTML: four dining cards with descriptions, menu-category links, locations and
-        opening hours.
-      -->
       <section class="container py-4 py-lg-5" aria-labelledby="spots-title">
         <h2 id="spots-title" class="mb-3">The spots</h2>
-        <!--
-          CSS Grid: four columns, each at least 248 px wide, stay in one row. overflow-x:
-          auto keeps any extra width inside this keyboard-focusable strip.
-        -->
         <div
           class="spots-strip"
           role="region"
           tabindex="0"
           aria-label="Dining spots; scroll sideways to explore all four places"
         >
-          <!--
-            HTML + Bootstrap card: Cafeteria. spot-* selects the accent color; h-100 and
-            Flexbox flex-column keep the card structure aligned vertically.
-          -->
           <article
             class="card eatery-card spot-cafeteria h-100 d-flex flex-column p-3"
             id="cafeteria"
           >
-            <!--
-              HTML images: alt supplies a text description; width/height reserve
-              proportions. loading="lazy" on later images defers loading until they approach
-              the viewport.
-            -->
             <img
               src="images/cafeteria.jpg"
               alt="Tables and food counters inside Cafeteria"
@@ -158,10 +95,6 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
-            <!--
-              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
-              description sits above the category links and location block.
-            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Cafeteria</h3>
               <p class="mb-3">
@@ -169,10 +102,6 @@
                 prices on campus. The biggest and busiest spot, so expect a line
                 at lunchtime.
               </p>
-              <!--
-                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
-                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
-              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#cafeteria-salads"
@@ -198,11 +127,6 @@
                   >
                 </li>
               </ul>
-              <!--
-                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
-                separates its items. CSS emphasizes the location, softens the hours and
-                makes View menu full width.
-              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -218,10 +142,6 @@
               </div>
             </div>
           </article>
-          <!--
-            HTML + Bootstrap card: Coffee Lake. spot-* selects the accent color; h-100 and
-            Flexbox flex-column keep the card structure aligned vertically.
-          -->
           <article
             class="card eatery-card spot-coffee-lake h-100 d-flex flex-column p-3"
             id="coffee-lake"
@@ -234,20 +154,12 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
-            <!--
-              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
-              description sits above the category links and location block.
-            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Coffee Lake</h3>
               <p class="mb-3">
                 Iced coffee and tea, sandwiches and ready-to-go meals in a cozy
                 indoor corner. Good for sitting with a laptop.
               </p>
-              <!--
-                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
-                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
-              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#coffee-lake-iced-coffee"
@@ -270,11 +182,6 @@
                   >
                 </li>
               </ul>
-              <!--
-                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
-                separates its items. CSS emphasizes the location, softens the hours and
-                makes View menu full width.
-              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -290,10 +197,6 @@
               </div>
             </div>
           </article>
-          <!--
-            HTML + Bootstrap card: Sheker. spot-* selects the accent color; h-100 and
-            Flexbox flex-column keep the card structure aligned vertically.
-          -->
           <article
             class="card eatery-card spot-sheker h-100 d-flex flex-column p-3"
             id="sheker"
@@ -306,20 +209,12 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
-            <!--
-              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
-              description sits above the category links and location block.
-            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Sheker</h3>
               <p class="mb-3">
                 Hot coffee, cakes, croissants, sandwiches and salads from an
                 open kiosk with small tables.
               </p>
-              <!--
-                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
-                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
-              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#sheker-hot-drinks"
@@ -335,11 +230,6 @@
                   >
                 </li>
               </ul>
-              <!--
-                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
-                separates its items. CSS emphasizes the location, softens the hours and
-                makes View menu full width.
-              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -353,10 +243,6 @@
               </div>
             </div>
           </article>
-          <!--
-            HTML + Bootstrap card: Mokko. spot-* selects the accent color; h-100 and Flexbox
-            flex-column keep the card structure aligned vertically.
-          -->
           <article
             class="card eatery-card spot-mokko h-100 d-flex flex-column p-3"
             id="mokko"
@@ -369,20 +255,12 @@
               class="spot-image mb-3"
               loading="lazy"
               decoding="async">
-            <!--
-              Bootstrap + Flexbox: flex-grow-1 fills the available card height; the
-              description sits above the category links and location block.
-            -->
             <div class="spot-content d-flex flex-column flex-grow-1">
               <h3 class="mb-3">Mokko</h3>
               <p class="mb-3">
                 Classic coffee, packaged sandwiches and salads, chocolate and
                 snacks from a small open kiosk.
               </p>
-              <!--
-                HTML: category tags link to menu.html#id. Bootstrap d-flex, flex-wrap and
-                gap-2 arrange wrapping rows; CSS .tag-link styles each link.
-              -->
               <ul class="list-unstyled d-flex flex-wrap gap-2 p-0 mb-3">
                 <li>
                   <a class="tag-link" href="menu.html#mokko-coffee">Coffee</a>
@@ -398,11 +276,6 @@
                   >
                 </li>
               </ul>
-              <!--
-                Bootstrap + Flexbox: mt-auto pushes this block to the bottom and gap-3
-                separates its items. CSS emphasizes the location, softens the hours and
-                makes View menu full width.
-              -->
               <div
                 class="spot-footer d-flex flex-wrap align-items-center justify-content-between gap-3 mt-auto pt-3"
               >
@@ -418,33 +291,16 @@
           </article>
         </div>
       </section>
-      <!--
-        HTML: shared opening-hours table, Sunday closure and a time element whose datetime
-        attribute stores the machine-readable date.
-      -->
       <section class="container py-4 py-lg-5" aria-labelledby="hours-title">
         <h2 id="hours-title" class="mb-3">Hours at a glance</h2>
         <p id="astana-time" class="astana-time mb-4">Loading current time...</p>
-        <!--
-          Bootstrap table-responsive contains horizontal table scrolling. CSS .table-frame
-          adds the border and radius; tabindex="0" makes the region keyboard-focusable.
-        -->
         <div
           class="table-responsive table-frame hours-table"
           tabindex="0"
           role="region"
           aria-label="Opening hours; scroll horizontally if needed"
         >
-          <!--
-            HTML: table holds data, thead holds column headings, tbody holds rows, and th/td
-            are cells. Bootstrap table and align-middle supply appearance and vertical
-            alignment.
-          -->
           <table class="table align-middle mb-0" aria-labelledby="hours-title">
-            <!--
-              HTML: scope="col" identifies column headings; scope="row" below identifies row
-              headings. In menu tables, custom CSS .price right-aligns amounts.
-            -->
             <thead>
               <tr>
                 <th scope="col">Spot</th>
@@ -482,9 +338,21 @@
           retained from the project’s base information.
         </p>
       </section>
-      <!-- Task 2: each question independently opens its answer through site.js. -->
-      <section class="container py-4 py-lg-5" aria-labelledby="faq-title">
+      <section id="faq" class="container py-4 py-lg-5" aria-labelledby="faq-title">
         <h2 id="faq-title" class="mb-3">Frequently Asked Questions</h2>
+        <div class="search-panel">
+          <label for="faq-search" class="form-label">Search frequently asked questions</label>
+          <div class="faq-search-field">
+            <span class="faq-search-icon" aria-hidden="true"></span>
+            <input
+              id="faq-search"
+              class="form-control"
+              type="search"
+              placeholder="Try coffee, menus or Sunday"
+              aria-describedby="faq-search-status">
+          </div>
+          <p id="faq-search-status" class="search-status" role="status"></p>
+        </div>
         <div class="faq-item border rounded-3 bg-white mb-3">
           <button
             type="button"
@@ -492,13 +360,13 @@
             aria-expanded="false"
             aria-controls="faq-location"
           >
-            Where are the dining spots located?
+            <span class="faq-text">Where are the dining spots located?</span>
           </button>
           <div id="faq-location" class="faq-answer">
             <div class="faq-answer-content">
-              <p class="px-3 pb-3 mb-0">
-                All four dining spots are located on the 1st floor of building C1
-                at Astana IT University.
+              <p class="faq-text px-3 pb-3 mb-0">
+                All four dining spots are located on the 1st floor of building C1 at Astana IT
+                University.
               </p>
             </div>
           </div>
@@ -510,13 +378,13 @@
             aria-expanded="false"
             aria-controls="faq-saturday"
           >
-            Which dining spots are open on Saturdays?
+            <span class="faq-text">Which dining spots are open on Saturdays?</span>
           </button>
           <div id="faq-saturday" class="faq-answer">
             <div class="faq-answer-content">
-              <p class="px-3 pb-3 mb-0">
-                Coffee Lake and Sheker are open on Saturdays. Coffee Lake operates
-                from 9:00 to 20:00, and Sheker from 10:00 to 19:30.
+              <p class="faq-text px-3 pb-3 mb-0">
+                Coffee Lake and Sheker are open on Saturdays. Coffee Lake operates from 9:00
+                to 20:00, and Sheker from 10:00 to 19:30.
               </p>
             </div>
           </div>
@@ -528,12 +396,122 @@
             aria-expanded="false"
             aria-controls="faq-sunday"
           >
-            Are any dining spots open on Sundays?
+            <span class="faq-text">Are any dining spots open on Sundays?</span>
           </button>
           <div id="faq-sunday" class="faq-answer">
             <div class="faq-answer-content">
-              <p class="px-3 pb-3 mb-0">
+              <p class="faq-text px-3 pb-3 mb-0">
                 No. All four dining spots are closed on Sundays.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-menus"
+          >
+            <span class="faq-text">Where can I find the menus?</span>
+          </button>
+          <div id="faq-menus" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                You can visit the Menu page or use the View menu links on the dining spot
+                cards.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-lunch"
+          >
+            <span class="faq-text">Where can I find lunch on campus?</span>
+          </button>
+          <div id="faq-lunch" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Cafeteria in C1.3 serves hot dishes, soups, salads, bakery and dairy products.
+                Open its menu to compare the listed portions and prices.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-iced-coffee"
+          >
+            <span class="faq-text">Which spot serves iced coffee?</span>
+          </button>
+          <div id="faq-iced-coffee" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Coffee Lake in the C1.2 atrium lists iced coffee and iced tea on its menu,
+                alongside sandwiches and ready-to-go meals.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-pastries"
+          >
+            <span class="faq-text">Where can I get cakes or pastries?</span>
+          </button>
+          <div id="faq-pastries" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Sheker offers cakes, croissants and sandwiches between C1.1 and C1.2.
+                Cafeteria also has a bakery selection.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-coffee-budget"
+          >
+            <span class="faq-text">How can I find coffee within my budget?</span>
+          </button>
+          <div id="faq-coffee-budget" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Use Coffee Planner on the Menu page. Choose hot, iced or any coffee, then
+                enter your budget in tenge to see matching Americano and Latte options from
+                the selected menu items.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 bg-white mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-demo-prices"
+          >
+            <span class="faq-text">Are all menu items and prices confirmed?</span>
+          </button>
+          <div id="faq-demo-prices" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Some menu groups are marked Demo additions and contain illustrative items.
+                Check the notes on the Menu page and confirm prices and availability at the
+                counter.
               </p>
             </div>
           </div>
@@ -543,21 +521,20 @@
             type="button"
             class="faq-question"
             aria-expanded="false"
-            aria-controls="faq-menus"
+            aria-controls="faq-campus-map"
           >
-            Where can I find the menus?
+            <span class="faq-text">Where can I see the campus map?</span>
           </button>
-          <div id="faq-menus" class="faq-answer">
+          <div id="faq-campus-map" class="faq-answer">
             <div class="faq-answer-content">
-              <p class="px-3 pb-3 mb-0">
-                You can visit the Menu page or use the View menu links on the
-                dining spot cards.
+              <p class="faq-text px-3 pb-3 mb-0">
+                The Home page has a Find them on the map section. It shows the four dining
+                spots across C1.1, C1.2 and C1.3 on the first floor.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <!-- Photo guide: HTML provides the initial view and every photo's data. -->
       <section
         class="photo-guide container py-4 py-lg-5"
         id="gallery"
@@ -603,7 +580,7 @@
                 <span class="gallery-chevron" aria-hidden="true"></span>
               </button>
             </div>
-            <!-- Only this short caption and count are announced after a change. -->
+            <!-- Announce caption and count only. -->
             <figcaption class="gallery-status" role="status" aria-atomic="true">
               <p id="gallery-caption" class="gallery-caption">Cafeteria — General view</p>
               <p id="gallery-counter" class="gallery-counter">Photo 1 of 12</p>
@@ -620,7 +597,6 @@
           <p class="mt-3">Enable JavaScript to select photos and use gallery sound. The first photo and its menu link are available above.</p>
         </noscript>
 
-        <!-- Native buttons retain standard keyboard activation and focus. -->
         <div class="gallery-thumbnails">
           <button
             type="button"
@@ -633,11 +609,12 @@
             disabled
           >
             <img
-              src="gallery/cafeteria-view.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/cafeteria-view.jpg"
               alt="General view of the campus Cafeteria"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -651,11 +628,12 @@
             disabled
           >
             <img
-              src="gallery/cafeteria-bakery.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/cafeteria-bakery.jpg"
               alt="Selection of baked goods at the Cafeteria"
               width="1200"
               height="898"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -669,11 +647,12 @@
             disabled
           >
             <img
-              src="gallery/cafeteria-dairy.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/cafeteria-dairy.jpg"
               alt="Dairy products displayed at the Cafeteria"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -687,11 +666,12 @@
             disabled
           >
             <img
-              src="gallery/mokko-view.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/mokko-view.jpg"
               alt="General view of the Mokko coffee shop"
               width="1200"
               height="675"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -705,11 +685,12 @@
             disabled
           >
             <img
-              src="gallery/mokko-food.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/mokko-food.jpg"
               alt="Sandwiches and salads displayed at Mokko"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -723,11 +704,12 @@
             disabled
           >
             <img
-              src="gallery/mokko-snacks.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/mokko-snacks.jpg"
               alt="Selection of packaged chocolate bars at Mokko"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -741,11 +723,12 @@
             disabled
           >
             <img
-              src="gallery/sheker-sign.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/sheker-sign.jpg"
               alt="Sheker coffee shop sign"
               width="900"
               height="1200"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -759,11 +742,12 @@
             disabled
           >
             <img
-              src="gallery/sheker-food.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/sheker-food.jpg"
               alt="Sandwiches, pancakes and cheesecake at Sheker"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -777,11 +761,12 @@
             disabled
           >
             <img
-              src="gallery/sheker-desserts.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/sheker-desserts.jpg"
               alt="Selection of cakes and pastries at Sheker"
               width="1200"
               height="745"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -795,11 +780,12 @@
             disabled
           >
             <img
-              src="gallery/coffee-lake-view.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/coffee-lake-view.jpg"
               alt="General view of the Coffee Lake coffee shop"
               width="1200"
               height="675"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -813,11 +799,12 @@
             disabled
           >
             <img
-              src="gallery/coffee-lake-food.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/coffee-lake-food.jpg"
               alt="Sandwiches, mochi and other products at Coffee Lake"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
@@ -831,21 +818,18 @@
             disabled
           >
             <img
-              src="gallery/coffee-lake-boxes.jpg"
+              class="lazy-image"
+              src="images/image-placeholder.svg"
+              data-src="gallery/coffee-lake-boxes.jpg"
               alt="Syrniki, onigiri and ready-made meal boxes at Coffee Lake"
               width="1200"
               height="900"
-              loading="lazy"
               decoding="async">
             <span class="gallery-selection-mark" aria-hidden="true">✓</span>
           </button>
         </div>
       </section>
     </main>
-    <!--
-      HTML: team and page credits. Bootstrap + Flexbox: stack text with flex-column, then
-      use flex-lg-row from 992 px; justify-content-between separates the two groups.
-    -->
     <footer class="site-footer border-top py-4">
       <div
         class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
