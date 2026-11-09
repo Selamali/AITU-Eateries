@@ -1,6 +1,6 @@
 # AITU Eateries
 
-A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT University. It brings together locations, opening hours, menus, coffee prices and campus photographs. All four spots are on the 1st floor of building C1.
+A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT University. The website brings together campus locations, opening hours, menus, photographs and a coffee planner.
 
 **Team:** Ramazan Anarbekov and Amir Makhymetov, SE-2504.
 
@@ -8,120 +8,109 @@ A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT Univers
 
 **Repository:** [Selamali/AITU-Eateries](https://github.com/Selamali/AITU-Eateries)
 
-## Pages and authors
+## Pages and responsibilities
 
-| File  | What the page contains |
-| --- | --- |
-| `index.html` | Introduction, links to useful sections, campus map and a twelve-photo dining tour |
-| `eateries.html` | Four dining cards, locations, menu-category links, opening hours and a photo gallery |
-| `menu.html` | Navigation between four menus, portion and price tables, and a coffee-price comparison |
-| `contact.html` | Team biographies, contributions, contact links and a contact-form layout |
+| Page | Content | Author |
+| --- | --- | --- |
+| `index.html` | Introduction, animated statistics, useful links and campus map | Ramazan Anarbekov |
+| `eateries.html` | Dining cards, opening hours, searchable FAQ and interactive photo gallery | Ramazan Anarbekov |
+| `menu.html` | Four menus, live search, autocomplete, Coffee Planner and subscription dialog | Amir Makhymetov |
+| `contact.html` | Team information, contact form, registration dialog and clipboard button | Amir Makhymetov |
 
-Each author is responsible for two HTML pages. Their names also appear in page metadata, footers and team biographies.
+## Technologies
 
-## Open the project
+- HTML5 for page structure, tables and forms.
+- CSS3 and Bootstrap for styling, responsive layouts and components.
+- JavaScript for DOM manipulation, events, validation and the Coffee Planner.
+- jQuery for live filtering, effects, animations and interface feedback.
 
-Open `index.html` in a browser. Alternatively, run this command from the project folder:
+## Run locally
+
+Extract the project and open a terminal in the folder containing `index.html`.
+
+On macOS or Linux:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Then open [localhost:8000](http://127.0.0.1:8000). Bootstrap, fonts and images are stored with the project. The new jQuery features require access to the jQuery CDN; they are not available offline.
+On Windows with the Python launcher installed:
+
+```sh
+py -m http.server 8000 --bind 127.0.0.1
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in a browser. Stop the server with `Ctrl+C`.
+
+No build step or package installation is required. Bootstrap CSS, fonts, images and audio are included in the project. jQuery is loaded from a CDN, so its features require an internet connection. Use localhost or HTTPS for clipboard functionality; browser permissions may still affect copying.
 
 ## Project structure
 
-```text
-index.html                 Home
-eateries.html             Dining Spots
-menu.html                  Menus and coffee comparison
-contact.html               Team and contact form
-css/
-  typography.css           Font families, text sizes and responsive type scale
-  style.css                Theme, components and responsive layouts
-images/                    Logo, map, hero photo, spot photos and team portraits
-gallery/                   Twelve photographs shared by the tour and gallery
-vendor/
-  bootstrap/               Bootstrap 5.3.8 stylesheet and license
-  fonts/                   Local font files, font declarations and licenses
-favicon.ico                Browser icon
-favicon-32.png             PNG browser icon
-favicon-180.png            Home-screen icon
-```
-
-## How the code is organized
-
-**HTML** defines the content and its meaning: `header`, `nav`, `main`, `section`, `article` and `footer` divide each page into clear parts. Tables hold prices and hours; `figure` and `figcaption` group photographs with captions. English comments identify each main block and explain the classes or attributes used there.
-
-**Bootstrap** supplies components such as `navbar`, `card`, `table`, `btn`, `form-control` and `form-select`. Its `container` limits content width, `row` and `col` arrange columns, `g-4` sets gutters, and `p-*` / `m-*` utilities set padding and margins. Responsive suffixes such as `md` and `lg` apply a class from a specific viewport width.
-
-**Flexbox** handles alignment and one-dimensional layouts. Bootstrap's `row`/`col` layout is built on Flexbox. Classes such as `d-flex`, `flex-column`, `align-items-center`, `justify-content-between` and `mt-auto` align navigation links, card contents, portraits and footer text. The photo tour also uses a custom Flexbox row.
-
-**CSS Grid** handles three custom layouts in `style.css`: `.hero-spots` places names in two columns, `.spots-strip` keeps four dining cards in one row, and `.menu-layout` creates the desktop sidebar and content column. These rules use `display: grid` and `grid-template-columns`.
-
-**Custom CSS** sets the visual theme and refines Bootstrap components. Stylesheets load in this order: local fonts, Bootstrap, `typography.css`, then `style.css`. The shared fonts are Arima Madurai for headings and Mulish for body text. Variables in `:root` hold the palette, corner radius and header height; `--bs-*` variables customize Bootstrap colors and components.
-
-## Responsive layouts and navigation
-
-Layouts follow the browser viewport width. Base styles apply to small screens; `@media` rules adjust them at larger or smaller widths.
-
-| Width | Main adjustments |
+| Path | Purpose |
 | --- | --- |
-| Below 576 px | The header uses two rows: logo above the page links. Gallery photos stack in one column. |
-| From 576 px | Header content fits in one row; the gallery uses two columns. |
-| From 768 px | Text becomes larger, benefit cards use two columns with the third spanning the row, and Name/Email fields sit side by side. |
-| From 992 px | The hero and team cards use two columns; benefits and gallery use three. Menu navigation becomes a sidebar. |
+| `index.html` | Home page |
+| `eateries.html` | Dining Spots page |
+| `menu.html` | Menu page |
+| `contact.html` | Contact page |
+| `css/style.css` | Shared theme, components and responsive layouts |
+| `css/typography.css` | Typography rules |
+| `js/site.js` | Background color, FAQ toggles, clock, gallery and keyboard navigation |
+| `js/script.js` | jQuery search, highlighting, progress, counters, lazy loading and clipboard feedback |
+| `js/forms.js` | Registration, subscription and contact-form behavior |
+| `js/coffee-planner.js` | Coffee data, preferences, budget validation and result cards |
+| `images/` | Logo, map, hero image, dining photos and team portraits |
+| `gallery/` | Dining gallery photographs |
+| `audio/` | Gallery click sound |
+| `favicon/` | Browser and home-screen icons |
+| `vendor/bootstrap/` | Bootstrap stylesheet and license |
+| `vendor/fonts/` | Local fonts, font declarations and licenses |
 
-The main header stays at the top with `position: sticky`. Menu navigation sits below it: a horizontally scrollable strip below 992 px and a 190 px sidebar from 992 px. `scroll-margin-top` gives anchor targets enough space below the sticky navigation.
+## JavaScript features
 
-Dining cards stay in one horizontal row and scroll within `.spots-strip` when space is limited. Bootstrap `table-responsive` similarly contains wide tables. Links such as `menu.html#sheker-sweets` jump directly to the matching category ID.
+### Coffee Planner
 
-## Photos, tables and form
+The planner on the Menu page has three steps: choose a coffee temperature, enter a budget and view matching drinks. It checks that the budget is a positive whole number, filters a predefined array of six drinks and creates result cards with the drink's name, venue, portion, price and remaining budget. Users can go back or restart the planner.
 
-The Home photo tour uses Flexbox, horizontal overflow and CSS scroll snapping. Each slide has an ID; previous/next links point to neighbouring slides and wrap between the first and last photographs. The Dining Spots gallery uses a Bootstrap column layout with captions shown on hover or keyboard focus, and visible by default on touch screens.
+The planner uses selected drinks, not the entire menu. Its data is maintained separately in `js/coffee-planner.js`.
 
-Menu tables use **Item | Portion | Price, ₸**. Each portion has its own row; `rowspan` shares an item name across sizes. Category IDs connect the table groups to the tags on Dining Spots. The comparison stores values calculated as `price / volume × 100`, rounded to the nearest tenge; `table-success` highlights the lowest normalized prices.
+### Gallery and navigation
 
-Menu groups labelled **Demo additions** contain illustrative items. Notes beside the menus identify the Mokko Espresso portion and Sheker Cocoa/Hot chocolate prices that still need confirmation from readable price lists.
+The Dining Spots gallery supports thumbnails, previous/next buttons and Left/Right arrow keys when a gallery control has focus. Changing a photo updates its caption, counter and menu link, and attempts to play a click sound. The gallery remains usable if audio playback fails.
 
-The contact form allows users to enter a name, email, dining spot and message. Its `type="button"` control is a placeholder and does not send messages. The team cards provide email and Telegram links for contacting the authors.
+The main navigation also supports Left/Right arrow keys. Other JavaScript features include FAQ expansion, a background-color button on Home and an Astana clock where its display element is present.
 
-## Editing the project
+### Forms and dialogs
 
-- **Page content:** edit the corresponding HTML file. Keep the shared header and footer consistent across all four pages.
-- **Menus:** edit rows in `menu.html`. If a category ID changes, update its links in `eateries.html`. Recalculate comparison values whenever their source prices change.
-- **Locations and hours:** update the dining cards and hours table in `eateries.html`; update the map and its caption on Home when needed.
-- **Appearance:** change shared colors and dimensions in `css/style.css`, and text sizes in `css/typography.css`.
-- **Photos:** replace files in `images/` or `gallery/` and update their `src`, `alt`, `width` and `height` attributes. Later images use `loading="lazy"` to defer loading until needed.
-- **Responsive checks:** inspect the pages around 576, 768 and 992 px, then check a narrow phone and a wide desktop. Follow category links and photo arrows, and check that wide content scrolls inside its own region.
+- **Registration:** the Login button on Contact opens a registration dialog. Validation checks the name, email, password length and password confirmation, then focuses the first invalid field when needed.
+- **Contact:** validates the input, temporarily disables the submit button, displays a spinner and shows a notification after a simulated delay.
+- **Subscription:** opens a dialog on Menu and displays a confirmation after valid submission.
 
-Bootstrap's distributed stylesheet is kept intact; project-specific styling belongs in `css/style.css`. Bootstrap and font licenses are included in `vendor/`. Campus photographs come from the project collection; the map and favicon use the supplied artwork.
+All forms are frontend demonstrations. They do not send messages, create accounts or register subscriptions. There is no backend or database, and form data is not saved persistently.
 
-## Assignment 6 — часть Рамазана
+## jQuery features
 
-В существующие страницы встроены только Tasks 0, 3, 4, 5 и 9:
-
-| Task | Реализация |
+| Feature | Implementation |
 | --- | --- |
-| 0 | Полная jQuery 4.0.0 из CDN и внешний `js/script.js` на четырёх страницах; `$(document).ready()` выводит `jQuery is ready!` один раз. |
-| 3 | `initFaqSearch()` фильтрует существующий FAQ на Dining Spots и выделяет все буквальные совпадения без учёта регистра. Очистка восстанавливает текст и закрывает ответы. |
-| 4 | `initScrollProgress()` обновляет декоративную полосу 3 px через `.scrollTop()`, `.height()` и `.css("transform", ...)`. На короткой странице результат равен нулю, деления на ноль нет. |
-| 5 | `initCounters()` один раз анимирует числовой объект через `.animate()` и выводит целые числа через `.text()`: 4 заведения и 62 позиции меню подтверждены разметкой проекта. Итоги есть в HTML; при reduced motion анимация пропускается. |
-| 9 | `initLazyImages()` проверяет миниатюры через `.offset()` и `.outerHeight()`, назначает настоящий `src` только при попадании в окно. `.one()` обрабатывает загрузку/ошибку; сбой возвращает заглушку без повторных запросов. |
+| Live menu search | Handles `input`, compares normalized dish names and uses `.toggle()` to show matching rows and categories |
+| Autocomplete | Collects unique dish names and displays up to six matching suggestions; selecting one applies the search |
+| FAQ search and highlighting | Filters answers and creates `<mark>` elements for matching text without treating the query as HTML or a regular expression |
+| Scroll progress | Updates a progress bar according to the current scroll position |
+| Animated counters | Uses `.animate()` to count up when the statistics become visible; respects reduced-motion preferences |
+| Loading spinner | Disables the Contact submit button while the simulated submission is running |
+| Notifications | Uses `.fadeIn()`, `.delay()` and `.fadeOut()` for temporary feedback |
+| Copy to clipboard | Uses the Clipboard API with jQuery feedback and shows a message when copying fails |
+| Lazy-loaded thumbnails | Loads gallery thumbnail sources as they approach the viewport and handles image-loading errors |
 
-Счётчик меню учитывает каждую именованную позицию один раз внутри своего заведения: Cafeteria — 19, Coffee Lake — 17, Sheker — 15, Mokko — 11. Разные объёмы одной позиции не увеличивают счётчик. В 62 позиции входят 29 существующих Demo additions; при изменении меню обновлять число в HTML, `data-count` и скрытом тексте для вспомогательных технологий.
+Scripts use `defer` and load in dependency order: jQuery, `site.js`, `script.js`, then page-specific scripts. Layout-changing features use the custom `layoutchange` event to refresh scroll progress, pending images and counters.
 
-Для защиты: `highlightText()` каждый раз берёт сохранённый `originalText`, ищет через `indexOf()` и создаёт текстовые узлы и `<mark>` с `.text()`. Поэтому `[`, `.*` и `<img>` не становятся regex или HTML. Метод рассчитан на текстовые `.faq-text`: ссылки и иконки внутрь этих элементов добавлять нельзя. Существующий обработчик в `site.js` остаётся единственным владельцем ручного раскрытия FAQ.
+## Responsive design and accessibility
 
-Передача Амиру:
+Bootstrap containers and columns work with custom Flexbox, Grid and media queries. The menu navigation becomes a sidebar on larger screens. Wide tables and dining-card rows have their own scrolling regions on smaller screens.
 
-- Порядок `defer`-скриптов: jQuery → `site.js` → `script.js` → существующие `forms.js` и `coffee-planner.js` на соответствующих страницах. Не добавлять вторую jQuery, Slim или `async`.
-- После фильтрации меню или другого изменения высоты вызвать `$(document).trigger("layoutchange")`. Событие обновляет прогресс, ожидающие миниатюры и ещё не запущенные счётчики. FAQ отправляет его после поиска, ручного переключения и CSS-перехода. Для Coffee Planner обработчики в `script.js` отправляют событие после переключения шагов, отправки формы и редактирования бюджета; всплытие событий позволяет дождаться обновления содержимого исходными обработчиками планировщика.
-- Доступны общие `.search-panel` и `.search-status`; используются прежние `.form-control`, `.form-label`, `.visually-hidden` и CSS-переменные проекта. Новые стили находятся в `css/style.css`.
-- Сохранять пространства имён `.progress`, `.counters`, `.faqSearch`, `.faqLayout`, `.lazyImages`; не вызывать общий `.off("scroll")`. Отслеживание счётчиков и миниатюр отключается после завершения своей работы.
-- В галерее настоящий адрес хранится в `data-src` миниатюры. `site.js` читает его до запуска lazy loading и сохраняет в массиве; поэтому стрелки и большой просмотр работают до загрузки миниатюры. Менять фотографии следует через `data-src`, сохраняя `alt`, размеры и данные кнопок.
-- Tasks 1, 2, 6, 7, 8 остаются за Амиром. Общий PDF-отчёт, ZIP для сдачи, commit/push и deployment в эту часть не входят.
+The project includes semantic HTML, image alternative text, form labels, visible validation messages, keyboard controls and ARIA attributes for interactive elements. Animation styles and counters account for reduced-motion preferences.
 
-Проверено 3 ноября 2026: `node --check` для всех четырёх JS-файлов и запуск через локальный HTTP-сервер в Chrome. Пройдены проверки консоли, прогресса (включая короткую страницу и `layoutchange`), однократных счётчиков, reduced motion, FAQ (`Sunday`, `SUNDAY`, `coffee`, пустой запрос, пробелы, `[`, `.*`, `<img>`), клавиатуры, Network с отключённым кэшем, скрытых и ошибочных миниатюр, выбора ещё не загруженной фотографии, якорей и восстановления прокрутки. Проверены прежние формы, диалоги, Coffee Planner, фон, часы и события воспроизведения звука. На четырёх страницах нет общего горизонтального скролла при 320, 375, 768, 1280 и 1440 px; визуально просмотрены Home, FAQ и галерея. Отдельно проверены относительные пути в подпапке и итоговые числа без JavaScript. Safari/Firefox и физические телефоны не проверялись.
+## Project data and assets
 
-Первичные источники: [jQuery ready](https://api.jquery.com/ready/), [animate](https://api.jquery.com/animate/), [one](https://api.jquery.com/one/), [безопасность HTML-методов](https://api.jquery.com/html/), [MDN input](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event), [web.dev: размеры и загрузка изображений](https://web.dev/articles/browser-level-image-lazy-loading).
+Menu entries are stored in `menu.html`, while the Coffee Planner uses a separate array in `js/coffee-planner.js`. Home statistics are configured in HTML. Menu groups marked **Demo additions** contain illustrative items, and some prices and portions are marked for confirmation.
+
+The project includes local photographs, a campus map, fonts and gallery audio. Bootstrap and font licenses are included in `vendor/`.
