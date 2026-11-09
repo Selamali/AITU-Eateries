@@ -206,53 +206,86 @@ $(document).ready(function () {
 // Task 1: real-time menu search.
 $(document).ready(function () {
   const searchInput = $("#menu-search");
+  const sections = $(".menu-section");
 
   if (!searchInput.length) return;
 
-  // Save the dish name for every row, including portion variants.
-  $("#menus tbody").each(function () {
-    let dishName = "";
+  sections.each(function () {
+    const section = $(this);
 
-    $(this).children("tr").not(".group-row").each(function () {
-      const nameCell = $(this).find('th[scope="row"]');
+    // Add a separate message for each dining spot.
+    $("<p>")
+      .addClass("menu-empty-message text-muted mt-3")
+      .attr("role", "status")
+      .hide()
+      .insertAfter(section.find("h2").first());
 
-      if (nameCell.length) {
-        dishName = nameCell.text().replace(/\s+/g, " ").trim().toLowerCase();
-      }
+    // Save dish names, including rows with different portions.
+    section.find("tbody").each(function () {
+      let dishName = "";
 
-      $(this).data("dishName", dishName);
+      $(this).children("tr").not(".group-row").each(function () {
+        const nameCell = $(this).find('th[scope="row"]');
+
+        if (nameCell.length) {
+          dishName = nameCell.text()
+            .replace(/\s+/g, " ")
+            .trim()
+            .toLowerCase();
+        }
+
+        $(this).data("dishName", dishName);
+      });
     });
   });
 
   searchInput.on("input", function () {
     const query = $(this).val().trim().toLowerCase();
-    let found = false;
 
-    $("#menus tbody").each(function () {
-      let groupHasMatches = false;
+    sections.each(function () {
+      const section = $(this);
+      let sectionHasMatches = false;
 
-      $(this).children("tr").not(".group-row").each(function () {
-        const matches = $(this).data("dishName").includes(query);
+      section.find("tbody").each(function () {
+        let groupHasMatches = false;
 
-        $(this).toggle(matches);
+        $(this).children("tr").not(".group-row").each(function () {
+          const matches = $(this).data("dishName").includes(query);
 
-        if (matches) {
-          groupHasMatches = true;
-          found = true;
-        }
+          $(this).toggle(matches);
+
+          if (matches) {
+            groupHasMatches = true;
+            sectionHasMatches = true;
+          }
+        });
+
+        $(this).toggle(groupHasMatches);
       });
 
-      // Hide categories that have no matching dishes.
-      $(this).toggle(groupHasMatches);
+      // Hide the empty table, but keep the dining spot heading.
+      section.find(".table-responsive").toggle(sectionHasMatches);
+      section.children("p").not(".menu-empty-message")
+  .toggle(sectionHasMatches);
+
+      const spotName = section.find("h2").text().trim();
+
+      section.find(".menu-empty-message")
+        .text(
+          sectionHasMatches
+            ? ""
+            : "No matching dishes found in " + spotName + "."
+        )
+        .toggle(!sectionHasMatches);
     });
 
-    $("#menu-search-status").text(
-      found ? "" : "No matching dishes found."
-    );
+    // Messages now appear inside each dining spot.
+    $("#menu-search-status").text("");
 
-    // Recalculate Ramazan's scroll progress bar.
     $(document).trigger("layoutchange");
   });
+
+  searchInput.trigger("input");
 });
 
 
