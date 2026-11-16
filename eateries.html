@@ -12,13 +12,11 @@
     <link rel="icon" href="favicon/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
+    <script src="js/site.js"></script>
     <link rel="stylesheet" href="vendor/fonts/fonts.css">
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js" defer></script>
-    <script src="js/site.js" defer></script>
-    <script src="js/script.js" defer></script>
+    <script src="vendor/jquery/jquery-4.0.0.min.js" defer></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <div class="reading-progress" aria-hidden="true">
@@ -26,62 +24,50 @@
     </div>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header border-bottom">
-      <nav class="navbar py-3" aria-label="Primary">
-        <div class="container flex-wrap gap-2">
-          <a class="navbar-brand p-0 me-3" href="index.html"
-            ><img
-              src="images/logo.jpg"
-              alt="AITU Eateries home"
-              width="520"
-              height="232"
-              class="logo-image"
-              loading="eager"
-              decoding="async"></a>
+      <nav class="navbar" aria-label="Primary">
+        <div class="container">
+          <a class="navbar-brand p-0" href="index.html" aria-label="AITU Eateries home">
+            <img src="images/logo-light.png" alt="" width="1877" height="838" class="logo-image logo-light" loading="eager" decoding="async">
+            <img src="images/logo-dark.png" alt="" width="1877" height="838" class="logo-image logo-dark" loading="eager" decoding="async">
+          </a>
+          <button id="nav-toggle" class="nav-toggle icon-button" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" hidden>
+            <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
           <div class="primary-links" id="main-nav">
-            <ul class="navbar-nav flex-row flex-wrap mb-0">
-              <li class="nav-item">
-                <a class="nav-link px-2 px-sm-3 py-2" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-2 px-sm-3 py-2 active"
-                  aria-current="page"
-                  href="eateries.html"
-                  >Dining Spots</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2 px-sm-3 py-2" href="menu.html">Menu</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link px-2 px-sm-3 py-2" href="contact.html"
-                  >Contact</a
-                >
-              </li>
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="eateries.html">Dining Spots</a></li>
+              <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+              <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
             </ul>
           </div>
+          <button id="theme-toggle" class="theme-toggle icon-button" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5 8.5 8.5 0 1 0 20.5 13.2Z"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          </button>
         </div>
       </nav>
     </header>
     <main id="main-content" class="flex-grow-1" tabindex="-1">
       <section
-        class="page-intro container pt-4 pt-lg-5 pb-3"
+        class="page-intro dining-intro container"
         aria-labelledby="page-title"
       >
-        <h1 id="page-title" class="mb-3">Dining Spots</h1>
-        <p class="lead mb-3">
+        <h1 id="page-title">Dining Spots</h1>
+        <p class="lead">
           Find a full lunch, your usual coffee, or something sweet between
           classes.
         </p>
-        <p class="mb-0">All four spots are on the 1st floor of building C1.</p>
+        <p class="dining-location">All four spots are on the 1st floor of building C1.</p>
       </section>
-      <section class="container py-4 py-lg-5" aria-labelledby="spots-title">
+      <section class="dining-spots-section container" aria-labelledby="spots-title">
         <h2 id="spots-title" class="mb-3">The spots</h2>
         <div
           class="spots-strip"
           role="region"
-          tabindex="0"
-          aria-label="Dining spots; scroll sideways to explore all four places"
+          aria-label="Dining spots"
         >
           <article
             class="card eatery-card spot-cafeteria h-100 d-flex flex-column p-3"
@@ -293,260 +279,65 @@
       </section>
       <section class="container py-4 py-lg-5" aria-labelledby="hours-title">
         <h2 id="hours-title" class="mb-3">Hours at a glance</h2>
-        <p id="astana-time" class="astana-time mb-4">Loading current time...</p>
+        <p id="astana-time" class="astana-time mb-3">Astana time is available when JavaScript is enabled.</p>
         <div
           class="table-responsive table-frame hours-table"
           tabindex="0"
           role="region"
           aria-label="Opening hours; scroll horizontally if needed"
         >
-          <table class="table align-middle mb-0" aria-labelledby="hours-title">
+          <table class="table align-middle mb-0" aria-labelledby="hours-title" aria-describedby="hours-status-note">
             <thead>
               <tr>
                 <th scope="col">Spot</th>
                 <th scope="col">Days</th>
                 <th scope="col">Hours</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-open-days="1,2,3,4,5">
                 <th scope="row">Cafeteria</th>
                 <td>Mon–Fri</td>
-                <td>9:00–20:00</td>
+                <td><time datetime="09:00">9:00</time>–<time datetime="20:00">20:00</time></td>
+                <td><span class="hours-status" data-state="unknown">Not checked</span></td>
               </tr>
-              <tr>
+              <tr data-open-days="1,2,3,4,5,6">
                 <th scope="row">Coffee Lake</th>
                 <td>Mon–Sat</td>
-                <td>9:00–20:00</td>
+                <td><time datetime="09:00">9:00</time>–<time datetime="20:00">20:00</time></td>
+                <td><span class="hours-status" data-state="unknown">Not checked</span></td>
               </tr>
-              <tr>
+              <tr data-open-days="1,2,3,4,5,6">
                 <th scope="row">Sheker</th>
                 <td>Mon–Sat</td>
-                <td>10:00–19:30</td>
+                <td><time datetime="10:00">10:00</time>–<time datetime="19:30">19:30</time></td>
+                <td><span class="hours-status" data-state="unknown">Not checked</span></td>
               </tr>
-              <tr>
+              <tr data-open-days="1,2,3,4,5">
                 <th scope="row">Mokko</th>
                 <td>Mon–Fri</td>
-                <td>10:00–19:00</td>
+                <td><time datetime="10:00">10:00</time>–<time datetime="19:00">19:00</time></td>
+                <td><span class="hours-status" data-state="unknown">Not checked</span></td>
               </tr>
             </tbody>
           </table>
         </div>
+        <p id="hours-status-note" class="small mt-3 mb-0">Status follows the published weekly schedule; it is not a live confirmation.</p>
         <p class="mt-3 mb-2">Sundays: all spots closed.</p>
         <p class="small mb-0">
           Last checked: <time datetime="2026-10-06">6 October 2026</time>. Hours
           retained from the project’s base information.
         </p>
       </section>
-      <section id="faq" class="container py-4 py-lg-5" aria-labelledby="faq-title">
-        <h2 id="faq-title" class="mb-3">Frequently Asked Questions</h2>
-        <div class="search-panel">
-          <label for="faq-search" class="form-label">Search frequently asked questions</label>
-          <div class="faq-search-field">
-            <span class="faq-search-icon" aria-hidden="true"></span>
-            <input
-              id="faq-search"
-              class="form-control"
-              type="search"
-              placeholder="Try coffee, menus or Sunday"
-              aria-describedby="faq-search-status">
-          </div>
-          <p id="faq-search-status" class="search-status" role="status"></p>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-location"
-          >
-            <span class="faq-text">Where are the dining spots located?</span>
-          </button>
-          <div id="faq-location" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                All four dining spots are located on the 1st floor of building C1 at Astana IT
-                University.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-saturday"
-          >
-            <span class="faq-text">Which dining spots are open on Saturdays?</span>
-          </button>
-          <div id="faq-saturday" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Coffee Lake and Sheker are open on Saturdays. Coffee Lake operates from 9:00
-                to 20:00, and Sheker from 10:00 to 19:30.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-sunday"
-          >
-            <span class="faq-text">Are any dining spots open on Sundays?</span>
-          </button>
-          <div id="faq-sunday" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                No. All four dining spots are closed on Sundays.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-menus"
-          >
-            <span class="faq-text">Where can I find the menus?</span>
-          </button>
-          <div id="faq-menus" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                You can visit the Menu page or use the View menu links on the dining spot
-                cards.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-lunch"
-          >
-            <span class="faq-text">Where can I find lunch on campus?</span>
-          </button>
-          <div id="faq-lunch" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Cafeteria in C1.3 serves hot dishes, soups, salads, bakery and dairy products.
-                Open its menu to compare the listed portions and prices.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-iced-coffee"
-          >
-            <span class="faq-text">Which spot serves iced coffee?</span>
-          </button>
-          <div id="faq-iced-coffee" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Coffee Lake in the C1.2 atrium lists iced coffee and iced tea on its menu,
-                alongside sandwiches and ready-to-go meals.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-pastries"
-          >
-            <span class="faq-text">Where can I get cakes or pastries?</span>
-          </button>
-          <div id="faq-pastries" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Sheker offers cakes, croissants and sandwiches between C1.1 and C1.2.
-                Cafeteria also has a bakery selection.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-coffee-budget"
-          >
-            <span class="faq-text">How can I find coffee within my budget?</span>
-          </button>
-          <div id="faq-coffee-budget" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Use Coffee Planner on the Menu page. Choose hot, iced or any coffee, then
-                enter your budget in tenge to see matching Americano and Latte options from
-                the selected menu items.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white mb-3">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-demo-prices"
-          >
-            <span class="faq-text">Are all menu items and prices confirmed?</span>
-          </button>
-          <div id="faq-demo-prices" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                Some menu groups are marked Demo additions and contain illustrative items.
-                Check the notes on the Menu page and confirm prices and availability at the
-                counter.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="faq-item border rounded-3 bg-white">
-          <button
-            type="button"
-            class="faq-question"
-            aria-expanded="false"
-            aria-controls="faq-campus-map"
-          >
-            <span class="faq-text">Where can I see the campus map?</span>
-          </button>
-          <div id="faq-campus-map" class="faq-answer">
-            <div class="faq-answer-content">
-              <p class="faq-text px-3 pb-3 mb-0">
-                The Home page has a Find them on the map section. It shows the four dining
-                spots across C1.1, C1.2 and C1.3 on the first floor.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
       <section
         class="photo-guide container py-4 py-lg-5"
         id="gallery"
         aria-labelledby="gallery-title"
       >
-        <h2 class="mb-3" id="gallery-title">Explore the spots</h2>
-        <p class="menu-note mb-4">
-          Choose a photo or use the arrows to explore. Find a spot you like,
-          then take a look at its menu. Click the large photo or a photo button,
-          then use the left and right arrow keys to browse. You can also reach
-          the buttons with Tab. Each photo change plays a short sound.
-        </p>
+        <h2 class="mb-2" id="gallery-title">Explore the spots</h2>
+        <p class="gallery-intro">12 photos. Photo changes play a short sound.</p>
+        <p id="gallery-keyboard-help" class="visually-hidden">Choose a thumbnail or use the previous and next buttons. With a photo control focused, use the left and right arrow keys to browse.</p>
 
         <div class="gallery-card">
           <figure class="gallery-viewer">
@@ -559,37 +350,42 @@
                 width="1200"
                 height="900"
                 decoding="async">
+              <div class="gallery-media-feedback" hidden>
+                <p id="gallery-media-status" role="status" aria-live="polite"></p>
+                <button id="gallery-image-retry" class="btn btn-outline-success" type="button" hidden>Retry photo</button>
+              </div>
               <button
                 type="button"
                 id="gallery-previous"
                 class="gallery-arrow gallery-arrow-previous"
                 aria-label="Previous photo"
+                aria-describedby="gallery-keyboard-help"
                 title="Previous photo"
                 disabled
               >
-                <span class="gallery-chevron" aria-hidden="true"></span>
+                <svg class="gallery-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m14 6-6 6 6 6"/></svg>
               </button>
               <button
                 type="button"
                 id="gallery-next"
                 class="gallery-arrow gallery-arrow-next"
                 aria-label="Next photo"
+                aria-describedby="gallery-keyboard-help"
                 title="Next photo"
                 disabled
               >
-                <span class="gallery-chevron" aria-hidden="true"></span>
+                <svg class="gallery-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m10 6 6 6-6 6"/></svg>
               </button>
             </div>
-            <!-- Announce caption and count only. -->
-            <figcaption class="gallery-status" role="status" aria-atomic="true">
-              <p id="gallery-caption" class="gallery-caption">Cafeteria — General view</p>
-              <p id="gallery-counter" class="gallery-counter">Photo 1 of 12</p>
+            <figcaption class="gallery-status">
+              <!-- Announce caption and count without repeating the menu action. -->
+              <div class="gallery-status-text" role="status" aria-atomic="true">
+                <p id="gallery-caption" class="gallery-caption">Cafeteria — General view</p>
+                <p id="gallery-counter" class="gallery-counter">Photo 1 of 12</p>
+              </div>
+              <a id="gallery-menu" class="btn btn-outline-success gallery-menu-link" href="menu.html#cafeteria">View Cafeteria menu</a>
             </figcaption>
           </figure>
-
-          <div class="gallery-controls">
-            <a id="gallery-menu" class="btn btn-success" href="menu.html#cafeteria">View Cafeteria menu</a>
-          </div>
         </div>
         <p id="gallery-sound-message" class="gallery-sound-message small" role="status"></p>
         <audio id="gallery-audio" src="audio/photo-click.mp3" preload="none"></audio>
@@ -597,7 +393,7 @@
           <p class="mt-3">Enable JavaScript to select photos and use gallery sound. The first photo and its menu link are available above.</p>
         </noscript>
 
-        <div class="gallery-thumbnails">
+        <div class="gallery-thumbnails" role="group" aria-label="Choose a photo" aria-describedby="gallery-keyboard-help">
           <button
             type="button"
             class="gallery-thumbnail"
