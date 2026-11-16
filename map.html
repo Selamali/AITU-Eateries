@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>AITU Eateries — First-floor Map</title>
+    <meta name="description" content="Explore Cafeteria, Coffee Lake, Sheker and Mokko on the first floor of AITU.">
+    <meta name="author" content="Ramazan Anarbekov">
+    <meta name="theme-color" content="#187f42">
+    <link rel="icon" href="favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
+    <script type="importmap">
+      {"imports":{"three":"./vendor/three/three.module.min.js"}}
+    </script>
+    <script src="js/site.js"></script>
+    <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="map-page">
+    <a class="skip-link" href="#map-viewport">Skip to map</a>
+    <main id="campus-map" class="campus-map-screen" aria-labelledby="map-title">
+      <h1 id="map-title" class="visually-hidden">AITU dining spots — first-floor map</h1>
+      <p id="map-instructions" class="visually-hidden">
+        Drag with one finger or the left mouse button to rotate. Use two fingers to
+        move and pinch to zoom, or drag with the right mouse button to move and use
+        the mouse wheel to zoom. With the map focused, use arrow keys to move,
+        plus and minus to zoom, A and D to rotate, and Home to reset the view.
+        Tab to a dining spot and press Enter to open its preview and More details link.
+        Press Escape to close the preview. You can also select a highlighted area.
+        The plan shows floor one only. Wall heights and kiosk sizes are schematic.
+      </p>
+      <div id="map-viewport" class="map-viewport" tabindex="0" role="region"
+        aria-label="Interactive first-floor campus map" aria-describedby="map-instructions">
+        <div id="map-markers" class="map-markers"></div>
+      </div>
+      <header class="site-header map-toolbar">
+        <nav class="navbar" aria-label="Primary">
+          <div class="container">
+            <a class="navbar-brand p-0" href="index.html" aria-label="AITU Eateries home">
+              <img src="images/logo-light.png" alt="" width="1877" height="838" class="logo-image logo-light" loading="eager" decoding="async">
+              <img src="images/logo-dark.png" alt="" width="1877" height="838" class="logo-image logo-dark" loading="eager" decoding="async">
+            </a>
+            <button id="nav-toggle" class="nav-toggle icon-button" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" hidden>
+              <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <div class="primary-links" id="main-nav">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="eateries.html">Dining Spots</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="map.html">Map</a></li>
+                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+              </ul>
+            </div>
+            <button id="theme-toggle" class="theme-toggle icon-button" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+              <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5 8.5 8.5 0 1 0 20.5 13.2Z"/></svg>
+              <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+            </button>
+          </div>
+        </nav>
+      </header>
+      <div class="map-controls" role="group" aria-label="Map controls">
+        <button id="map-zoom-in" class="icon-button" type="button" aria-label="Zoom in" title="Zoom in (+)" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button id="map-zoom-out" class="icon-button" type="button" aria-label="Zoom out" title="Zoom out (−)" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>
+        </button>
+        <span class="map-control-divider" aria-hidden="true"></span>
+        <button id="map-rotate-left" class="icon-button" type="button" aria-label="Rotate left" title="Rotate left (A)" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10a9 9 0 1 1 2.5 8.2M3 4v6h6"/></svg>
+        </button>
+        <button id="map-rotate-right" class="icon-button" type="button" aria-label="Rotate right" title="Rotate right (D)" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10a9 9 0 1 0-2.5 8.2M15 10h6V4"/></svg>
+        </button>
+        <span class="map-control-divider" aria-hidden="true"></span>
+        <button id="map-reset" class="icon-button" type="button" aria-label="Reset view" title="Fit the floor in view (Home)" disabled>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+        </button>
+      </div>
+      <details class="map-help">
+        <summary aria-label="Map controls help" title="Map controls help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2.5 1.75-2.5 3"/><path d="M12 16h.01"/></svg>
+        </summary>
+        <div class="map-help-content">
+          <p>Drag to rotate · Right-drag to move · Scroll to zoom</p>
+          <p>Touch: one finger to rotate; two fingers to move and pinch.</p>
+          <p>Keyboard: arrows to move, + / − to zoom, A / D to rotate, Home to reset.</p>
+        </div>
+      </details>
+      <svg id="map-card-leader" class="map-card-leader" hidden aria-hidden="true">
+        <path class="map-card-leader-band"></path>
+        <path class="map-card-leader-line"></path>
+      </svg>
+      <aside id="map-spot-card" class="map-spot-card" hidden aria-labelledby="map-spot-title">
+        <div class="map-spot-card-scroll">
+          <div class="map-spot-media">
+            <img id="map-spot-image" class="map-spot-image" alt="" width="600" height="300" decoding="async">
+            <p id="map-spot-image-status" class="map-spot-image-status" role="status" hidden></p>
+          </div>
+          <div class="map-spot-card-body">
+            <h2 id="map-spot-title"></h2>
+            <p id="map-spot-description"></p>
+            <p id="map-spot-meta"></p>
+            <a id="map-spot-details" class="btn btn-success" href="eateries.html">More details</a>
+          </div>
+        </div>
+        <button id="map-spot-close" class="map-spot-close icon-button" type="button" aria-label="Close dining spot details">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        </button>
+      </aside>
+      <div id="map-notice" class="map-notice">
+        <p id="map-status" role="status">
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          Loading the first floor…
+        </p>
+        <button id="map-retry" class="btn btn-success" type="button" hidden>Retry map</button>
+      </div>
+      <noscript>
+        <p class="map-noscript">Enable JavaScript to explore the map, or <a href="index.html">return home</a>.</p>
+      </noscript>
+      <div class="map-attribution"><a href="https://github.com/Yuujiso/aitumap" target="_blank" rel="noopener noreferrer">Floor plan: Yuujiso &amp; meeezzanine</a></div>
+    </main>
+  </body>
+</html>

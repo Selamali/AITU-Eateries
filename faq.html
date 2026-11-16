@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AITU Eateries — FAQ</title>
+    <meta
+      name="description"
+      content="Answers about AITU dining locations, opening hours, menus, coffee budgets and the campus map.">
+    <meta name="author" content="Ramazan Anarbekov">
+    <meta name="theme-color" content="#187f42">
+    <link rel="icon" href="favicon/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon/favicon-32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="favicon/favicon-180.png" sizes="180x180">
+    <script src="js/site.js"></script>
+    <link rel="stylesheet" href="vendor/fonts/fonts.css">
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="vendor/jquery/jquery-4.0.0.min.js" defer></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <div class="reading-progress" aria-hidden="true">
+      <span id="scroll-progress"></span>
+    </div>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header border-bottom">
+      <nav class="navbar" aria-label="Primary">
+        <div class="container">
+          <a class="navbar-brand p-0" href="index.html" aria-label="AITU Eateries home">
+            <img src="images/logo-light.png" alt="" width="1877" height="838" class="logo-image logo-light" loading="eager" decoding="async">
+            <img src="images/logo-dark.png" alt="" width="1877" height="838" class="logo-image logo-dark" loading="eager" decoding="async">
+          </a>
+          <button id="nav-toggle" class="nav-toggle icon-button" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false" hidden>
+            <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="primary-links" id="main-nav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="eateries.html">Dining Spots</a></li>
+              <li class="nav-item"><a class="nav-link" href="map.html">Map</a></li>
+              <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+              <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          <button id="theme-toggle" class="theme-toggle icon-button" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13.2A8.5 8.5 0 0 1 10.8 3.5 8.5 8.5 0 1 0 20.5 13.2Z"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main id="main-content" class="flex-grow-1" tabindex="-1">
+      <section id="faq" class="container py-4 py-lg-5" aria-labelledby="faq-title">
+        <h1 id="faq-title" class="mb-2">Frequently asked questions</h1>
+        <p class="menu-note mb-4">Answers about dining on campus.</p>
+        <div class="search-panel">
+          <label for="faq-search" class="form-label">Search frequently asked questions</label>
+          <div class="faq-search-field">
+            <span class="faq-search-icon" aria-hidden="true"></span>
+            <input
+              id="faq-search"
+              class="form-control"
+              type="search"
+              placeholder="Try coffee, menus or Sunday"
+              aria-describedby="faq-search-status">
+          </div>
+          <p id="faq-search-status" class="search-status" role="status"></p>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-location"
+          >
+            <span class="faq-text">Where are the dining spots located?</span>
+          </button>
+          <div id="faq-location" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                All four dining spots are located on the 1st floor of building C1 at Astana IT
+                University.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-saturday"
+          >
+            <span class="faq-text">Which dining spots are open on Saturdays?</span>
+          </button>
+          <div id="faq-saturday" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Coffee Lake and Sheker are open on Saturdays. Coffee Lake operates from 9:00
+                to 20:00, and Sheker from 10:00 to 19:30.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-sunday"
+          >
+            <span class="faq-text">Are any dining spots open on Sundays?</span>
+          </button>
+          <div id="faq-sunday" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                No. All four dining spots are closed on Sundays.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-menus"
+          >
+            <span class="faq-text">Where can I find the menus?</span>
+          </button>
+          <div id="faq-menus" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                You can visit the Menu page or use the View menu links on the dining spot
+                cards.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-lunch"
+          >
+            <span class="faq-text">Where can I find lunch on campus?</span>
+          </button>
+          <div id="faq-lunch" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Cafeteria in C1.3 serves hot dishes, soups, salads, bakery and dairy products.
+                Open its menu to compare the listed portions and prices.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-iced-coffee"
+          >
+            <span class="faq-text">Which spot serves iced coffee?</span>
+          </button>
+          <div id="faq-iced-coffee" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Coffee Lake in the C1.2 atrium lists iced coffee and iced tea on its menu,
+                alongside sandwiches and ready-to-go meals.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-pastries"
+          >
+            <span class="faq-text">Where can I get cakes or pastries?</span>
+          </button>
+          <div id="faq-pastries" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Sheker offers cakes, croissants and sandwiches between C1.1 and C1.2.
+                Cafeteria also has a bakery selection.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-coffee-budget"
+          >
+            <span class="faq-text">How can I find coffee within my budget?</span>
+          </button>
+          <div id="faq-coffee-budget" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Use Coffee Planner on the Menu page. Choose hot, iced or any coffee, then
+                enter your budget in tenge to see matching Americano and Latte options from
+                the selected menu items.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3 mb-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-demo-prices"
+          >
+            <span class="faq-text">Are all menu items and prices confirmed?</span>
+          </button>
+          <div id="faq-demo-prices" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                Some menu groups are marked Demo additions and contain illustrative items.
+                Check the notes on the Menu page and confirm prices and availability at the
+                counter.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-item border rounded-3">
+          <button
+            type="button"
+            class="faq-question"
+            aria-expanded="false"
+            aria-controls="faq-campus-map"
+          >
+            <span class="faq-text">Where can I see the campus map?</span>
+          </button>
+          <div id="faq-campus-map" class="faq-answer">
+            <div class="faq-answer-content">
+              <p class="faq-text px-3 pb-3 mb-0">
+                The Map page shows Cafeteria, Coffee Lake, Sheker and Mokko across
+                C1.1, C1.2 and C1.3 on the first floor.
+              </p>
+              <p class="px-3 pb-3 mb-0"><a class="faq-text" href="map.html">Open the interactive map</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer border-top py-4">
+      <div
+        class="container d-flex flex-column flex-lg-row justify-content-between gap-3"
+      >
+        <p class="small mb-0">
+          © 2026 AITU Eateries · Astana IT University<br>Educational project ·
+          SE-2504
+        </p>
+        <p class="small mb-0">
+          Team: Ramazan Anarbekov &amp; Amir Makhymetov<br>Page author:
+          Ramazan Anarbekov
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
