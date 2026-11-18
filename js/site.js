@@ -847,292 +847,359 @@
       }, 2000);
     });
   }
+    const usersKey = "aitu.users";
+  const sessionKey = "aitu.session";
+
+  function readUsers() {
+    const users = JSON.parse(localStorage.getItem(usersKey) || "[]");
+
+    if (!Array.isArray(users) || !users.every(function (user) {
+      return user &&
+        typeof user.name === "string" &&
+        typeof user.email === "string" &&
+        typeof user.phone === "string" &&
+        typeof user.password === "string";
+    })) {
+      throw new Error("Invalid account data");
+    }
+
+    return users;
+  }
+
+  function emailError(value) {
+    const email = value.trim();
+
+    if (!email) return "Enter your email.";
+
+    const validEmail = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[a-z]{2,}$/i;
+
+    if (email.length > 254 || !validEmail.test(email)) {
+      return "Enter a valid email, for example student@mail.kz.";
+    }
+
+    return "";
+  }
+
+  function passwordError(value) {
+    if (!value.trim()) return "Enter your password.";
+
+    if (value.length < 8) {
+      return "Use at least 8 characters.";
+    }
+
+    if (!/[A-Z]/.test(value) || !/[a-z]/.test(value) ||
+        !/[0-9]/.test(value) || !/[^A-Za-z0-9\s]/.test(value)) {
+      return "Use uppercase and lowercase letters, a number and a special character.";
+    }
+
+    return "";
+  }
+
+  function nameError(value) {
+    const name = value.trim();
+
+    if (name.length < 2 || name.length > 120 || !/\p{L}/u.test(name)) {
+      return "Enter a name containing letters, between 2 and 120 characters.";
+    }
+
+    return "";
+  }
+
+  function phoneError(value) {
+    // Accept Kazakhstan numbers beginning with +7 or 8.
+    if (!/^[+\d\s()-]+$/.test(value.trim())) {
+      return "Enter a phone number, for example +7 777 123 45 67.";
+    }
+
+    const normalized = value.replace(/[\s()-]/g, "");
+
+    if (!/^(?:\+7|8)\d{10}$/.test(normalized)) {
+      return "Use +7 or 8 followed by 10 digits.";
+    }
+
+    return "";
+  }
+
+  function setFieldError(field, message) {
+    const errorId = field.id + "-error";
+    let error = document.getElementById(errorId);
+
+    // Some older forms do not yet have an inline error container.
+    if (!error) {
+      error = document.createElement("div");
+      error.id = errorId;
+      error.className = "invalid-feedback";
+      field.insertAdjacentElement("afterend", error);
+    }
+
+    const describedBy = new Set(
+      (field.getAttribute("aria-describedby") || "")
+        .split(/\s+/)
+        .filter(Boolean)
+    );
+
+    describedBy.add(errorId);
+    field.setAttribute("aria-describedby", [...describedBy].join(" "));
+    field.setAttribute("aria-invalid", String(Boolean(message)));
+    field.classList.toggle("is-invalid", Boolean(message));
+    error.textContent = message;
+  }
+
+  function validateFields(rules) {
+    let firstInvalid = null;
+
+    rules.forEach(function ([id, check]) {
+      const field = document.getElementById(id);
+      const message = check(field.value);
+
+      setFieldError(field, message);
+
+      if (message && !firstInvalid) firstInvalid = field;
+    });
+
+    if (firstInvalid) firstInvalid.focus();
+    return firstInvalid === null;
+  }
+
+  function showFormStatus(id, message, success = false) {
+    const status = document.getElementById(id);
+    status.className = (success ? "text-success" : "text-danger") + " mt-3 mb-0";
+    status.textContent = message;
+  }
 
   function initRegistrationForm() {
-    const registrationForm = document.getElementById("registration-form");
+    initProfilePage();
 
-    if (registrationForm) {
-      const nameInput = document.getElementById("reg-name");
-      const emailInput = document.getElementById("reg-email");
-      const passwordInput = document.getElementById("reg-password");
-      const confirmInput = document.getElementById("reg-confirm");
+    const form = document.getElementById("registration-form");
+    if (!form) return;
 
-      const nameError = document.getElementById("reg-name-error");
-      const emailError = document.getElementById("reg-email-error");
-      const passwordError = document.getElementById("reg-password-error");
-      const confirmError = document.getElementById("reg-confirm-error");
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      showFormStatus("registration-status", "");
 
-      const statusMessage = document.getElementById("registration-status");
+      const valid = validateFields([
+        ["reg-name", nameError],
+        ["reg-email", emailError],
+        ["reg-phone", phoneError],
+        ["reg-password", passwordError],
+        ["reg-confirm", function (value) {
+          return value === document.getElementById("reg-password").value &&
+            value !== "" ? "" : "Passwords must match.";
+        }]
+      ]);
 
-      registrationForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+      if (!valid) return;
 
-        statusMessage.textContent = "";
+      const email = document.getElementById("reg-email").value.trim().toLowerCase();
 
-        nameError.textContent = "";
-        emailError.textContent = "";
-        passwordError.textContent = "";
-        confirmError.textContent = "";
+      try {
+        const users = readUsers();
 
-        nameInput.classList.remove("is-invalid");
-        emailInput.classList.remove("is-invalid");
-        passwordInput.classList.remove("is-invalid");
-        confirmInput.classList.remove("is-invalid");
-
-        nameInput.setAttribute("aria-invalid", "false");
-        emailInput.setAttribute("aria-invalid", "false");
-        passwordInput.setAttribute("aria-invalid", "false");
-        confirmInput.setAttribute("aria-invalid", "false");
-
-        const name = nameInput.value.trim();
-
-        const hasLetter = /[a-zа-яёәғқңөұүһі]/i.test(name);
-
-        const hasLink =
-          /https?:\/\/|www\.|[a-zа-яёәғқңөұүһі0-9-]+\.[a-zа-яёәғқңөұүһі]{2,}/i.test(name);
-
-        if (name === "") {
-          nameError.textContent = "Enter your name.";
-        } else if (name.length < 2) {
-          nameError.textContent = "Your name must contain at least 2 characters.";
-        } else if (hasLink) {
-          nameError.textContent = "Links are not allowed in your name.";
-        } else if (!hasLetter) {
-          nameError.textContent = "Your name must contain at least one letter.";
-        }
-
-        if (nameError.textContent !== "") {
-          nameInput.classList.add("is-invalid");
-          nameInput.setAttribute("aria-invalid", "true");
-        }
-
-        const email = emailInput.value.trim();
-        emailInput.value = email;
-
-        const hasValidDomain = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[a-z]{2,}$/i.test(email);
-
-        if (email === "") {
-          emailError.textContent = "Enter your email.";
-        } else if (!emailInput.checkValidity() || !hasValidDomain) {
-          emailError.textContent =
-            "Enter a valid email with at least 2 letters after the last dot.";
-        }
-
-        if (emailError.textContent !== "") {
-          emailInput.classList.add("is-invalid");
-          emailInput.setAttribute("aria-invalid", "true");
-        }
-
-        if (passwordInput.value.trim() === "") {
-          passwordError.textContent = "This field is required.";
-          passwordInput.classList.add("is-invalid");
-          passwordInput.setAttribute("aria-invalid", "true");
-        } else if (passwordInput.value.length < 8) {
-          passwordError.textContent = "Use at least 8 characters.";
-          passwordInput.classList.add("is-invalid");
-          passwordInput.setAttribute("aria-invalid", "true");
-        }
-
-        if (confirmInput.value.trim() === "") {
-          confirmError.textContent = "This field is required.";
-          confirmInput.classList.add("is-invalid");
-          confirmInput.setAttribute("aria-invalid", "true");
-        } else if (confirmInput.value !== passwordInput.value) {
-          confirmError.textContent = "Passwords do not match.";
-          confirmInput.classList.add("is-invalid");
-          confirmInput.setAttribute("aria-invalid", "true");
-        }
-
-        const firstError =
-          registrationForm.querySelector(".is-invalid");
-
-        if (firstError) {
-          statusMessage.className = "text-danger mt-3 mb-0";
-          statusMessage.textContent =
-            "Please correct the highlighted fields.";
-
-          firstError.focus();
+        if (users.some(function (user) {
+          return user.email === email;
+        })) {
+          setFieldError(
+            document.getElementById("reg-email"),
+            "This email is already registered. Please log in."
+          );
+          document.getElementById("reg-email").focus();
           return;
         }
 
-        statusMessage.className = "text-success mt-3 mb-0";
-        statusMessage.textContent =
-          "The fields passed validation. This demo has not created an account.";
+        // Frontend assignment simulation only, not production authentication.
+        users.push({
+          name: document.getElementById("reg-name").value.trim(),
+          email: email,
+          phone: document.getElementById("reg-phone").value.trim(),
+          password: document.getElementById("reg-password").value
+        });
 
-        registrationForm.reset();
-      });
+        localStorage.setItem(usersKey, JSON.stringify(users));
 
-      registrationForm.addEventListener("input", function (event) {
-        statusMessage.textContent = "";
-        const fields = [nameInput, emailInput, passwordInput, confirmInput];
-        const errors = [nameError, emailError, passwordError, confirmError];
-        const index = fields.indexOf(event.target);
-        if (index !== -1) {
-          fields[index].classList.remove("is-invalid");
-          fields[index].setAttribute("aria-invalid", "false");
-          errors[index].textContent = "";
-        }
-        // A changed password also invalidates a previous comparison message.
-        if (event.target === passwordInput) {
-          confirmInput.classList.remove("is-invalid");
-          confirmInput.setAttribute("aria-invalid", "false");
-          confirmError.textContent = "";
-        }
-      });
-    }
-  }
-
-  function initSubscriptionDialog() {
-    // Subscription dialog.
-    const subscriptionPopup = document.getElementById("subscription-popup");
-
-    if (subscriptionPopup) {
-      const openButton = document.getElementById("open-subscription");
-      const closeButton = document.getElementById("close-subscription");
-      const subscriptionForm = document.getElementById("subscription-form");
-      const subscriptionStatus = document.getElementById("subscription-status");
-
-      openButton.addEventListener("click", function () {
-        subscriptionPopup.showModal();
-        document.getElementById("subscription-email").focus();
-      });
-
-      closeButton.addEventListener("click", function () {
-        subscriptionPopup.close();
-      });
-
-      // Clicking the backdrop closes the dialog.
-      subscriptionPopup.addEventListener("click", function (event) {
-        if (event.target === subscriptionPopup) {
-          subscriptionPopup.close();
-        }
-
-      });
-
-      subscriptionForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        subscriptionStatus.textContent =
-          "The email format passed validation. This demo has not created a subscription.";
-
-        subscriptionForm.reset();
-      });
-
-      subscriptionForm.addEventListener("input", function () {
-        subscriptionStatus.textContent = "";
-      });
-    }
-  }
-
-  function initContactForm() {
-    const contactForm = document.getElementById("contact-form");
-
-    if (contactForm) {
-      const contactEmail = document.getElementById("cf-email");
-      const contactEmailError = document.getElementById("cf-email-error");
-      const contactStatus = document.getElementById("form-status");
-
-      const contactName = document.getElementById("cf-name");
-      const contactNameError = document.getElementById("cf-name-error");
-
-      const submitButton = contactForm.querySelector('button[type="submit"]');
-      submitButton.disabled = false;
-      contactStatus.textContent = "";
-
-      function handleContactSubmit(event) {
-        event.preventDefault();
-
-        const name = contactName.value.trim();
-
-        contactNameError.textContent = "";
-        contactName.classList.remove("is-invalid");
-        contactName.setAttribute("aria-invalid", "false");
-
-        if (name === "") {
-          contactNameError.textContent = "Enter your name.";
-        } else if (name.length < 2) {
-          contactNameError.textContent = "Use at least 2 characters.";
-        }
-
-        if (contactNameError.textContent !== "") {
-          contactName.classList.add("is-invalid");
-          contactName.setAttribute("aria-invalid", "true");
-          contactStatus.textContent = "";
-          contactName.focus();
-          return;
-        }
-
-        const email = contactEmail.value.trim();
-        contactEmail.value = email;
-
-        const hasValidDomain = /^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)*\.[a-z]{2,}$/i.test(email);
-
-        if (!contactEmail.checkValidity() || !hasValidDomain) {
-          contactEmailError.textContent = "";
-          contactStatus.textContent = "";
-
-          if (email === "") {
-            contactEmailError.textContent = "Enter your email.";
-          } else if (!contactEmail.checkValidity()) {
-            contactEmailError.textContent =
-              "Enter a valid email address, for example 123@mail.kz.";
-          } else if (!hasValidDomain) {
-            contactEmailError.textContent =
-              "The domain must end with at least 2 letters, for example .kz or .com.";
-          }
-
-          if (contactEmailError.textContent !== "") {
-            contactEmail.classList.add("is-invalid");
-            contactEmail.setAttribute("aria-invalid", "true");
-            contactEmail.focus();
-            return;
-          }
-        }
-
-        contactEmail.classList.remove("is-invalid");
-        contactEmail.setAttribute("aria-invalid", "false");
-        contactEmailError.textContent = "";
-
-        if (!contactForm.reportValidity()) {
-          contactStatus.textContent = "";
-          return;
-        }
-
-        // Validation is local and immediate. Keep both the result and the draft visible.
-        contactStatus.textContent =
-          "Your entries passed validation. This demo has not sent a message; use the team email links above to contact us.";
+        form.reset();
+        document.getElementById("signin-email").value = email;
+        showFormStatus(
+          "registration-status",
+          "Account created. Log in below to open your profile.",
+          true
+        );
+        document.getElementById("signin-password").focus();
+      } catch {
+        showFormStatus(
+          "registration-status",
+          "Could not save your account. Check browser storage settings."
+        );
       }
-
-      function clearContactError(event) {
-        if (event.target === contactName || event.target === contactEmail) {
-          event.target.classList.remove("is-invalid");
-          event.target.setAttribute("aria-invalid", "false");
-          (event.target === contactName ? contactNameError : contactEmailError).textContent = "";
-        }
-        contactStatus.textContent = "";
-      }
-
-      contactForm.addEventListener("submit", handleContactSubmit);
-      contactForm.addEventListener("input", clearContactError);
-      contactForm.addEventListener("change", clearContactError);
-    }
+    });
   }
 
   function initLoginDialog() {
-    const loginDialog = document.getElementById("login-dialog");
+    const dialog = document.getElementById("login-dialog");
+    if (!dialog) return;
 
-    if (loginDialog) {
-      document.getElementById("open-login").addEventListener("click", function () {
-        loginDialog.showModal();
-        document.getElementById("reg-name").focus();
-      });
+    document.getElementById("open-login").addEventListener("click", function () {
+      dialog.showModal();
+      document.getElementById("reg-name").focus();
+    });
 
-      document.getElementById("close-login").addEventListener("click", function () {
-        loginDialog.close();
-      });
-    }
+    document.getElementById("close-login").addEventListener("click", function () {
+      dialog.close();
+    });
+
+    const form = document.getElementById("signin-form");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      showFormStatus("signin-status", "");
+
+      const valid = validateFields([
+        ["signin-email", emailError],
+        ["signin-password", passwordError]
+      ]);
+
+      if (!valid) return;
+
+      const email = document.getElementById("signin-email").value.trim().toLowerCase();
+      const password = document.getElementById("signin-password").value;
+
+      try {
+        const user = readUsers().find(function (account) {
+          return account.email === email && account.password === password;
+        });
+
+        if (!user) {
+          showFormStatus("signin-status", "Incorrect email or password.");
+          return;
+        }
+
+        localStorage.setItem(sessionKey, user.email);
+        window.location.href = "profile.html";
+      } catch {
+        showFormStatus(
+          "signin-status",
+          "Could not log in. Check browser storage settings."
+        );
+      }
+    });
   }
 
+  function initProfilePage() {
+    const profile = document.getElementById("profile-details");
+    if (!profile) return;
+
+    const guest = document.getElementById("profile-guest");
+
+    function renderProfile() {
+      profile.hidden = true;
+      guest.hidden = false;
+
+      try {
+        const email = localStorage.getItem(sessionKey);
+        const user = readUsers().find(function (account) {
+          return account.email === email;
+        });
+
+        if (!user) return;
+
+        document.getElementById("profile-name").textContent = user.name;
+        document.getElementById("profile-email").textContent = user.email;
+        document.getElementById("profile-phone").textContent = user.phone;
+
+        guest.hidden = true;
+        profile.hidden = false;
+      } catch {
+        showFormStatus(
+          "profile-status",
+          "Could not read your account. Check browser storage settings."
+        );
+      }
+    }
+
+    document.getElementById("logout-button").addEventListener("click", function () {
+      try {
+        localStorage.removeItem(sessionKey);
+        window.location.href = "contact.html";
+      } catch {
+        showFormStatus("profile-status", "Could not log out. Please try again.");
+      }
+    });
+
+    renderProfile();
+
+    // Keep the profile accurate after Back navigation or logout in another tab.
+    window.addEventListener("pageshow", renderProfile);
+    window.addEventListener("storage", renderProfile);
+  }
+
+  function initContactForm() {
+    const form = document.getElementById("contact-form");
+    if (!form) return;
+
+    form.querySelector('button[type="submit"]').disabled = false;
+    showFormStatus("form-status", "");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      showFormStatus("form-status", "");
+
+      const valid = validateFields([
+        ["cf-name", nameError],
+        ["cf-email", emailError],
+        ["cf-topic", function (value) {
+          return value ? "" : "Choose a dining spot.";
+        }],
+        ["cf-message", function (value) {
+          if (!value.trim()) return "Enter your message.";
+          if (value.trim().length > 3000) return "Use no more than 3000 characters.";
+          return "";
+        }]
+      ]);
+
+      if (!valid) return;
+
+      showFormStatus(
+        "form-status",
+        "Your entries are valid. This demo does not send messages; use the team email links above.",
+        true
+      );
+    });
+  }
+
+  function initSubscriptionDialog() {
+    const dialog = document.getElementById("subscription-popup");
+    if (!dialog) return;
+
+    const form = document.getElementById("subscription-form");
+
+    document.getElementById("open-subscription").addEventListener("click", function () {
+      dialog.showModal();
+      document.getElementById("subscription-email").focus();
+    });
+
+    document.getElementById("close-subscription").addEventListener("click", function () {
+      dialog.close();
+    });
+
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      showFormStatus("subscription-status", "");
+
+      if (!validateFields([["subscription-email", emailError]])) return;
+
+      showFormStatus(
+        "subscription-status",
+        "Your email is valid. This demo does not create a subscription.",
+        true
+      );
+
+      form.reset();
+    });
+  }
+  
   function initCoffeePlanner() {
     const coffeeForm = document.getElementById("coffee-planner-form");
 

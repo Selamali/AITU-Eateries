@@ -48,6 +48,7 @@
               <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Menu</a></li>
               <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
               <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+              <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
             </ul>
           </div>
           <button id="theme-toggle" class="theme-toggle icon-button" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
@@ -132,14 +133,12 @@
         Your budget (₸)
       </label>
 
-      <input type="number"
-             id="coffee-budget"
-             class="form-control"
-             min="1"
-             step="1"
-             placeholder="For example, 1000"
-             aria-describedby="coffee-budget-error"
-             required>
+      <input type="text"
+       inputmode="numeric"
+       id="coffee-budget"
+       class="form-control"
+       placeholder="For example, 1000"
+       aria-describedby="coffee-budget-error">
 
       <p id="coffee-budget-error"
          class="text-danger mt-2"
@@ -2057,19 +2056,19 @@
 
     <p id="subscription-demo-note">This demo checks an email address. No subscription is created and no updates are sent.</p>
 
-    <form id="subscription-form" aria-describedby="subscription-demo-note">
+    <form id="subscription-form" novalidate aria-describedby="subscription-demo-note">
       <div class="mb-3">
         <label for="subscription-email" class="form-label">
           Email
         </label>
 
-        <input
-          type="email"
-          id="subscription-email"
-          class="form-control"
-          placeholder="you@example.com"
-          autocomplete="email"
-          required>
+      <input
+        type="text"
+        inputmode="email"
+        id="subscription-email"
+        class="form-control"
+        placeholder="you@example.com"
+        autocomplete="email">
       </div>
 
       <button type="submit" class="btn btn-success">

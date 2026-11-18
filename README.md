@@ -68,6 +68,7 @@ No build step or package installation is required. Bootstrap CSS, fonts, images 
 | `vendor/jquery/` | Local jQuery 4.0.0 and MIT license |
 | `vendor/three/` | Pinned Three.js, compatible addons and MIT license |
 | `vendor/aitumap/` | Original floor-plan MIT license |
+| `profile.html` | Account details and logout |
 
 ## JavaScript features
 
@@ -107,6 +108,7 @@ All forms are frontend demonstrations. They do not send messages, create account
 | Copy to clipboard | Uses the Clipboard API with jQuery feedback and shows a message when copying fails |
 | Lazy-loaded thumbnails | Loads gallery thumbnail sources as they approach the viewport and handles image-loading errors |
 
+
 `site.js` runs early in the head to apply the saved theme before styling. It initializes page components once the document is ready, after deferred full jQuery has loaded. Layout-changing features use the custom `layoutchange` event to refresh scroll progress, pending images and counters.
 
 ## Responsive design and accessibility
@@ -120,3 +122,23 @@ The project includes semantic HTML, image alternative text, form labels, visible
 Menu entries are stored in `menu.html`, while the Coffee Planner uses a separate array in `initCoffeePlanner` inside `js/site.js`. Home statistics are configured in HTML. Menu groups marked **Demo additions** contain illustrative items, and some prices and portions are marked for confirmation.
 
 The project includes local photographs, a campus map, fonts and gallery audio. Bootstrap, jQuery and font licenses are included in `vendor/`.
+
+### Authentication simulation
+
+Users can sign up with a name, email, phone number and password.
+Accounts are stored in localStorage for this educational frontend demo.
+Login checks the saved credentials and redirects to profile.html.
+The profile displays the user's name, email and phone number.
+Logout removes the current session.
+
+Use sample passwords only. This is not production authentication.
+
+### Form validation
+
+All forms use novalidate and JavaScript validation.
+Validation includes required fields, email format, password length
+and complexity, password confirmation and Kazakhstan phone numbers.
+Errors appear next to the corresponding fields.
+
+Contact and subscription forms are local demonstrations:
+they do not send messages or create real subscriptions.

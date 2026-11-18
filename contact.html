@@ -42,6 +42,7 @@
               <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
               <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a></li>
               <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+              <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
             </ul>
           </div>
           <button id="theme-toggle" class="theme-toggle icon-button" type="button" aria-label="Dark theme" aria-pressed="false" title="Switch to dark theme" hidden>
@@ -59,7 +60,7 @@
     class="btn btn-outline-secondary"
     aria-haspopup="dialog"
     aria-controls="login-dialog">
-    Try registration demo
+    Sign Up / Log In
   </button>
 </div>
      <section
@@ -219,8 +220,7 @@
                           aria-describedby="cf-name-error"
                           type="text"
                           autocomplete="name"
-                          required
-                          maxlength="120"
+                          
                           placeholder="Your full name">
 
                         <div id="cf-name-error" class="invalid-feedback"></div>
@@ -232,10 +232,9 @@
                         class="form-control"
                         id="cf-email"
                         name="email"
-                        type="email"
+                        type="text"
+                        inputmode="email"
                         autocomplete="email"
-                        required
-                        maxlength="254"
                         placeholder="you@example.com"
                         aria-describedby="cf-email-error">
                         <div id="cf-email-error" class="invalid-feedback"></div>
@@ -248,7 +247,6 @@
                           class="form-select"
                           id="cf-topic"
                           name="topic"
-                          required
                         >
                           <option value="" selected disabled>
                             Choose a dining spot
@@ -269,8 +267,6 @@
                           id="cf-message"
                           name="message"
                           rows="5"
-                          required
-                          maxlength="3000"
                           placeholder="Write your question or suggestion"
                         ></textarea>
                       </div>
@@ -316,7 +312,7 @@
   <div class="login-dialog-content">
     <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
       <h2 id="registration-title" class="mb-0">
-        Registration demo
+        Your AITU Eateries account
       </h2>
 
       <button
@@ -327,7 +323,10 @@
       </button>
     </div>
 
-    <p id="registration-demo-note">This demo only checks the fields; it does not create an account. Use a sample password.</p>
+    <p id="registration-demo-note">
+  Educational demo: account details are stored in this browser.
+  Use a sample password, not your real password.
+    </p>
     <form id="registration-form" novalidate aria-describedby="registration-demo-note">
 
         <div class="mb-3">
@@ -337,25 +336,35 @@
             id="reg-name"
             class="form-control"
             autocomplete="name"
-            maxlength="120"
             aria-describedby="reg-name-error"
-            required>
+            >
           <div id="reg-name-error" class="invalid-feedback"></div>
         </div>
 
         <div class="mb-3">
           <label for="reg-email" class="form-label">Email</label>
           <input
-            type="email"
+            type="text"
+            inputmode="email"
             id="reg-email"
             class="form-control"
             autocomplete="email"
-            maxlength="254"
             aria-describedby="reg-email-error"
-            required>
+            >
           <div id="reg-email-error" class="invalid-feedback"></div>
         </div>
-
+         
+        <div class="mb-3">
+  <label for="reg-phone" class="form-label">Phone number</label>
+  <input
+    type="tel"
+    id="reg-phone"
+    class="form-control"
+    autocomplete="tel"
+    placeholder="+7 777 123 45 67"
+    aria-describedby="reg-phone-error">
+  <div id="reg-phone-error" class="invalid-feedback"></div>
+</div>
         <div class="mb-3">
           <label for="reg-password" class="form-label">Password</label>
           <input
@@ -363,11 +372,10 @@
             id="reg-password"
             class="form-control"
             autocomplete="new-password"
-            minlength="8"
             aria-describedby="password-hint reg-password-error"
-            required>
+            >
           <div id="password-hint" class="form-text">
-            Use at least 8 characters.
+            Use 8+ characters, uppercase and lowercase letters, a number and a special character.
           </div>
           <div id="reg-password-error" class="invalid-feedback"></div>
         </div>
@@ -382,18 +390,51 @@
             class="form-control"
             autocomplete="new-password"
             aria-describedby="reg-confirm-error"
-            required>
+            >
           <div id="reg-confirm-error" class="invalid-feedback"></div>
         </div>
 
         <button type="submit" class="btn btn-success">
-          Check registration
+          Sign Up
         </button>
 
         <p id="registration-status"
            class="mt-3 mb-0"
            role="status"></p>
       </form>
+
+      <hr class="my-4">
+
+      <h3 id="signin-title" class="h4">Log In</h3>
+
+      <form id="signin-form" novalidate aria-labelledby="signin-title">
+          <div class="mb-3">
+          <label for="signin-email" class="form-label">Email</label>
+          <input
+          type="text"
+          inputmode="email"
+          id="signin-email"
+          class="form-control"
+          autocomplete="username"
+          aria-describedby="signin-email-error">
+          <div id="signin-email-error" class="invalid-feedback"></div>
+          </div>
+
+        <div class="mb-3">
+            <label for="signin-password" class="form-label">Password</label>
+      <input
+      type="password"
+      id="signin-password"
+      class="form-control"
+      autocomplete="current-password"
+      aria-describedby="signin-password-error">
+      <div id="signin-password-error" class="invalid-feedback"></div>
+    </div>
+
+  <button type="submit" class="btn btn-success">Log In</button>
+
+  <p id="signin-status" class="mt-3 mb-0" role="status"></p>
+</form>
   </div>
 </dialog>
 
