@@ -18,7 +18,7 @@ A student guide to Cafeteria, Coffee Lake, Sheker and Mokko at Astana IT Univers
 | `menu.html` | Four menus, live search, autocomplete, Coffee Planner and subscription dialog | Amir Makhymetov |
 | `contact.html` | Team information, contact form, registration dialog and clipboard button | Amir Makhymetov |
 | `faq.html` | Searchable dining questions with expandable answers and highlighted matches | Ramazan Anarbekov |
-
+| `profile.html` | Stored account details, session handling and logout | Amir Makhymetov |
 ## Technologies
 
 - HTML5 for page structure, tables and forms.
@@ -90,11 +90,29 @@ The main navigation supports Left/Right arrow keys and a mobile disclosure butto
 
 ### Forms and dialogs
 
-- **Registration:** the Try registration demo button on Contact opens a registration dialog. Validation checks the name, email, password length and password confirmation, then focuses the first invalid field when needed.
+- **Registration and login:** the Sign Up / Log In button on Contact opens a dialog. Registration validates the name, email, phone number, password complexity and password confirmation, then saves the account in localStorage. Login checks the credentials and redirects to the Profile page.
 - **Contact:** validates the input locally and immediately, keeping the draft and validation result visible. It does not send a message.
 - **Subscription:** opens a dialog on Menu and displays a confirmation after valid submission.
 
-All forms are frontend demonstrations. They do not send messages, create accounts or register subscriptions. There is no backend or database, and form data is not saved persistently.
+### Authentication simulation
+
+Users can sign up with a name, email, phone number and password.
+Accounts are stored in localStorage for this educational frontend demo.
+Login checks the saved credentials and redirects to profile.html.
+The profile displays the user's name, email and phone number.
+Logout removes the current session.
+
+Use sample passwords only. This is not production authentication.
+
+### Form validation
+
+All forms use novalidate and JavaScript validation.
+Validation includes required fields, email format, password length
+and complexity, password confirmation and Kazakhstan phone numbers.
+Errors appear next to the corresponding fields.
+
+Contact and subscription forms are local demonstrations:
+they do not send messages or create real subscriptions.
 
 ## jQuery features
 
@@ -123,22 +141,3 @@ Menu entries are stored in `menu.html`, while the Coffee Planner uses a separate
 
 The project includes local photographs, a campus map, fonts and gallery audio. Bootstrap, jQuery and font licenses are included in `vendor/`.
 
-### Authentication simulation
-
-Users can sign up with a name, email, phone number and password.
-Accounts are stored in localStorage for this educational frontend demo.
-Login checks the saved credentials and redirects to profile.html.
-The profile displays the user's name, email and phone number.
-Logout removes the current session.
-
-Use sample passwords only. This is not production authentication.
-
-### Form validation
-
-All forms use novalidate and JavaScript validation.
-Validation includes required fields, email format, password length
-and complexity, password confirmation and Kazakhstan phone numbers.
-Errors appear next to the corresponding fields.
-
-Contact and subscription forms are local demonstrations:
-they do not send messages or create real subscriptions.
